@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="FlyControl: a fixed Drosophila brain connectome supports adaptable movement across terrain, turning, speed, navigation and simulated bodies.">
+  <meta name="theme-color" content="#f6f5f0">
+  <meta property="og:title" content="FlyControl — A Drosophila connectome prior enables adaptable embodied control">
+  <meta property="og:description" content="Biological wiring as a reusable prior for embodied intelligence. A research project from Tsinghua University.">
+  <meta property="og:type" content="website">
+  <title>FlyControl — A Drosophila connectome prior enables adaptable embodied control</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/noto-sans-latin-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <script src="site.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#experiments">Skip to experiments</a>
+  <main>
+    <section class="hero shell" aria-labelledby="paper-title">
+      <p class="project-name">FlyControl</p>
+      <h1 id="paper-title">A <em>Drosophila</em> connectome prior enables adaptable embodied control</h1>
+      <div class="authors" aria-label="Authors">
+        <span>Siyu Yu<sup>1,2,3</sup></span><span>Kanglei Zhou<sup>1,3</sup></span><span>Hongwei Yan<sup>3,4</sup></span><span>Xinyi Wang<sup>1</sup></span><span>Sen Song<sup>2,3</sup></span><span>Bo Hong<sup>2,3</sup></span><a href="mailto:liyuanwang@tsinghua.edu.cn">Liyuan Wang<sup>1,3,*</sup></a>
+      </div>
+      <p class="university">Tsinghua University</p>
+      <p class="affiliations"><span><sup>1</sup> Department of Psychological and Cognitive Sciences</span><span><sup>2</sup> School of Biomedical Engineering</span><span><sup>3</sup> IDG/McGovern Institute for Brain Research</span><span><sup>4</sup> School of Life Sciences</span></p>
+      <div class="hero-links" role="group" aria-label="Project resources">
+        <button class="button resource-placeholder" type="button" disabled aria-label="arXiv — link not yet available" title="arXiv link will be added at release"><img class="resource-icon" src="assets/icons/arxiv.svg" width="18" height="18" alt="" aria-hidden="true"><span>arXiv</span></button>
+        <a class="button" href="https://github.com/THU-NeuroML/FlyControl"><img class="resource-icon" src="assets/icons/github.svg" width="18" height="18" alt="" aria-hidden="true"><span>GitHub</span></a>
+        <a class="button" href="https://raw.githubusercontent.com/THU-NeuroML/FlyControl/v1.0.0/Supplementary-Videos.zip" aria-label="Download supplementary videos"><svg class="resource-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m-4-4 4 4 4-4M5 16v5h14v-5"/></svg><span>Videos</span></a>
+        <button class="button resource-placeholder" type="button" disabled aria-label="Hugging Face — link not yet available" title="Hugging Face link will be added at release"><img class="resource-icon" src="assets/icons/huggingface.svg" width="18" height="18" alt="" aria-hidden="true"><span>Hugging Face</span></button>
+      </div>
+      <div class="hero-media">
+        <div class="brain-panel"><span class="media-label">Adult fly brain</span><img src="assets/images/connectome.webp" width="1982" height="995" alt="Anatomical rendering of the adult fly brain connectome, extracted from Figure 1."><div class="brain-fact"><strong>138,584</strong><span>neurons in the recurrent core</span></div></div>
+        <div class="fly-panel"><video id="hero-video" data-src="assets/videos/hero-fly.mp4" poster="assets/images/hero-fly.webp" muted playsinline loop preload="none" aria-label="Connectome-controlled digital fly walking in simulation"></video><div class="hero-video-label"><span>Connectome-controlled digital fly</span><button type="button" id="hero-play" aria-label="Play hero video">Play <span aria-hidden="true">▶</span></button></div></div>
+      </div>
+      <p class="hero-statement">The wiring of a fly brain becomes a reusable prior for movement.<br> We keep the connectome fixed and learn the interfaces that connect it to a body.</p>
+    </section>
+
+    <section class="method shell section" aria-labelledby="method-title">
+      <div class="method-layout">
+        <div class="method-copy">
+          <h2 id="method-title">Biological structure. Learned interfaces.</h2>
+          <p>Measured synaptic connectivity defines a recurrent network with 3.73 million directed connections. Sensory and motor interfaces learn to use this structure for closed-loop control.</p>
+          <p>Each simulated body learns its own interfaces around the fixed connectome. In the digital fly, the policy modulates a central pattern generator that drives 42 leg joints.</p>
+        </div>
+        <figure class="method-figure">
+          <button type="button" data-figure="6" data-panel="method" aria-label="Enlarge the shared-core architecture in Figure 6">
+            <img src="assets/images/method-interfaces.webp" width="1892" height="696" loading="lazy" alt="Original Figure 6b: a learned sensory interface feeds the fixed connectome, followed by a motor interface. State and action close the loop through biped, tripod, quadruped and hexapod bodies, with an additional local-feedback branch.">
+          </button>
+          <figcaption><button type="button" class="text-link" data-figure="6">Architecture from Figure 6b <span aria-hidden="true">↗</span></button></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section shell" id="experiments" aria-labelledby="fly-title">
+      <div class="section-intro"><h2 id="fly-title">Terrain, turning and speed.</h2><p>The fly must negotiate an obstacle, change direction or follow a changing speed command. The connectome prior improves obstacle crossing and speed tracking, and produces smoother turning commands.</p></div>
+      <div class="experiment-nav"><div class="tabs" role="tablist" aria-label="Fly experiment"><button id="tab-terrain" type="button" role="tab" aria-selected="true" aria-controls="fly-panel" data-task="terrain">Terrain</button><button id="tab-turning" type="button" role="tab" aria-selected="false" aria-controls="fly-panel" tabindex="-1" data-task="turning">Turning</button><button id="tab-speed" type="button" role="tab" aria-selected="false" aria-controls="fly-panel" tabindex="-1" data-task="speed">Speed</button></div></div>
+      <div id="fly-panel" role="tabpanel" aria-labelledby="tab-terrain" class="experiment-grid">
+        <div class="experiment-media">
+          <div class="media-toolbar">
+            <div class="choice-control" id="fly-choice-control">
+              <span class="control-label" id="fly-choice-label">Block height (mm)</span>
+              <div class="segmented-options" id="fly-choices" role="radiogroup" aria-labelledby="fly-choice-label">
+                <label><input type="radio" name="fly-choice" value="fly_obstacle_0p2"><span>0.20</span></label>
+                <label><input type="radio" name="fly-choice" value="fly_obstacle_0p3"><span>0.30</span></label>
+                <label><input type="radio" name="fly-choice" value="fly_obstacle_0p45"><span>0.45</span></label>
+                <label><input type="radio" name="fly-choice" value="fly-terrain" checked><span>0.525</span></label>
+              </div>
+            </div>
+            <label class="select-label" id="fly-select-control" hidden><span id="fly-select-label">Target heading</span><select id="fly-condition" aria-labelledby="fly-select-label"><option value="fly-terrain">0.525 mm</option><option value="fly_obstacle_0p45">0.45 mm</option><option value="fly_obstacle_0p3">0.30 mm</option><option value="fly_obstacle_0p2">0.20 mm</option></select></label>
+          </div>
+        <div class="video-frame"><video id="fly-video" data-src="assets/videos/fly-terrain.mp4" poster="assets/images/fly-terrain.webp" controls muted playsinline loop preload="none" aria-label="Paired connectome and MLP fly terrain experiment"></video></div>
+        <p class="media-caption" id="fly-caption">Paired illustrative trial. Playback and episode outcomes are labelled in the video; population results appear in Figure 2.</p>
+        </div>
+        <div class="experiment-result" aria-live="polite"><div class="result-index" id="fly-index">01 / 03</div><h3 id="fly-result-title">Crossing higher obstacles</h3><p id="fly-result-copy">The connectome controller maintains higher all-feet crossing success as block height increases. Both controllers reliably traverse flat ground.</p><div class="result-stat"><strong id="fly-stat">0.20–0.525</strong><span id="fly-stat-label">mm block heights evaluated</span></div><p class="sample" id="fly-sample">20 paired training seeds · 64 shared test phases per height</p><button type="button" class="text-link" data-figure="2" id="fly-figure-link">View terrain results <span aria-hidden="true">↗</span></button></div>
+      </div>
+
+    </section>
+
+    <section class="circuit-section section" aria-labelledby="circuit-title"><div class="shell">
+      <div class="section-intro"><h2 id="circuit-title">Tracing control through the network.</h2><p>Neural sensitivity, activity and pathway interventions reveal how the controller uses its biological structure. Mechanosensory and ascending pathways contribute to task-dependent motor outputs.</p></div>
+      <div class="circuit-grid">
+        <div class="circuit-visual"><img src="assets/images/fly-turning-illustration.webp" alt="Turning fly illustration from the manuscript's framework figure" loading="lazy"><div class="pathway" aria-label="Ascending neurons to descending neurons"><span>Ascending<br>neurons</span><svg viewBox="0 0 110 20" aria-hidden="true"><path d="M1 10h103m-9-7 9 7-9 7"/></svg><span>Descending<br>neurons</span></div></div>
+        <div class="circuit-findings"><article><h3>Activity during turning</h3><p>Ascending neurons show <strong>1.46× activity enrichment</strong> relative to the input-population average, with enrichment in all 24 training seeds.</p></article><article><h3>A pathway with a behavioral effect</h3><p>Cutting ascending-to-descending connections increases heading error by <strong>3.52°</strong>, compared with <strong>1.16°</strong> for matched control cuts.</p></article><button type="button" class="text-link" data-figure="3">Inspect the pathway experiments <span aria-hidden="true">↗</span></button></div>
+      </div>
+    </div></section>
+
+    <section class="section shell" id="navigation" aria-labelledby="maze-title">
+      <div class="section-intro"><h2 id="maze-title">From walking to navigation.</h2><p>The same fly-connectome core is adapted to the Ant quadruped. Across seven controller architectures, it achieves the highest mean success in the Medium and Large mazes.</p></div>
+      <div class="experiment-nav"><div class="tabs" role="tablist" aria-label="Maze layout"><button id="tab-umaze" type="button" role="tab" aria-selected="false" tabindex="-1" aria-controls="maze-panel" data-maze="umaze">U-Maze</button><button id="tab-medium" type="button" role="tab" aria-selected="true" aria-controls="maze-panel" data-maze="medium">Medium</button><button id="tab-large" type="button" role="tab" aria-selected="false" tabindex="-1" aria-controls="maze-panel" data-maze="large">Large</button></div></div>
+      <div class="maze-layout"><div id="maze-panel" role="tabpanel" aria-labelledby="tab-medium" class="experiment-media">
+        <div class="media-toolbar">
+          <div class="choice-control">
+            <span class="control-label" id="maze-comparison-label">Controllers</span>
+            <div class="segmented-options" id="maze-comparison" role="radiogroup" aria-labelledby="maze-comparison-label">
+              <label><input type="radio" name="maze-comparison" value="all" checked><span>All seven</span></label>
+              <label><input type="radio" name="maze-comparison" value="pair"><span>Connectome &amp; MLP</span></label>
+            </div>
+          </div>
+        </div>
+        <div class="video-frame"><video id="maze-video" data-src="assets/videos/maze_medium_all_seven.mp4" poster="assets/images/maze_medium_all_seven.webp" controls muted playsinline loop preload="none" aria-label="Seven controllers navigate the same Medium maze"></video></div>
+        <p class="media-caption">Recorded rollouts with a shared start and goal. Each controller is identified in the video.</p>
+        </div><div class="maze-evidence"><h3>Medium-maze success</h3><div class="bar-pair" role="img" aria-label="Adult connectome success 64.2 percent; MLP success 44.1 percent"><div class="bar-label"><span>Adult connectome</span><strong>64.2%</strong></div><div class="bar-track"><span style="width:64.2%" class="adult-bar"></span></div><div class="bar-label"><span>MLP</span><strong>44.1%</strong></div><div class="bar-track"><span style="width:44.1%" class="mlp-bar"></span></div></div><p>Success reaches <strong>50.6% vs 20.4%</strong> on routes requiring six or seven turns.</p><p class="sample">20 paired training seeds · 100 matched evaluation resets per seed</p><button type="button" class="text-link" data-figure="5">View navigation results <span aria-hidden="true">↗</span></button></div></div>
+
+      <details class="ant-detail"><summary>Ant locomotion on flat ground <span aria-hidden="true">+</span></summary><div class="ant-detail-content"><video data-src="assets/videos/ant-flat.mp4" poster="assets/images/ant-flat.webp" controls muted playsinline loop preload="none" aria-label="Paired Ant flat-ground locomotion"></video><div><p>The connectome controller reaches a mean forward velocity of <strong>1.94 m/s</strong>, compared with <strong>0.68 m/s</strong> for the MLP. Signed path efficiency improves from 0.701 to 0.885.</p><p>This stronger forward drive is accompanied by more episode failures: <strong>38.6% vs 7.0%</strong>, across 20 paired training seeds.</p></div></div></details>
+    </section>
+
+    <section class="section body-section" id="bodies" aria-labelledby="body-title"><div class="shell">
+      <div class="section-intro"><h2 id="body-title">The same wiring. Different bodies.</h2><p>Body-specific interfaces connect the fixed fly brain to a biped, a tripod, a quadruped and a hexapod. Evaluation spans nominal control, pushes, reduced friction, delayed actions, sensor loss and extended trials.</p></div>
+      <div class="body-tabs" role="tablist" aria-label="Simulated body"><button id="tab-cassie" type="button" role="tab" aria-selected="true" aria-controls="body-panel" data-body="cassie"><span class="leg-count">02</span><span>Cassie</span><small>Postural balance</small></button><button id="tab-tripod" type="button" role="tab" aria-selected="false" aria-controls="body-panel" tabindex="-1" data-body="tripod"><span class="leg-count">03</span><span>Radial tripod</span><small>Forward locomotion</small></button><button id="tab-go1" type="button" role="tab" aria-selected="false" aria-controls="body-panel" tabindex="-1" data-body="go1"><span class="leg-count">04</span><span>Unitree Go1</span><small>Forward locomotion</small></button><button id="tab-hexapod" type="button" role="tab" aria-selected="false" aria-controls="body-panel" tabindex="-1" data-body="hexapod"><span class="leg-count">06</span><span>Hexapod</span><small>Forward locomotion</small></button></div>
+      <div class="body-stage" id="body-panel" role="tabpanel" aria-labelledby="tab-cassie"><div class="body-toolbar"><span id="body-video-title">Cassie · simulated postural balance</span><label class="select-label"><span>Condition</span><select id="body-condition" aria-label="Robot evaluation condition"><option value="flat">Flat ground</option><option value="push010">Mild side push</option><option value="push020">Strong side push</option><option value="friction">Reduced friction</option><option value="delay">80 ms action delay</option><option value="sensor">25% sensor loss</option><option value="extended">60-second trial</option></select></label></div><div class="video-frame"><video id="body-video" data-src="assets/videos/robot-cassie.mp4" poster="assets/images/robot-cassie.webp" controls muted playsinline loop preload="none" aria-label="Connectome and MLP Cassie postural balance in simulation"></video></div></div>
+      <div class="body-results"><div><h3>Performance across seven conditions</h3><p>Mean normalized-performance gain over the matched MLP. Cassie is evaluated by the fraction of each trial spent standing; the other bodies by walking success.</p><button type="button" class="text-link" data-figure="6">View all conditions <span aria-hidden="true">↗</span></button></div><div class="effect-chart" role="img" aria-label="Mean Adult minus MLP normalized performance: Cassie 0.271, radial tripod 0.151, Unitree Go1 0.091, hexapod 0.167"><div><span>Cassie</span><i style="--bar:90.33%"></i><strong>+0.271</strong></div><div><span>Radial tripod</span><i style="--bar:50.33%"></i><strong>+0.151</strong></div><div><span>Unitree Go1</span><i style="--bar:30.33%"></i><strong>+0.091</strong></div><div><span>Hexapod</span><i style="--bar:55.67%"></i><strong>+0.167</strong></div></div></div>
+      <p class="media-caption">20 paired training seeds and 20 matched evaluation states per condition. Videos show selected paired trials.</p>
+    </div></section>
+
+    <section class="section shell abstract-section" id="abstract" aria-labelledby="abstract-title"><h2 id="abstract-title">Abstract</h2><p>Embodied intelligence requires effective control as environments, movement demands and body morphologies change. Biological nervous systems support such adaptability through highly structured connectivity, yet whether evolved neural wiring itself confers a computational advantage remains unclear. Here we use the adult <i>Drosophila</i> brain connectome as a fixed recurrent structural prior for closed-loop embodied control. In a neuromechanical digital fly, connectome-based and multilayer-perceptron controllers perform comparably during nominal locomotion but diverge as control demands change. Across vertical terrain negotiation, lateral direction turning and longitudinal speed modulation, the connectome exhibits a consistent advantage, improving obstacle negotiation and speed tracking while supporting smoother directional reconfiguration. Mechanistic analyses reveal spontaneous recruitment of behaviourally relevant sensorimotor pathways and distinct local policy geometry associated with robust adaptation. The same connectome prior improves locomotion after transfer to a quadrupedal body and outperforms representative artificial controllers in maze navigation, with its advantage widening as maze complexity increases, while remaining effective across two-, three-, four- and six-legged embodiments. These results identify adaptability as a functional advantage of connectome structure and establish evolved neural wiring as a transferable prior for adaptive embodied control.</p></section>
+
+    <section class="section shell figures-section" id="figures" aria-labelledby="figures-title"><div class="figure-heading"><h2 id="figures-title">Figures</h2></div><div class="figure-grid">
+      <button type="button" data-figure="1"><div><img src="assets/figures/figure-1.webp" loading="lazy" alt="Framework figure"></div><span><small>01</small> Control architecture <b aria-hidden="true">↗</b></span></button>
+      <button type="button" data-figure="2"><div><img src="assets/figures/figure-2.webp" loading="lazy" alt="Terrain results figure"></div><span><small>02</small> Terrain adaptation <b aria-hidden="true">↗</b></span></button>
+      <button type="button" data-figure="3"><div><img src="assets/figures/figure-3.webp" loading="lazy" alt="Turning results figure"></div><span><small>03</small> Turning and pathways <b aria-hidden="true">↗</b></span></button>
+      <button type="button" data-figure="4"><div><img src="assets/figures/figure-4.webp" loading="lazy" alt="Speed-control results figure"></div><span><small>04</small> Speed control <b aria-hidden="true">↗</b></span></button>
+      <button type="button" data-figure="5"><div><img src="assets/figures/figure-5.webp" loading="lazy" alt="Ant and maze results figure"></div><span><small>05</small> Locomotion and navigation <b aria-hidden="true">↗</b></span></button>
+      <button type="button" data-figure="6"><div><img src="assets/figures/figure-6.webp" loading="lazy" alt="Cross-embodiment results figure"></div><span><small>06</small> Transfer across bodies <b aria-hidden="true">↗</b></span></button>
+    </div></section>
+  </main>
+  <dialog id="figure-dialog" aria-labelledby="figure-dialog-title"><div class="dialog-toolbar"><h2 id="figure-dialog-title">Figure 1</h2><div><a id="figure-original" href="assets/figures/figure-1.webp" target="_blank" rel="noopener">Open full resolution ↗</a><button type="button" id="figure-close" aria-label="Close figure">×</button></div></div><div class="figure-scroll"><img id="figure-image" src="assets/figures/figure-1.webp" alt="Manuscript figure 1"></div><p id="figure-description"></p></dialog>
+  <noscript><p class="noscript-note">Enable JavaScript to switch experiments, play videos and enlarge figures. You can also <a href="assets/videos/fly-terrain.mp4">open the terrain video directly</a>.</p></noscript>
+</body>
+</html>

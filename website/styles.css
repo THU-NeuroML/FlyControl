@@ -140,12 +140,6 @@ sup {
   padding-bottom:58px;
   text-align:center
 }
-.project-name {
-  margin-bottom:12px;
-  font-size:18px;
-  font-weight:600;
-  color:var(--accent)
-}
 .hero h1 {
   font-size:48px;
   line-height:1.22;

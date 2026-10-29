@@ -1,6 +1,6 @@
 # FlyControl
 
-Code is coming soon.
+Code is coming soon (approximately in this weekend).
 
 Supplementary videos for the FlyControl project.
 

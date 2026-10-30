@@ -1,0 +1,69 @@
+{
+  "seeds": [
+    4401,
+    4402,
+    4403,
+    4404,
+    4405,
+    4406,
+    4407,
+    4408,
+    4409,
+    4410,
+    4411,
+    4412,
+    4413,
+    4414,
+    4415,
+    4416,
+    4417,
+    4418,
+    4419,
+    4420
+  ],
+  "training_steps": 15872,
+  "bootstrap_draws": 20000,
+  "bootstrap_seeds": {
+    "violin": 20261020,
+    "ramp": 20261016,
+    "mechanism": 20261010
+  },
+  "ramp_window_starts_s": [
+    -0.6,
+    -0.3,
+    0,
+    0.3,
+    0.6,
+    0.9,
+    1.2,
+    1.5
+  ],
+  "ramp_window_width_s": 0.1,
+  "ramp_baseline_s": [
+    -0.1,
+    0
+  ],
+  "ramp_onset_s": 4.308985773931776,
+  "landscape_directions": [
+    20261010,
+    20261011
+  ],
+  "landscape_zmax": 0.06,
+  "statistical_family": [
+    "speed_mae",
+    "slope_error",
+    "sine_gain_error"
+  ],
+  "mechanism_cases": [
+    {
+      "kind": "ramps",
+      "command_seed": 940001,
+      "physics_seed": 940201
+    },
+    {
+      "kind": "sine",
+      "command_seed": 940101,
+      "physics_seed": 940201
+    }
+  ]
+}

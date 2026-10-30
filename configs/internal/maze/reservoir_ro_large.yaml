@@ -1,0 +1,135 @@
+algorithm: antmaze_teacher_distillation
+observation_clip: 60.0
+env:
+  class_path: body_control.env.AntMazeTransferEnv
+  env_id: AntMaze_Large_Diverse_GR-v5
+  goal_feature_mode: world
+  continuing_task: false
+navigation:
+  waypoint_planner: official_grid_waypoints
+  student_goal: final
+  evaluation_waypoint_planner: none
+evaluation:
+  action_smoothing: 0.95
+teacher:
+  source: Farama-Antmaze-Dataset-Generation
+  training_steps: 8000000
+  checkpoint_sha256: 1b835cc5185756c5af8cd0720dae0e4895efcec48ee577c450d4a5a633fb953e
+policy:
+  name: reservoir_ro
+  actor_kwargs:
+    goal_router_hidden:
+    - 256
+    - 256
+    goal_router_codebook:
+    - - -18.0
+      - 12.0
+    - - -14.0
+      - 12.0
+    - - -10.0
+      - 12.0
+    - - -6.0
+      - 12.0
+    - - 2.0
+      - 12.0
+    - - 6.0
+      - 12.0
+    - - 10.0
+      - 12.0
+    - - 14.0
+      - 12.0
+    - - 18.0
+      - 12.0
+    - - -18.0
+      - 8.0
+    - - -6.0
+      - 8.0
+    - - 2.0
+      - 8.0
+    - - 10.0
+      - 8.0
+    - - 18.0
+      - 8.0
+    - - -18.0
+      - 4.0
+    - - -14.0
+      - 4.0
+    - - -10.0
+      - 4.0
+    - - -6.0
+      - 4.0
+    - - -2.0
+      - 4.0
+    - - 2.0
+      - 4.0
+    - - 10.0
+      - 4.0
+    - - 14.0
+      - 4.0
+    - - 18.0
+      - 4.0
+    - - -18.0
+      - 0.0
+    - - 2.0
+      - 0.0
+    - - 18.0
+      - 0.0
+    - - -18.0
+      - -4.0
+    - - -14.0
+      - -4.0
+    - - -6.0
+      - -4.0
+    - - 2.0
+      - -4.0
+    - - 6.0
+      - -4.0
+    - - 10.0
+      - -4.0
+    - - 14.0
+      - -4.0
+    - - 18.0
+      - -4.0
+    - - -14.0
+      - -8.0
+    - - -6.0
+      - -8.0
+    - - 2.0
+      - -8.0
+    - - 10.0
+      - -8.0
+    - - -18.0
+      - -12.0
+    - - -14.0
+      - -12.0
+    - - -6.0
+      - -12.0
+    - - -2.0
+      - -12.0
+    - - 2.0
+      - -12.0
+    - - 10.0
+      - -12.0
+    - - 14.0
+      - -12.0
+    - - 18.0
+      - -12.0
+    goal_router_codebook_latch_radius: 0.45
+  value_hidden:
+  - 256
+  - 256
+  value_activation: relu
+imitation:
+  demonstration_steps: 60000
+  dagger_steps: 30000
+  dagger_iterations: 0
+  updates_per_stage: 5000
+  batch_size: 64
+  burn_in: 16
+  learning_rate: 0.0001
+  gradient_clip: 1.0
+  actor_train_mode: base_all
+  goal_input_features: 4
+  loss_space: pre_tanh
+  sampling_mode: episode_uniform
+  checkpoint_interval_updates: 500

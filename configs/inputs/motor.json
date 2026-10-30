@@ -1,0 +1,62 @@
+{
+  "dimensions": [
+    18756,
+    119719,
+    109
+  ],
+  "loader": {
+    "sensory_selector": {
+      "source": "classification",
+      "field": "flow",
+      "include": [
+        "afferent"
+      ]
+    },
+    "output_selector": {
+      "source": "classification",
+      "field": "super_class",
+      "include": [
+        "motor"
+      ]
+    },
+    "min_syn_count": 1,
+    "normalization": "row_l1",
+    "global_gain": 1.0,
+    "chunksize": 250000,
+    "polarity": {
+      "unknown_action": "zero",
+      "nt_signs": {
+        "ACH": 1.0,
+        "GLUT": 1.0,
+        "GABA": -1.0,
+        "DA": 1.0,
+        "SER": 1.0,
+        "OCT": 1.0
+      }
+    }
+  },
+  "arrays": {
+    "edge_pre": {
+      "shape": [
+        3732460
+      ],
+      "dtype": "int64",
+      "sha256": "c2224841867884dde31aa7f43b5ab55ef2304262f8d33c0069f77881cf876c40"
+    },
+    "edge_post": {
+      "shape": [
+        3732460
+      ],
+      "dtype": "int64",
+      "sha256": "3cc7b6238f657d9f9709745bbd0e2d0d8cd70f9b3777f6b402afbc3ddf9c7753"
+    },
+    "edge_weight": {
+      "shape": [
+        3732460
+      ],
+      "dtype": "float32",
+      "sha256": "d8506d40797ab65092f6a09d478f41cfa4d0195a01a9fde6dbfe530adfb8bf31"
+    }
+  },
+  "name": "motor"
+}

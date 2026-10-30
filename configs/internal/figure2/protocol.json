@@ -1,0 +1,307 @@
+{
+  "ppo": {
+    "total_timesteps": 32768,
+    "n_envs": 8,
+    "n_steps": 32,
+    "seq_len": 8,
+    "n_epochs": 4,
+    "n_minibatches": 8,
+    "lr": 0.0001,
+    "gamma": 0.9920319148370607,
+    "lam": 0.951229424500714,
+    "clip_range": 0.2,
+    "vf_clip_range": 0.2,
+    "vf_coef": 0.5,
+    "ent_coef": 0.0,
+    "max_grad_norm": 0.5,
+    "normalize_reward": true,
+    "normalize_observation": false,
+    "observation_clip": 10.0,
+    "separate_rng_streams": true,
+    "initial_hidden_mode": "zero",
+    "separate_actor_critic_grad_clipping": true,
+    "target_kl": 0.03,
+    "rollout_heartbeat": 4,
+    "actor_lr": 0.0001,
+    "critic_lr": 0.0001,
+    "log_std_lr": 0.001
+  },
+  "adaptive_policy_kl": {
+    "target": 0.015,
+    "factor": 1.5,
+    "min_lr": 1e-05,
+    "max_lr": 0.001
+  },
+  "task": {
+    "horizon_s": 1.2,
+    "physics_dt": 5e-05,
+    "control_dt": 0.04,
+    "near_x_mm": 3.0,
+    "success": "all six feet past far edge and up_z >= .8 continuously for .1s; no hard lateral corridor gate",
+    "phase_mode": "tripod",
+    "objective": "stable physical obstacle crossing; path deviation remains a soft cost and separately reported metric",
+    "finite_task_deadline_is_terminal": true,
+    "micro_control_dt": 0.01
+  },
+  "fairness": {
+    "same_critic": true,
+    "actor_parameter_tolerance": 0.005,
+    "paired_initial_behavior": true,
+    "teacher_used": false
+  },
+  "physical_interface": "One signed bundled multijoint correction vector per leg; normalize each vector to joint L2 length.15*sqrt(3)rad and mirror individual right coordinates; no phase mask.",
+  "runtime_optimization": "mj_forwardSkip velocity-stage cache, all forces/acceleration/sensors recomputed; bitwise validation EXP53 24 paired jobs plus resets",
+  "observation_dim": 688,
+  "action_dim": 6,
+  "policy": {
+    "initial_log_std": -1.0,
+    "selection": "Same normalized Gaussian initial log_std=-1; expected joint correction squared norm per leg matches parent18D at zero policy mean."
+  },
+  "exploration_lr_scaling": {
+    "factor": 1.0,
+    "actor_rule": "Reference exp46 actor learning-rate scale at log_std=-1.",
+    "variance_rule": "Common log_std learning rate 1e-3 permits exploration amplitude adaptation; actor and critic independent; identical for both architectures.",
+    "set_before_full_training": 1790880899.8112893
+  },
+  "reward": {
+    "terminal_success": 10.0,
+    "terminal_failure": -10.0,
+    "progress_potential": "4 * clipped normalized minimum foot x progress to far edge; zero at every terminal",
+    "shaping_gamma": 0.9980019986673331,
+    "running_costs": "same posture/path/correction costs as EXP55"
+  },
+  "neural_ports": {
+    "input": 2279,
+    "internal": 135015,
+    "output": 1290,
+    "graph_nodes": 138584,
+    "note": "CV ascending annotations are not exclusively leg proprioception. Changed projection width also changes capacity/initialization scale; MLP rematched."
+  },
+  "sampling": {
+    "rule": "environment halves antithetic",
+    "formal_pairs": [
+      [
+        0,
+        4
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        7
+      ]
+    ],
+    "smoke_pairs": [
+      [
+        0,
+        1
+      ]
+    ],
+    "per_environment_marginal": "Gaussian unchanged",
+    "full_original_random_draw_count_preserved": true
+  },
+  "action_hold": {
+    "repeat": 4,
+    "micro_gamma": 0.9980019986673331,
+    "micro_lambda": 0.9875778004938814,
+    "policy_control_dt_s": 0.04,
+    "physics_dt_s": 5e-05,
+    "micro_control_dt_s": 0.01,
+    "reward": "discounted sum of the unchanged shaped micro rewards; stop at first terminal",
+    "neural_gate_per_substep": 0.5,
+    "held_input_neural_substeps": null,
+    "nominal_budget_caveat": "Early terminal can shorten a hold; actual physics time is recorded.",
+    "neural_input_mode": "four causal consecutive10ms frames, not four copies ofcurrentframe"
+  },
+  "fixed_observation_scale": true,
+  "actor_parameter_counts": {
+    "connectome": 404593,
+    "mlp": 404527
+  },
+  "phase": "height_neighborhood_onset_factorial",
+  "variant": "jitter_late",
+  "parent": "historical experiment: phase_cycle",
+  "created_at": 1791241881.9942746,
+  "cells": [
+    [
+      "blocks",
+      0.2
+    ],
+    [
+      "blocks",
+      0.3
+    ],
+    [
+      "blocks",
+      0.45
+    ],
+    [
+      "blocks",
+      0.525
+    ]
+  ],
+  "evaluation_cells": [
+    [
+      "blocks",
+      0.0
+    ],
+    [
+      "blocks",
+      0.15
+    ],
+    [
+      "blocks",
+      0.2
+    ],
+    [
+      "blocks",
+      0.3
+    ],
+    [
+      "blocks",
+      0.375
+    ],
+    [
+      "blocks",
+      0.45
+    ],
+    [
+      "blocks",
+      0.525
+    ],
+    [
+      "blocks",
+      0.6
+    ]
+  ],
+  "evaluation_budgets": [
+    8192,
+    32768
+  ],
+  "objective": "A single jointly trained policy per seed, evaluated at every height; prioritize0.20/0.30 while retaining0.45/0.525 performance.",
+  "fairness_contract": "Both architectures share curriculum, reward, horizon, budget, critic initialization, stochastic sampling rules and evaluation phases. No per-height checkpoint choice.",
+  "comparator_scope": "Same4causal sensorframes,physicalbody,heldCPGresidual,rewardand2048macrodecisions. Actor parameters404593vs404527; same242433critic initialization. Different representation consumes equal information. No teacher or pretrained weights.",
+  "curriculum_probabilities": {
+    "0.2": 0.25,
+    "0.3": 0.25,
+    "0.45": 0.25,
+    "0.525": 0.25
+  },
+  "flat_definition": "Remove obstacle only; identical ground, body,4.3mm goal and1.2s strict all-feet upright endpoint.",
+  "budgets": {
+    "macro_decisions": 32768,
+    "equivalent_10ms_units": 131072,
+    "ppo_updates": 128,
+    "nominal_physical_seconds": 1310.72
+  },
+  "frozen_physics_and_reward": true,
+  "reward_intervention": {
+    "balanced": true,
+    "heading_scale": 0.0
+  },
+  "evaluation_reward": "Canonical original task reward; the same onset gate applies during training and evaluation.",
+  "intervention_rationale": "EXP100 complete screen: extra low-height episodes did not improve Adult; random multi-height draws gave scarce0.525mm exposure. Old and new failures mainly stall/slide along the obstacle.",
+  "training_height_rule": "Fixed rank modulo4; exactly2048macrodecisions per nominalheight by8192total",
+  "balanced_sampling_caveat": "Fixed rank assignment also places antithetic ranks0/4,1/5,2/6,3/7 at matching heights. Coverage and this correlation placement are not separately identified.",
+  "shaping_definition": "Unchanged EXP99 task-aligned foot-progress shaping.",
+  "onset_gate": {
+    "start_x_mm": 1.8,
+    "full_x_mm": 2.6,
+    "floor": 0.0
+  },
+  "onset_selection": "After completed EXP101 three-seed deficit at0.20 and complete EXP102 frozen two-gate counterfactual. Early gate fixed the pilot0.20 deficit but hurt some other heights. Retrain both methods with the same gate; include intermediate0.5floor prospectively.",
+  "ppo_density": "Store and replay the original latent pre-tanh Gaussian action. The deterministic state-dependent actuator map is shared. When gate=0 the actuator map is noninvertible; use the latent-policy likelihood ratio, not a claimed physical-action Gaussian density.",
+  "added_controller_prior": "Hand-designed shared body-position amplitude gate; it is part of the common controller. No teacher, learned-adult-only assistance, per-height gate, or changed success condition.",
+  "observation_history": {
+    "frames": 4,
+    "frame_dim": 172,
+    "frame_interval_s": 0.01,
+    "policy_interval_s": 0.04,
+    "reset_padding": "repeat initial observation",
+    "ordering": "oldest to newest",
+    "actor": "Adult processes4frames withone neural .5-gate step each;MLP concatenates all4frames;one action per40ms"
+  },
+  "critic_parameter_count": 242433,
+  "neural_clock": "4successive10ms observations, each processed withdt=.01,tau=.02,one internal step; total4neuralsteps/40ms, same discrete gate.5.",
+  "historical_development_training_seeds": [
+    1951,
+    1961,
+    1962
+  ],
+  "historical_development_phase_seeds": [
+    580000,
+    580001,
+    580002,
+    580003,
+    580004,
+    580005,
+    580006,
+    580007,
+    580008,
+    580009,
+    580010,
+    580011
+  ],
+  "historical_physical_parent": "historical experiment: late",
+  "historical_curriculum_rule": "Independent height draw on every environment reset with the existing episode-seed generator. Duplicate cells implement declared weights; actual exposures are exported.",
+  "historical_comparator_contract": "Same rank-balanced4heights,2048latent Gaussian macrodecisions,40ms hold,physical body,CPG,actuator limits,172observations,critic/optimizer and shared onset gate. Both trained from zero.",
+  "curriculum_rule": "Fixed environment rank modulo4;2048decisions per nominalband at8192total",
+  "comparator_contract": "Same688Dhistory,originalpolicyandPPO,32768decisions,8192perheight,128updates; bothfresh; finalcheckpointallheights.",
+  "training_phase_cycle": {
+    "bins": 8,
+    "origin_salt": 20261006,
+    "rule": "Initial common tripod phase visits each of eight equal-width bins cyclically; uniform-within-bin draw from original CPG random phase. Rank r and r+4 start four bins apart. Evaluation reset unchanged.",
+    "scope": "Episode starts, not equal decision budget per phase. Changes initial-phase placement relative to antithetic ranks as well as episode-phase coverage."
+  },
+  "confirmation_training_seeds": [
+    2011,
+    2012,
+    2013,
+    2014,
+    2015,
+    2016
+  ],
+  "confirmation_scope": "PrimaryAdult/MLP pair sharesphasecycling,history4,gate,criticand2048decisions. Originalhistory4MLP andsingleframeungatedMLP arefrozen additionalrecipe controls.",
+  "development_training_seeds": [
+    1981
+  ],
+  "training_height_jitter": {
+    "half_width_mm": 0.025,
+    "salt": 2026100614,
+    "distribution": "Independent uniform around the rank-assigned nominal height at every training reset"
+  },
+  "training_budget_semantics": "2048/4096/8192 total40ms decisions;512/1024/2048per nominalband; actual-height clocks retained",
+  "clock_key_semantics": "height_interaction_clock keys are nominalheight bands; actual_height_interaction_clock contains exact geometry heights and per-height physical/decision counts.",
+  "current_budget_curve": {
+    "parent": "historical experiment: jitter_late",
+    "budgets": [
+      8192,
+      32768
+    ],
+    "final_primary_budget": 32768,
+    "source_code_unchanged": true,
+    "prefix_validation": "Exactfirst8192decisions,32updates,policyandnormalizerstates; startfromzero, no physicsresetresume",
+    "historical_metadata_caveat": "Inherited8192/2048budget descriptions are historical; currentppo,budgets,andSTUDY define32768with8192perheight."
+  },
+  "frozen_confirmation": {
+    "parent": "historical experiment: EXP126_nmf_joint_height_32k_20261007",
+    "training_seeds": [
+      2011,
+      2012,
+      2013,
+      2014,
+      2015,
+      2016
+    ],
+    "final_budget": 32768,
+    "main_pair": true,
+    "nominal_physical_seconds": 1310.72,
+    "historical_metadata_caveat": "Inherited old descriptions are historical; currentSTUDY andthisfield define confirmation."
+  }
+}

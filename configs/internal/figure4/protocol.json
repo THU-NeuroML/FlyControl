@@ -1,0 +1,83 @@
+{
+  "micro_dt_s": 0.01,
+  "horizon_s": 12.0,
+  "ramp": {
+    "low_range": [
+      8.0,
+      10.0
+    ],
+    "high_range": [
+      14.0,
+      16.0
+    ],
+    "requested_rate_range": [
+      2.0,
+      8.0
+    ],
+    "minimum_ramp_duration_s": 1.0,
+    "initial_hold_s": 1.0,
+    "endpoint_hold_s": [
+      0.6,
+      1.0
+    ]
+  },
+  "sine": {
+    "frequency_hz": [
+      0.15,
+      0.3
+    ],
+    "amplitude_mm_s": [
+      2.0,
+      4.0
+    ],
+    "center": "uniform(8+amplitude,16-amplitude)",
+    "phase": "uniform(0,2*pi)"
+  },
+  "micro_gamma": 0.9950124791926823,
+  "micro_lambda": 0.951229424500714,
+  "potential": {
+    "coefficient": 2.0,
+    "speed_scale_mm_s": 2.0,
+    "definition": "Phi=-2*abs(target_next-speed_cycle)/2; terminalPhi=0",
+    "invariance": "For a fixed complete trajectory, the raw discounted shaping return is -Phi_initial. Reward normalization and GAE can alter optimization dynamics."
+  },
+  "measurement": {
+    "speed_filter_s": 0.1,
+    "ramp_trim_s": 0.21,
+    "ramp_sensitivity_s": [
+      0.1,
+      0.3
+    ],
+    "analysis_start_s": 1.0,
+    "failure_speed_error_mm_s": 20.0,
+    "failure_slope_error_mm_s2": 20.0
+  },
+  "adaptive_policy_kl": {
+    "target": 0.015,
+    "factor": 1.5,
+    "min_lr": 1e-06,
+    "max_lr": 0.001
+  },
+  "ppo": {
+    "n_envs": 8,
+    "n_epochs": 4,
+    "n_minibatches": 8,
+    "lr": 0.0001,
+    "clip_range": 0.2,
+    "vf_clip_range": 0.2,
+    "vf_coef": 0.5,
+    "ent_coef": 0.0,
+    "max_grad_norm": 0.5,
+    "normalize_reward": true,
+    "normalize_observation": false,
+    "separate_rng_streams": true,
+    "initial_hidden_mode": "zero",
+    "separate_actor_critic_grad_clipping": true,
+    "target_kl": 0.03,
+    "rollout_heartbeat": 32,
+    "actor_lr": 0.0001,
+    "critic_lr": 0.0001,
+    "log_std_lr": 0.001
+  },
+  "initial_log_std": -1.0
+}

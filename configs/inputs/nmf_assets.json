@@ -1,0 +1,500 @@
+[
+  {
+    "path": "assets/nmf/data/behavior/210902_pr_fly1.pkl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/behavior/210902_pr_fly1.pkl",
+    "bytes": 1597456,
+    "sha256": "c298b00ce434f96093c2bb0b6aab2f32542ea995333f2b9b83d7fc8a184249cb"
+  },
+  {
+    "path": "assets/nmf/data/behavior/contact_mask.csv",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/behavior/contact_mask.csv",
+    "bytes": 1249401,
+    "sha256": "05c922fc53e5c52f1db623258532650a05d59a5f7792b44404584cb91acbd80d"
+  },
+  {
+    "path": "assets/nmf/data/behavior/position_data.csv",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/behavior/position_data.csv",
+    "bytes": 16245408,
+    "sha256": "178d1bec7109c15428fc34d7776663555af7880437f3f0bd33658980792eebe2"
+  },
+  {
+    "path": "assets/nmf/data/behavior/single_steps_untethered.pkl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/behavior/single_steps_untethered.pkl",
+    "bytes": 18024,
+    "sha256": "1e5b28bb6b3f50ac95a04773ea37af28d05e26d03bd90fdba57fa1b3eacfaf8c"
+  },
+  {
+    "path": "assets/nmf/data/mesh/A1A2.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/A1A2.stl",
+    "bytes": 144334,
+    "sha256": "aed84b41c264a93755678df79a99ce8ea399cf2674fdd6a8fe7e2dcfec6c6d6b"
+  },
+  {
+    "path": "assets/nmf/data/mesh/A3.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/A3.stl",
+    "bytes": 140084,
+    "sha256": "07c5b43e2f91a9262cbfbcea4d0beabb0e5a1381afe01260df95548bf3cfefbc"
+  },
+  {
+    "path": "assets/nmf/data/mesh/A4.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/A4.stl",
+    "bytes": 143384,
+    "sha256": "010667e71500c425eea1307004833c5990a0f76ceb0b57957e39c52bd9e6a52d"
+  },
+  {
+    "path": "assets/nmf/data/mesh/A5.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/A5.stl",
+    "bytes": 158834,
+    "sha256": "0b83e74ef96eac7c944c74062b224e1ecaef356ed490dad1a2c6a78f2618d008"
+  },
+  {
+    "path": "assets/nmf/data/mesh/A6.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/A6.stl",
+    "bytes": 203134,
+    "sha256": "6ec06369174ff0fec5ce2dd5129aa5291ae81d1b624c0cb3e2e1986bf76c7ea7"
+  },
+  {
+    "path": "assets/nmf/data/mesh/Haustellum.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/Haustellum.stl",
+    "bytes": 215634,
+    "sha256": "9498e99c33324fbc6b3381ceb1bb13b874f919b9deccc7a5cfce618fb42d742f"
+  },
+  {
+    "path": "assets/nmf/data/mesh/Head.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/Head.stl",
+    "bytes": 4117984,
+    "sha256": "aafc2196f1bdcd94f29378b6aec39943d6c4baddeed24502fb0381f8e0430150"
+  },
+  {
+    "path": "assets/nmf/data/mesh/LAntenna.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/LAntenna.stl",
+    "bytes": 87334,
+    "sha256": "57d00b56fc3ff0d0204b09a045e407f30fbe85fee10d0728c65b1130942d7e42"
+  },
+  {
+    "path": "assets/nmf/data/mesh/LArista.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/LArista.stl",
+    "bytes": 2718884,
+    "sha256": "b5b435f31f4d5cf05fb53880c3f46fcfeea58d3d9a9eb52048b0b36a4e3d738f"
+  },
+  {
+    "path": "assets/nmf/data/mesh/LEye.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/LEye.stl",
+    "bytes": 1133584,
+    "sha256": "85d1f097fba8c815c2bf6a89eac48e6a2494a927684c5a84b102c4b544116fc0"
+  },
+  {
+    "path": "assets/nmf/data/mesh/LFCoxa.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/LFCoxa.stl",
+    "bytes": 184034,
+    "sha256": "ab910d0111cf8fecc6dc11268b4e21c91c58440ef7ae55e432cfc12400e181e6"
+  },
+  {
+    "path": "assets/nmf/data/mesh/LFFemur.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/LFFemur.stl",
+    "bytes": 80984,
+    "sha256": "50e4e7baf2852a369f0dda2a2c9708a68c45893b3019a79dd74799e8e2ea64c9"
+  },
+  {
+    "path": "assets/nmf/data/mesh/LFTarsus1.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/LFTarsus1.stl",
+    "bytes": 89584,
+    "sha256": "29085dda732699c4a3110458303adf2eec667f7db6e42166d408c260ae6acf5e"
+  },
+  {
+    "path": "assets/nmf/data/mesh/LFTarsus2.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/LFTarsus2.stl",
+    "bytes": 89884,
+    "sha256": "996735c15a7e8e0c022babf5500224fa6e23de0e277305279d4b6787d56335d8"
+  },
+  {
+    "path": "assets/nmf/data/mesh/LFTarsus3.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/LFTarsus3.stl",
+    "bytes": 152584,
+    "sha256": "edd3137f00db0d4c8830eaa08d9b9206fefc1f90311200365c37264a6ca3c08e"
+  },
+  {
+    "path": "assets/nmf/data/mesh/LFTarsus4.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/LFTarsus4.stl",
+    "bytes": 164234,
+    "sha256": "8370f6944a607adbc29eb6a2cec06a5da8d67fc060e0abd4a560755e3b5cd6f8"
+  },
+  {
+    "path": "assets/nmf/data/mesh/LFTarsus5.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/LFTarsus5.stl",
+    "bytes": 142184,
+    "sha256": "1e8fc058a866f6a6bb6fb0430229297996e5e0639bede2e8fa169958e871a039"
+  },
+  {
+    "path": "assets/nmf/data/mesh/LFTibia.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/LFTibia.stl",
+    "bytes": 85534,
+    "sha256": "8138fe5f1fc52588dca6677bb338d39451813ac96159f78d6cf677eba73f3862"
+  },
+  {
+    "path": "assets/nmf/data/mesh/LFuniculus.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/LFuniculus.stl",
+    "bytes": 26584,
+    "sha256": "d2a6d35751922fb8b1ce07b269bc432f33d7f8f6d243b2dd1801e021b91d8156"
+  },
+  {
+    "path": "assets/nmf/data/mesh/LHCoxa.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/LHCoxa.stl",
+    "bytes": 199084,
+    "sha256": "c6fc7487ba8a057731af02dec60860d5c6e3abd5818612ffd61a6e405d3d16a6"
+  },
+  {
+    "path": "assets/nmf/data/mesh/LHFemur.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/LHFemur.stl",
+    "bytes": 165884,
+    "sha256": "01f790eb37bfb8fcba791106665d14e5921f226101d84dd65786534d43cf3ac1"
+  },
+  {
+    "path": "assets/nmf/data/mesh/LHTarsus1.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/LHTarsus1.stl",
+    "bytes": 38934,
+    "sha256": "61af16259215525e092d61426b874c7855485a9c7cfa91eecfc2fe99281a2dc6"
+  },
+  {
+    "path": "assets/nmf/data/mesh/LHTarsus2.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/LHTarsus2.stl",
+    "bytes": 98684,
+    "sha256": "da796bc3ad5d355b9e941aeeb6ad96c7fb00dee7421995605dcc81cd6fd7af12"
+  },
+  {
+    "path": "assets/nmf/data/mesh/LHTarsus3.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/LHTarsus3.stl",
+    "bytes": 129584,
+    "sha256": "4864f883168d6397ac96666605504a512187ad8c0befde812e0c570bca2962b1"
+  },
+  {
+    "path": "assets/nmf/data/mesh/LHTarsus4.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/LHTarsus4.stl",
+    "bytes": 130984,
+    "sha256": "925687a8b26ab3695ffc9d57507ec201381a1b104b7b0248fde95467939d9466"
+  },
+  {
+    "path": "assets/nmf/data/mesh/LHTarsus5.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/LHTarsus5.stl",
+    "bytes": 147084,
+    "sha256": "82a1aedb3f34ba510f143fe5fe0a1dfedeb8872edfef147945aa0a0938b1f6fc"
+  },
+  {
+    "path": "assets/nmf/data/mesh/LHTibia.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/LHTibia.stl",
+    "bytes": 37484,
+    "sha256": "2853873ade9abeb35da5f1a6c822d223bbe19a50d8ed77921bb77743b4782a60"
+  },
+  {
+    "path": "assets/nmf/data/mesh/LHaltere.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/LHaltere.stl",
+    "bytes": 41284,
+    "sha256": "13d77fcca66fca90db5cf00b33a7369ae80366fe39974df3667e709882e64ed6"
+  },
+  {
+    "path": "assets/nmf/data/mesh/LMCoxa.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/LMCoxa.stl",
+    "bytes": 130384,
+    "sha256": "9d63a3ac0de274b899016e2a918ad460df00c4f2bae014eed32c3e5f7fa1537f"
+  },
+  {
+    "path": "assets/nmf/data/mesh/LMFemur.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/LMFemur.stl",
+    "bytes": 41384,
+    "sha256": "9619105028e5006d891b12dfced77aafa3c41a599edbf49d14691907ce2eb502"
+  },
+  {
+    "path": "assets/nmf/data/mesh/LMTarsus1.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/LMTarsus1.stl",
+    "bytes": 46284,
+    "sha256": "b7f50bfe1e75dfa65110a4f80e0216858a7a75712115b04605f344c8e837b1ae"
+  },
+  {
+    "path": "assets/nmf/data/mesh/LMTarsus2.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/LMTarsus2.stl",
+    "bytes": 77884,
+    "sha256": "2dbb000ae11ef58de0023ccbdbfc8f1c5ff7b7517824a58d3e204f3ee00770c4"
+  },
+  {
+    "path": "assets/nmf/data/mesh/LMTarsus3.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/LMTarsus3.stl",
+    "bytes": 92884,
+    "sha256": "8f1814f0054382e037279f04d0bb998e36ccaabd57ec418d35dd6f7e47bd51bb"
+  },
+  {
+    "path": "assets/nmf/data/mesh/LMTarsus4.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/LMTarsus4.stl",
+    "bytes": 159584,
+    "sha256": "0cb0ed43055e24d14fa580ac36cb5ae2bf0c0fa9f353615c146291e0b8d1ba9a"
+  },
+  {
+    "path": "assets/nmf/data/mesh/LMTarsus5.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/LMTarsus5.stl",
+    "bytes": 49384,
+    "sha256": "3e9a76e4c0c4e829705271846f93a3aa056a0e87bc99996519722eeb841c1b70"
+  },
+  {
+    "path": "assets/nmf/data/mesh/LMTibia.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/LMTibia.stl",
+    "bytes": 33884,
+    "sha256": "dc1ad6da6db91ba703150e6150f59a498f9dbd311b1ec0678da3f896c421dab5"
+  },
+  {
+    "path": "assets/nmf/data/mesh/LPedicel.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/LPedicel.stl",
+    "bytes": 864484,
+    "sha256": "de6616286ac1e8df5561e0d747110dbaf28103bee7117aaf2fbc21322fede382"
+  },
+  {
+    "path": "assets/nmf/data/mesh/LWing.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/LWing.stl",
+    "bytes": 996734,
+    "sha256": "80dbf9e0903b67923b11659a785a059641b48b38003b6b2d8768e366dbbe3287"
+  },
+  {
+    "path": "assets/nmf/data/mesh/RAntenna.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/RAntenna.stl",
+    "bytes": 87334,
+    "sha256": "9238f5af4bff6d42bece3d8d48fdca0ccd84fe7ee16453d6f7ce6cac439cf600"
+  },
+  {
+    "path": "assets/nmf/data/mesh/RArista.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/RArista.stl",
+    "bytes": 2662884,
+    "sha256": "cf4701d9502a6287578378aa5a894ed0579ff34185ac37446d7f4812294a9e3d"
+  },
+  {
+    "path": "assets/nmf/data/mesh/REye.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/REye.stl",
+    "bytes": 2616284,
+    "sha256": "a6057f98a73a8b91cc65a1cae0c83b3f0a66def10f9a15b6a271c4bb4b5af0a6"
+  },
+  {
+    "path": "assets/nmf/data/mesh/RFCoxa.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/RFCoxa.stl",
+    "bytes": 184034,
+    "sha256": "fb8aecfd0cf4ea7bbe4e7bb0512fb984eaaf5ec09b92a457200c14bec4121d5e"
+  },
+  {
+    "path": "assets/nmf/data/mesh/RFFemur.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/RFFemur.stl",
+    "bytes": 80984,
+    "sha256": "9deda28d4c0cb903792468a4fcacb36e07c0ac8deefd3c836703686ebc901a2e"
+  },
+  {
+    "path": "assets/nmf/data/mesh/RFTarsus1.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/RFTarsus1.stl",
+    "bytes": 89584,
+    "sha256": "a8cc8e23209eb6405d50e5fdc40a4e28f0a74c9cca3da880e36e58e0c6843bf8"
+  },
+  {
+    "path": "assets/nmf/data/mesh/RFTarsus2.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/RFTarsus2.stl",
+    "bytes": 89884,
+    "sha256": "5a916893bb14604ff8600e7607864be6328e04d6db3907882b08b828ee7f1649"
+  },
+  {
+    "path": "assets/nmf/data/mesh/RFTarsus3.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/RFTarsus3.stl",
+    "bytes": 152584,
+    "sha256": "d0288babd00488f735e1caa392bee5da7524edcf063b8eb059b9b152c606be44"
+  },
+  {
+    "path": "assets/nmf/data/mesh/RFTarsus4.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/RFTarsus4.stl",
+    "bytes": 164234,
+    "sha256": "e0343859c3eab8fa79579e5f0c48aa0dafde245ae0c2bf54472d7ca483d07c20"
+  },
+  {
+    "path": "assets/nmf/data/mesh/RFTarsus5.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/RFTarsus5.stl",
+    "bytes": 142184,
+    "sha256": "e4dd5405ec5b22d28c08b6b50e99b9de28ba54768817a49c2f966e80a8eeb30b"
+  },
+  {
+    "path": "assets/nmf/data/mesh/RFTibia.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/RFTibia.stl",
+    "bytes": 85534,
+    "sha256": "cfea07f978588affdc760ac9eb047c4bb03f6f5976151178de883bd8cc9b5858"
+  },
+  {
+    "path": "assets/nmf/data/mesh/RFuniculus.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/RFuniculus.stl",
+    "bytes": 26784,
+    "sha256": "5b9fbc5111e5da82d1c1c106d2e4036205e464a9227f24fbdbe587c95e631377"
+  },
+  {
+    "path": "assets/nmf/data/mesh/RHCoxa.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/RHCoxa.stl",
+    "bytes": 199084,
+    "sha256": "0298272dc088ebcb964eb9ac4d13b16121e1ee90ba45337781bdadfba096dbaf"
+  },
+  {
+    "path": "assets/nmf/data/mesh/RHFemur.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/RHFemur.stl",
+    "bytes": 165884,
+    "sha256": "fb717ea9d5a2eb436262bfc42688f5297bc972290d12d7b5b6dd83dfdfba25dd"
+  },
+  {
+    "path": "assets/nmf/data/mesh/RHTarsus1.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/RHTarsus1.stl",
+    "bytes": 38934,
+    "sha256": "28c6287e3349116c21fd264b9d775d2d68207db98e7032e3203158fd61c36fa1"
+  },
+  {
+    "path": "assets/nmf/data/mesh/RHTarsus2.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/RHTarsus2.stl",
+    "bytes": 98684,
+    "sha256": "ffce858b2321c5871ef0109c44e6aa2f17db27ef136dcff998385cad583f4686"
+  },
+  {
+    "path": "assets/nmf/data/mesh/RHTarsus3.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/RHTarsus3.stl",
+    "bytes": 129584,
+    "sha256": "4335fffd3834d9964e86199c056243ba05fff27b58c5de34c91784e838a8ccdd"
+  },
+  {
+    "path": "assets/nmf/data/mesh/RHTarsus4.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/RHTarsus4.stl",
+    "bytes": 130984,
+    "sha256": "1a0d68dddf33caaaf9278f1650b2018690b68453732d0e46e862f5e522889753"
+  },
+  {
+    "path": "assets/nmf/data/mesh/RHTarsus5.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/RHTarsus5.stl",
+    "bytes": 147084,
+    "sha256": "4043963e5561f033e887491dfa4085fa5c43233b48d6796c99fb8c49932fb874"
+  },
+  {
+    "path": "assets/nmf/data/mesh/RHTibia.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/RHTibia.stl",
+    "bytes": 37484,
+    "sha256": "688cda77697232e5c2cd62bcfcb1b994693c2518d2ee8862d546863e92954992"
+  },
+  {
+    "path": "assets/nmf/data/mesh/RHaltere.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/RHaltere.stl",
+    "bytes": 41284,
+    "sha256": "01bf5200bcba3051660926a092466b06464b801d21fd93645a68993ecacf929a"
+  },
+  {
+    "path": "assets/nmf/data/mesh/RMCoxa.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/RMCoxa.stl",
+    "bytes": 130384,
+    "sha256": "25fc3f1dcb1c767bd42cdf82321c05c0f4d92bc09ee448cbe1acef9263a37449"
+  },
+  {
+    "path": "assets/nmf/data/mesh/RMFemur.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/RMFemur.stl",
+    "bytes": 41384,
+    "sha256": "939eb30b456bb3dc72ca081542760c6acf5c75a7316b6463453cc282a978f97d"
+  },
+  {
+    "path": "assets/nmf/data/mesh/RMTarsus1.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/RMTarsus1.stl",
+    "bytes": 46284,
+    "sha256": "cb1606bb2b6d3a3713fde86f4fca6c737b74c8be45e7584e569d95ffab8af8c9"
+  },
+  {
+    "path": "assets/nmf/data/mesh/RMTarsus2.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/RMTarsus2.stl",
+    "bytes": 77884,
+    "sha256": "49272c7e82f7c28a09bc79d339d22c15e3585ecd21de88748417bd8409310afb"
+  },
+  {
+    "path": "assets/nmf/data/mesh/RMTarsus3.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/RMTarsus3.stl",
+    "bytes": 92884,
+    "sha256": "b80f1f7d2380e8b85bc7958399ac5d3dd0c0b9c8cfb655cb7517d0086d098c0d"
+  },
+  {
+    "path": "assets/nmf/data/mesh/RMTarsus4.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/RMTarsus4.stl",
+    "bytes": 159584,
+    "sha256": "53b914a75fb54c27a1fc03f4210bc273795de76f336a5429ce89cf31ca927a89"
+  },
+  {
+    "path": "assets/nmf/data/mesh/RMTarsus5.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/RMTarsus5.stl",
+    "bytes": 49384,
+    "sha256": "222297c3ea6c513db2dabb82d4efe831409b2d0f2a32e38500ac9266c7279214"
+  },
+  {
+    "path": "assets/nmf/data/mesh/RMTibia.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/RMTibia.stl",
+    "bytes": 33884,
+    "sha256": "17662ff1636431e5c5399e71dbe31fb48b389f06b2a40783bcc1c513cade8b8f"
+  },
+  {
+    "path": "assets/nmf/data/mesh/RPedicel.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/RPedicel.stl",
+    "bytes": 862884,
+    "sha256": "1bf370fed2fca4b1a1c275a78a1ece1ac3df6e62a542a9331238d23dd5fd46a5"
+  },
+  {
+    "path": "assets/nmf/data/mesh/RWing.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/RWing.stl",
+    "bytes": 996734,
+    "sha256": "7c6fad3ec5ce3b59f9a448ff6d8aff2857979afc56d846fbb22c483bf4e44edc"
+  },
+  {
+    "path": "assets/nmf/data/mesh/Rostrum.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/Rostrum.stl",
+    "bytes": 189384,
+    "sha256": "9616109271847e638de093e85553903b81e4db67b06d237a70abae5994d1c4c9"
+  },
+  {
+    "path": "assets/nmf/data/mesh/Thorax.stl",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mesh/Thorax.stl",
+    "bytes": 281534,
+    "sha256": "0ac93168a38e8feb80f544ee25c2c03272072f00048f041b77966ad450fb0fc9"
+  },
+  {
+    "path": "assets/nmf/data/mjcf/neuromechfly_deepfly3d_kinorder_ryp.xml",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mjcf/neuromechfly_deepfly3d_kinorder_ryp.xml",
+    "bytes": 47382,
+    "sha256": "413b3a1dcb7537d08122e16f256f27ec0d8bb9f52c58670345b6c24c9e72e05a"
+  },
+  {
+    "path": "assets/nmf/data/mjcf/neuromechfly_seqik_kinorder_ypr.xml",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mjcf/neuromechfly_seqik_kinorder_ypr.xml",
+    "bytes": 47382,
+    "sha256": "413b3a1dcb7537d08122e16f256f27ec0d8bb9f52c58670345b6c24c9e72e05a"
+  },
+  {
+    "path": "assets/nmf/data/mjcf/neuromechfly_seqik_kinorder_ypr_capsuletarsus.xml",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/mjcf/neuromechfly_seqik_kinorder_ypr_capsuletarsus.xml",
+    "bytes": 44120,
+    "sha256": "fbefb7a715a272787d19fd1aa129273fe524d940dca3cc57dc7f2a8936d0dda3"
+  },
+  {
+    "path": "assets/nmf/data/pose/pose_stretch.yaml",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/pose/pose_stretch.yaml",
+    "bytes": 916,
+    "sha256": "99207214c9b98a376deefb960546f3030e37fc22788e83e5be23e8c4024dff1a"
+  },
+  {
+    "path": "assets/nmf/data/pose/pose_tripod.yaml",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/pose/pose_tripod.yaml",
+    "bytes": 3603,
+    "sha256": "8d71c1536c2a0fc55bfb574999eab5bff3568c3f38fe032a4b594a0bcb59a640"
+  },
+  {
+    "path": "assets/nmf/data/pose/pose_zero.yaml",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/pose/pose_zero.yaml",
+    "bytes": 888,
+    "sha256": "339b4ca89a5c727872505812c55ccc5411d858ee2b40aa466aeb5c18018093b2"
+  },
+  {
+    "path": "assets/nmf/data/vision/ommatidia_id_map.npy",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/vision/ommatidia_id_map.npy",
+    "bytes": 460928,
+    "sha256": "270baa562cd56b74c91fd3d0a218548aaf41c00df3401ebf521a0461adadf21d"
+  },
+  {
+    "path": "assets/nmf/data/vision/pale_mask.npy",
+    "url": "https://raw.githubusercontent.com/NeLy-EPFL/flygym/7f9c35f4f06653578f1500557ef2efe5a072ab53/flygym/data/vision/pale_mask.npy",
+    "bytes": 849,
+    "sha256": "1489f64d82dbf35d488448d0a86afa7314be1f29a58ffc7ce4c454a5d492bb3f"
+  }
+]

@@ -1,0 +1,61 @@
+{
+  "dimensions": [
+    18756,
+    118538,
+    1290
+  ],
+  "loader": {
+    "sensory_selector": {
+      "source": "classification",
+      "field": "flow",
+      "include": [
+        "afferent"
+      ]
+    },
+    "output_selector": {
+      "field": "super_class",
+      "include": [
+        "descending"
+      ]
+    },
+    "min_syn_count": 1,
+    "normalization": "row_l1",
+    "global_gain": 1.0,
+    "chunksize": 250000,
+    "polarity": {
+      "unknown_action": "zero",
+      "nt_signs": {
+        "ACH": 1.0,
+        "GLUT": 1.0,
+        "GABA": -1.0,
+        "DA": 1.0,
+        "SER": 1.0,
+        "OCT": 1.0
+      }
+    }
+  },
+  "arrays": {
+    "edge_pre": {
+      "shape": [
+        3732460
+      ],
+      "dtype": "int64",
+      "sha256": "11efb3f922f3db85d9507f2887744fb255ade087ccaf2f64e889502654522315"
+    },
+    "edge_post": {
+      "shape": [
+        3732460
+      ],
+      "dtype": "int64",
+      "sha256": "ac4198530b9f5f015b4b59d14d5c8bd50872275a1ac3bc2d2bc2d593cf6355fe"
+    },
+    "edge_weight": {
+      "shape": [
+        3732460
+      ],
+      "dtype": "float32",
+      "sha256": "54ce7393a24699029dbfbaa346438a8d088b37e45892ba8284ec91a18cd14770"
+    }
+  },
+  "name": "descending"
+}

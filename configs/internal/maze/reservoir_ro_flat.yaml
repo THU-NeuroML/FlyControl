@@ -1,0 +1,54 @@
+vec_env: subproc
+evaluation:
+  run_robustness: true
+initialization:
+  expand_trailing_observation_features: 0
+  transfer_observation_normalizer: true
+  reset_trailing_observation_normalizer_features: 4
+env:
+  env_id: Ant-v5
+  friction_values:
+  - 1.0
+  steps_per_context: 1000000000
+  cycle: false
+  append_zero_goal_features: true
+  stabilization:
+    enabled: true
+    forward_cap_mps: 2.2
+    inversion_threshold_degrees: 90.0
+    inversion_persistence_steps: 10
+    action_scale: 0.9
+policy:
+  name: reservoir_ro
+  actor_kwargs: {}
+  value_hidden:
+  - 256
+  - 256
+  value_activation: relu
+  log_std_init: -1.0
+ppo:
+  total_timesteps: 200000
+  n_envs: 4
+  n_steps: 512
+  seq_len: 64
+  n_epochs: 10
+  n_minibatches: 32
+  gamma: 0.99
+  lam: 0.95
+  clip_range: 0.2
+  vf_clip_range: 0.2
+  lr: 0.0001
+  vf_coef: 0.5
+  ent_coef: 0.0
+  max_grad_norm: 0.5
+  normalize_reward: true
+  normalize_observation: true
+  observation_clip: 10.0
+  rollout_heartbeat: 128
+  best_checkpoint_mode: stability_velocity
+  best_checkpoint_window: 100
+  best_checkpoint_min_episodes: 20
+  best_checkpoint_min_forward_velocity: 1.5
+  best_checkpoint_max_high_z_termination_rate: 0.15
+  best_checkpoint_max_inverted_completion_rate: 0.05
+  best_checkpoint_max_functional_failure_rate: 0.2

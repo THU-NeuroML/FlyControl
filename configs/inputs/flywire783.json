@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "dataset": "FlyWire FAFB whole-brain connectome",
+  "materialization": "783",
+  "source_url": "https://storage.googleapis.com/flywire-data/codex/data/fafb/783/",
+  "verified_at": "2026-09-04T08:35:49Z",
+  "verification": "Local core files were matched byte-for-byte to the public Codex GCS objects by MD5 on 2026-09-04; annotation supplements were downloaded from the same release path.",
+  "files": {
+    "classification.csv.gz": {
+      "source_url": "https://storage.googleapis.com/flywire-data/codex/data/fafb/783/classification.csv.gz",
+      "bytes": 934402,
+      "gcs_md5_base64": "cBwPrwVM7dtGC+pOh9amJA==",
+      "sha256": "e946b552f4056dfc977707be0674609832c3f64332a22d69dc0d9615e7aae663"
+    },
+    "connections_princeton.csv.gz": {
+      "source_url": "https://storage.googleapis.com/flywire-data/codex/data/fafb/783/connections_princeton.csv.gz",
+      "bytes": 68456801,
+      "gcs_md5_base64": "XlEBxv/BfX4wBUHY9xhCwQ==",
+      "sha256": "445f996bf6c4b1803b9ba186189138a3061ff8623aa94c0abcf38af30a5bd48b"
+    },
+    "neurons.csv.gz": {
+      "source_url": "https://storage.googleapis.com/flywire-data/codex/data/fafb/783/neurons.csv.gz",
+      "bytes": 1679884,
+      "gcs_generation": "1733428446832038",
+      "gcs_md5_base64": "9gMz6eQSQWC5sgOxcSpvkQ==",
+      "sha256": "6a6b3759e635f0f35a677d169052362131ec61d95f55919298b55c43fce4e719"
+    },
+    "consolidated_cell_types.csv.gz": {
+      "source_url": "https://storage.googleapis.com/flywire-data/codex/data/fafb/783/consolidated_cell_types.csv.gz",
+      "bytes": 901707,
+      "gcs_md5_base64": "GMxigVa+3jEpwOGdFM9S1g==",
+      "sha256": "8aba246d71dc40361677493629972ce3883048c3d02010adc42bda22962a1a2d"
+    },
+    "names.csv.gz": {
+      "source_url": "https://storage.googleapis.com/flywire-data/codex/data/fafb/783/names.csv.gz",
+      "bytes": 1181576,
+      "gcs_md5_base64": "bRNP4nEsuB0XnUsDOob9xQ==",
+      "sha256": "e541ef9ef4b9e62d798f165ae76853d15b84174cf1dce95392f313a491055332"
+    },
+    "labels.csv.gz": {
+      "source_url": "https://storage.googleapis.com/flywire-data/codex/data/fafb/783/labels.csv.gz",
+      "bytes": 4771292,
+      "gcs_md5_base64": "s5UZmO7tqEu0ouIJtFb2gw==",
+      "sha256": "bdd4eafab2bfe30540256c84ea1513e4b1877c0c4cf03f919204b4eafae5868e"
+    }
+  }
+}

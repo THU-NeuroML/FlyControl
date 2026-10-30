@@ -1,0 +1,102 @@
+[
+  {
+    "id": "adult_prerequisite_0",
+    "method": "adult",
+    "config": "adult_prerequisite_0.yaml",
+    "source": null,
+    "seed": 0,
+    "sampling_seed": 0,
+    "collection_seed": 0,
+    "evaluation_seed": 50000
+  },
+  {
+    "id": "adult_prerequisite_1",
+    "method": "adult",
+    "config": "adult_prerequisite_1.yaml",
+    "source": "adult_prerequisite_0",
+    "seed": 0,
+    "sampling_seed": 0,
+    "collection_seed": 0,
+    "evaluation_seed": 50000
+  },
+  {
+    "id": "adult_prerequisite_2",
+    "method": "adult",
+    "config": "adult_prerequisite_2.yaml",
+    "source": "adult_prerequisite_1",
+    "seed": 0,
+    "sampling_seed": 0,
+    "collection_seed": 0,
+    "evaluation_seed": 50000
+  },
+  {
+    "id": "adult_prerequisite_3",
+    "method": "adult",
+    "config": "adult_prerequisite_3.yaml",
+    "source": "adult_prerequisite_2",
+    "seed": 0,
+    "sampling_seed": 0,
+    "collection_seed": 0,
+    "evaluation_seed": 50000
+  },
+  {
+    "id": "adult_prerequisite_4",
+    "method": "adult",
+    "config": "adult_prerequisite_4.yaml",
+    "source": "adult_prerequisite_3",
+    "seed": 0,
+    "sampling_seed": 0,
+    "collection_seed": 0,
+    "evaluation_seed": 50000
+  },
+  {
+    "id": "mlp_prerequisite_0",
+    "method": "mlp",
+    "config": "mlp_prerequisite_0.yaml",
+    "source": null,
+    "seed": 0,
+    "sampling_seed": 0,
+    "collection_seed": 0,
+    "evaluation_seed": 50000
+  },
+  {
+    "id": "mlp_prerequisite_1",
+    "method": "mlp",
+    "config": "mlp_prerequisite_1.yaml",
+    "source": "mlp_prerequisite_0",
+    "seed": 0,
+    "sampling_seed": 0,
+    "collection_seed": 0,
+    "evaluation_seed": 50000
+  },
+  {
+    "id": "mlp_prerequisite_2",
+    "method": "mlp",
+    "config": "mlp_prerequisite_2.yaml",
+    "source": "mlp_prerequisite_1",
+    "seed": 0,
+    "sampling_seed": 0,
+    "collection_seed": 0,
+    "evaluation_seed": 50000
+  },
+  {
+    "id": "mlp_prerequisite_3",
+    "method": "mlp",
+    "config": "mlp_prerequisite_3.yaml",
+    "source": "mlp_prerequisite_2",
+    "seed": 0,
+    "sampling_seed": 0,
+    "collection_seed": 0,
+    "evaluation_seed": 50000
+  },
+  {
+    "id": "mlp_prerequisite_4",
+    "method": "mlp",
+    "config": "mlp_prerequisite_4.yaml",
+    "source": "mlp_prerequisite_3",
+    "seed": 0,
+    "sampling_seed": 0,
+    "collection_seed": 0,
+    "evaluation_seed": 50000
+  }
+]

@@ -1,0 +1,6 @@
+{
+  "path": "inputs/teacher.zip",
+  "url": "https://raw.githubusercontent.com/LukaszSawala/Farama-Antmaze-Dataset-Generation/fb253c9efbe2fa5ec256a6fc3f983ba33192d706/minari-dataset-generation-scripts/scripts/D4RL/antmaze/GoalAnt-8m-1.36k.zip",
+  "bytes": 10131628,
+  "sha256": "1b835cc5185756c5af8cd0720dae0e4895efcec48ee577c450d4a5a633fb953e"
+}

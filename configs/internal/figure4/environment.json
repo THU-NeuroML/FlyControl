@@ -1,0 +1,54 @@
+{
+  "decision_interval": 100,
+  "flip_penalty": 1000.0,
+  "max_correction": 10.0,
+  "max_time": 12.0,
+  "observation_mode": "proprio_task",
+  "terrain_seeds": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "terrains": [
+    "flat"
+  ],
+  "timestep": 0.0001,
+  "command_adapter_config": {
+    "frequency_bounds": [
+      0.25,
+      2.0
+    ],
+    "k_drive": 0.75,
+    "k_drive_step": 1.0,
+    "k_step": 0.75,
+    "step_bounds": [
+      0.4,
+      2.0
+    ],
+    "continuous_gait": true,
+    "slow_duty_factor": 0.72,
+    "fast_duty_factor": 0.58,
+    "slow_ipsilateral_lag_cycles": 0.3333333333333333,
+    "fast_ipsilateral_lag_cycles": 0.5,
+    "swing_duration_s": 0.035,
+    "base_frequency_hz": 12.0,
+    "gait_smoothing_alpha": 0.005
+  },
+  "speed_filter_alpha": 0.25,
+  "speed_heading_rate_weight": 0.25,
+  "speed_target_scale_mm_s": 20.0,
+  "speed_targets_mm_s": [
+    8.0,
+    16.0
+  ],
+  "action_mode": "command2",
+  "task": "speed_control",
+  "speed_target_sampling": "uniform",
+  "speed_target_range_mm_s": [
+    8.0,
+    16.0
+  ],
+  "dynamic_command_seed": 40000,
+  "dynamic_heading_weight": 1.0
+}

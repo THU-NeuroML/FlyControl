@@ -1,0 +1,33 @@
+{
+  "experiment": "go1",
+  "family": "body",
+  "paper": "Fig. 6",
+  "graph": "motor",
+  "methods": [
+    "connectome",
+    "mlp"
+  ],
+  "seeds": [
+    841,
+    842,
+    843,
+    844,
+    845,
+    846,
+    10841,
+    10842,
+    10843,
+    10844,
+    10845,
+    10846,
+    10847,
+    10848,
+    10849,
+    20841,
+    20842,
+    20843,
+    20844,
+    20845
+  ],
+  "protocol": "figure6/experiments/go1.json"
+}

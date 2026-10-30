@@ -1,0 +1,71 @@
+{
+  "training_steps": 15872,
+  "seeds": [
+    4401,
+    4402,
+    4403,
+    4404,
+    4405,
+    4406,
+    4407,
+    4408,
+    4409,
+    4410,
+    4411,
+    4412,
+    4413,
+    4414,
+    4415,
+    4416,
+    4417,
+    4418,
+    4419,
+    4420
+  ],
+  "methods": [
+    "connectome",
+    "mlp"
+  ],
+  "cases": [
+    {
+      "kind": "ramps",
+      "command_seed": 940001,
+      "physics_seed": 940201
+    },
+    {
+      "kind": "ramps",
+      "command_seed": 940002,
+      "physics_seed": 940201
+    },
+    {
+      "kind": "ramps",
+      "command_seed": 940003,
+      "physics_seed": 940201
+    },
+    {
+      "kind": "ramps",
+      "command_seed": 940004,
+      "physics_seed": 940201
+    },
+    {
+      "kind": "sine",
+      "command_seed": 940105,
+      "physics_seed": 940201
+    },
+    {
+      "kind": "sine",
+      "command_seed": 940101,
+      "physics_seed": 940201
+    },
+    {
+      "kind": "sine",
+      "command_seed": 940103,
+      "physics_seed": 940201
+    },
+    {
+      "kind": "sine",
+      "command_seed": 940102,
+      "physics_seed": 940201
+    }
+  ]
+}

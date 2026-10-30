@@ -1,0 +1,33 @@
+{
+  "experiment": "tripod",
+  "family": "body",
+  "paper": "Fig. 6; Fig. S9",
+  "graph": "motor",
+  "methods": [
+    "connectome",
+    "mlp"
+  ],
+  "seeds": [
+    861,
+    862,
+    863,
+    864,
+    865,
+    866,
+    10861,
+    10862,
+    10863,
+    10864,
+    10865,
+    10866,
+    10867,
+    10868,
+    10869,
+    20861,
+    20862,
+    20863,
+    20864,
+    20865
+  ],
+  "protocol": "figure6/experiments/tripod.json"
+}

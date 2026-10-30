@@ -1,0 +1,43 @@
+{
+  "tasks": [
+    "flat",
+    "umaze",
+    "medium",
+    "large"
+  ],
+  "evaluation_seeds": {
+    "flat": 9010000,
+    "umaze": 9200000,
+    "medium": 9300000,
+    "large": 9400000
+  },
+  "episodes": 100,
+  "friction_values": [
+    1.0
+  ],
+  "large_collection_seed": 9420000,
+  "large_diagnostic_seed": 9410000,
+  "medium_shared_collection_seed": 0,
+  "medium_shared_source": "prerequisite_4",
+  "shared_router_seed": 20261022,
+  "robustness_frictions": [
+    0.5,
+    0.75,
+    1.25,
+    1.5
+  ],
+  "friction_episodes": 25,
+  "friction_seed": 9030000,
+  "friction_training_seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ]
+}

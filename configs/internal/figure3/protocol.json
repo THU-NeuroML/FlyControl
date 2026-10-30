@@ -1,0 +1,283 @@
+{
+  "phase": "fresh24",
+  "created_at": 1791080448.6543736,
+  "observation_dim": 64,
+  "action_dim": 2,
+  "ppo": {
+    "total_timesteps": 8192,
+    "n_envs": 8,
+    "n_steps": 32,
+    "seq_len": 8,
+    "n_epochs": 4,
+    "n_minibatches": 8,
+    "lr": 0.0001,
+    "gamma": 0.9801986733067554,
+    "lam": 0.8187307530779819,
+    "clip_range": 0.2,
+    "vf_clip_range": 0.2,
+    "vf_coef": 0.5,
+    "ent_coef": 0.0,
+    "max_grad_norm": 0.5,
+    "normalize_reward": true,
+    "normalize_observation": false,
+    "separate_rng_streams": true,
+    "initial_hidden_mode": "zero",
+    "separate_actor_critic_grad_clipping": true,
+    "target_kl": 0.03,
+    "rollout_heartbeat": 32,
+    "actor_lr": 0.0001,
+    "critic_lr": 0.0001,
+    "log_std_lr": 0.001
+  },
+  "adaptive_policy_kl": {
+    "target": 0.015,
+    "factor": 1.5,
+    "min_lr": 1e-05,
+    "max_lr": 0.001
+  },
+  "policy": {
+    "initial_log_std": -1.0,
+    "readout": "normalized_archived_1290_DN"
+  },
+  "evaluation_budgets": [
+    0,
+    8192
+  ],
+  "conditions": [
+    "push_aligned",
+    "angle_aligned"
+  ],
+  "development_training_seeds": [
+    2101,
+    3002,
+    3003
+  ],
+  "development_phase_seeds": [
+    660100,
+    660101,
+    660102,
+    660103,
+    660104,
+    660105,
+    660106,
+    660107
+  ],
+  "confirmation_phase_seeds": [
+    660500,
+    660501,
+    660502,
+    660503,
+    660504,
+    660505,
+    660506,
+    660507,
+    660508,
+    660509,
+    660510,
+    660511,
+    660512,
+    660513,
+    660514,
+    660515,
+    660516,
+    660517,
+    660518,
+    660519
+  ],
+  "final_training_seeds": [
+    4301,
+    4302,
+    4303,
+    4304,
+    4305,
+    4306,
+    4307,
+    4308,
+    4309,
+    4310,
+    4311,
+    4312,
+    4313,
+    4314,
+    4315,
+    4316,
+    4317,
+    4318,
+    4319,
+    4320,
+    4321,
+    4322,
+    4323,
+    4324
+  ],
+  "final_phase_seeds": [
+    790000,
+    790001,
+    790002,
+    790003,
+    790004,
+    790005,
+    790006,
+    790007,
+    790008,
+    790009,
+    790010,
+    790011,
+    790012,
+    790013,
+    790014,
+    790015,
+    790016,
+    790017,
+    790018,
+    790019
+  ],
+  "family": {
+    "push": {
+      "force_training_units": [
+        0,
+        10,
+        20
+      ],
+      "side": [
+        -1,
+        1
+      ],
+      "force_body": "thorax",
+      "force_frame": "world_y",
+      "duration_s": 0.04,
+      "train_onset_s": [
+        0.5,
+        0.9
+      ],
+      "eval_onset_s": 0.75
+    },
+    "angle": {
+      "train_and_eval_deg": [
+        -90,
+        -60,
+        -30,
+        30,
+        60,
+        90
+      ],
+      "onset_s": 0.3
+    }
+  },
+  "common": {
+    "horizon_s": 2.0,
+    "physics_dt": 0.0001,
+    "control_dt": 0.04,
+    "CPG": "shared historical command2 drive+turn, no joint residual",
+    "fresh_physics_seed_per_episode": true,
+    "reward": {
+      "legacy": "Original v_projected_on_initial_heading -20*abs(heading_error), failure -1000. Same new observation/seed/targets/finite horizon as aligned branch. This is an objective control, not an exact old training reproduction.",
+      "aligned": "scripts/task.py: 2cos(error) plus capped gait-averaged body-forward speed benefit; near-goal gait-averaged yaw cost; posture/action costs; push lateral cost. Terminal success +5, unsuccessful survival -2, physical failure -5."
+    },
+    "success": "Full2s horizon; last20micro10ms samples satisfy original heading/up/speed gate. Macro samples are not the success window.",
+    "micro_control_dt": 0.01
+  },
+  "primary_endpoints": {
+    "push": "failure-adjusted abs heading error integral over0.5s after force end; final joint walking-heading stability",
+    "angle": "final absolute heading error; final sustained walking-angle success"
+  },
+  "fairness": {
+    "shared_observation_action_reward_per_condition": true,
+    "same_init_critic": true,
+    "actor_parameter_tolerance": 0.005,
+    "first_rollout_hash_pair": true,
+    "evaluation_cpu": true,
+    "zero_neural_initial_state": true,
+    "fixed_budget_checkpoints": true,
+    "teacher": false,
+    "pretraining": false,
+    "no_topology_specific_claim": true
+  },
+  "promotion": "At any registered nonzero fixed budget, screen using the original joint gate; then train two fresh seeds3002/3003. Not a claim; no six-seed expansion before reproducibility.",
+  "development_revision_before_formal_training": {
+    "time": 1790910015.4343307,
+    "reason": "Untrained CPG and fixed PD traces show normal gait yaw RMS about5-6rad/s despite heading remaining within10deg. Remove provisional1.5rad/s RMS gate; average yaw/speed over0.1s for observations/shaping. No learned evaluation was used. Retain original calibration traces and provisional smoke runs.",
+    "source": "qa/calibration/*.json"
+  },
+  "candidate_rule": {
+    "push": "At1024,2048,4096or8192macro decisions: Adult AUC<=0.85*MLP and<=0.85*CPG, success no worse than both, physical failure no worse than MLP. Triggers two seeds, not a superiority claim.",
+    "angle": "At1024,2048,4096or8192macro decisions: Adult mean failure-adjusted angle error at least5deg below MLP and CPG, success no worse than both, physical failure no worse than MLP. Triggers two seeds, not a superiority claim."
+  },
+  "parent": "historical experiment: EXP_PT23_nmf_push5_success_sixseed_20261003",
+  "potential_shaping": {
+    "coefficient": 2.0,
+    "phi": "-2*abs(current_heading_error_rad)",
+    "terminal_phi": 0.0,
+    "gamma": 0.9950124791926823,
+    "reward": "base_reward + gamma*phi_next - phi_previous",
+    "reason": "At8192, both angle policies remain near CPG-only mean60deg although fixed feedback achieves5.27deg. Test denser temporal credit while preserving the discounted episodic objective. No teacher and no architecture-specific reward.",
+    "invariance": "Discounted shaping sum is -phi_initial when terminal phi=0. Here initial heading error is0; total discounted episodic return is unchanged for any fixed complete trajectory.",
+    "comparison": "Same micro reward asPT04. This branch adds held actions, macro discount/rollout conversion and four held-input neural substeps. Each within-branch model is trained from scratch.",
+    "normalization_caveat": "Trajectory-return identity is for raw rewards. Running reward normalization, finite-horizon GAE and approximate critic training can change optimization dynamics.",
+    "budget_caveat": "4xmacro count is a nominal upper bound on10ms physical steps; early failure can truncate a hold. Both models have identical macro decision budgets.",
+    "gamma_scope": "Applied at each10ms microstep; macro gamma is micro_gamma**4."
+  },
+  "action_hold": {
+    "repeat": 4,
+    "micro_gamma": 0.9950124791926823,
+    "policy_control_dt_s": 0.04,
+    "physics_dt": 0.0001,
+    "physical_equivalent_budgets": [
+      0,
+      4096,
+      8192,
+      16384,
+      32768
+    ],
+    "within_macro_reward": "sum(gamma_micro**i * micro_reward_i)",
+    "motivation": "Archived hexapod interface holds decisions40ms; current fly command interface updates10ms. Test persistent exploration with matched physical interaction budget.",
+    "neural_rule": "Four internal substeps each withgate0.5; same recurrence as four old10ms steps for constant observations. Inputs held across these substeps; no claim of identical observation history.",
+    "ppo_rule": "Same32updates and nominal rollout/sequence duration asPT04; gamma/lambda converted to40ms.",
+    "interpretation": "Within-branch equal macro decision budgets. Four-times physical-equivalent counts are nominal upper bounds: early failure may use fewer than4microsteps. Neural inputs held across four internal substeps."
+  },
+  "combination_intervention": {
+    "parent": "historical experiment: EXP_PT04_nmf_heading_potential_20261002",
+    "changes": [
+      "Four10ms physical task steps per action",
+      "Discount-consistent aggregation of already-shaped micro rewards",
+      "Neural recurrence integrates four held-input substeps",
+      "PPO rollout/sequence/discount conversion"
+    ],
+    "unchanged": [
+      "1290 descending readout",
+      "full weighted connectome",
+      "body and CPGcommand2",
+      "micro reward and primary endpoint",
+      "zero init and from-scratch training"
+    ],
+    "no_reused_trained_policies": true
+  },
+  "methods": [
+    "connectome",
+    "mlp",
+    "er"
+  ],
+  "study_families": [
+    "angle",
+    "push"
+  ],
+  "stopping": "Fixed sample size; do not stop or extend based on interim P values.",
+  "er": {
+    "family": "ER-SD fixed-M directed uniform random graph",
+    "seed_rule": "830000 + training_seed",
+    "preserves": [
+      "N",
+      "E",
+      "S/I/O identities",
+      "Dale signs",
+      "row L1=1",
+      "actor/critic implementation"
+    ],
+    "not_preserved": [
+      "degree distribution",
+      "S/I/O block edge counts",
+      "edge weight distribution"
+    ],
+    "self_edges_allowed": true
+  }
+}

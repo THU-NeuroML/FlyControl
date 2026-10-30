@@ -1,0 +1,35 @@
+algorithm: antmaze_teacher_distillation
+observation_clip: 10.0
+env:
+  class_path: body_control.env.AntMazeTransferEnv
+  env_id: AntMaze_UMaze-v5
+  goal_feature_mode: world
+  continuing_task: false
+navigation:
+  waypoint_planner: official_grid_waypoints
+evaluation:
+  action_smoothing: 0.8
+teacher:
+  source: Farama-Antmaze-Dataset-Generation
+  training_steps: 8000000
+  checkpoint_sha256: 1b835cc5185756c5af8cd0720dae0e4895efcec48ee577c450d4a5a633fb953e
+policy:
+  name: reservoir
+  actor_kwargs: {}
+  value_hidden:
+  - 256
+  - 256
+  value_activation: relu
+imitation:
+  demonstration_steps: 40000
+  dagger_steps: 30000
+  dagger_iterations: 1
+  updates_per_stage: 10000
+  batch_size: 32
+  burn_in: 16
+  learning_rate: 0.0003
+  gradient_clip: 1.0
+  actor_train_mode: all
+  goal_input_features: 4
+  loss_space: pre_tanh
+  checkpoint_interval_updates: 500

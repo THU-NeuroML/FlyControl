@@ -1,0 +1,35 @@
+vec_env: subproc
+env:
+  env_id: Ant-v5
+  friction_values:
+  - 1.0
+  steps_per_context: 1000000000
+  cycle: false
+  append_zero_goal_features: true
+policy:
+  name: gru
+  actor_kwargs: {}
+  value_hidden:
+  - 256
+  - 256
+  value_activation: relu
+  log_std_init: -1.0
+ppo:
+  total_timesteps: 3000000
+  n_envs: 4
+  n_steps: 512
+  seq_len: 64
+  n_epochs: 10
+  n_minibatches: 32
+  gamma: 0.99
+  lam: 0.95
+  clip_range: 0.2
+  vf_clip_range: 0.2
+  lr: 0.0003
+  vf_coef: 0.5
+  ent_coef: 0.0
+  max_grad_norm: 0.5
+  normalize_reward: true
+  normalize_observation: true
+  observation_clip: 10.0
+  rollout_heartbeat: 128

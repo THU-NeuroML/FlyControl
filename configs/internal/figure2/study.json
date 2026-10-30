@@ -1,0 +1,304 @@
+{
+  "created": 1791328953.9808638,
+  "parent": "historical experiment: EXP126_nmf_joint_height_32k_20261007",
+  "training_seeds": [
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025,
+    2026,
+    2027,
+    2028,
+    2029,
+    2030
+  ],
+  "models": [
+    {
+      "variant": "joint",
+      "method": "connectome"
+    },
+    {
+      "variant": "joint",
+      "method": "mlp"
+    }
+  ],
+  "fresh_models": [
+    {
+      "variant": "joint",
+      "method": "connectome",
+      "seed": 2011,
+      "gpu": "2"
+    },
+    {
+      "variant": "joint",
+      "method": "connectome",
+      "seed": 2012,
+      "gpu": "3"
+    },
+    {
+      "variant": "joint",
+      "method": "connectome",
+      "seed": 2013,
+      "gpu": "4"
+    },
+    {
+      "variant": "joint",
+      "method": "connectome",
+      "seed": 2014,
+      "gpu": "2"
+    },
+    {
+      "variant": "joint",
+      "method": "connectome",
+      "seed": 2015,
+      "gpu": "3"
+    },
+    {
+      "variant": "joint",
+      "method": "connectome",
+      "seed": 2016,
+      "gpu": "4"
+    },
+    {
+      "variant": "joint",
+      "method": "mlp",
+      "seed": 2011,
+      "gpu": "2"
+    },
+    {
+      "variant": "joint",
+      "method": "mlp",
+      "seed": 2012,
+      "gpu": "3"
+    },
+    {
+      "variant": "joint",
+      "method": "mlp",
+      "seed": 2013,
+      "gpu": "4"
+    },
+    {
+      "variant": "joint",
+      "method": "mlp",
+      "seed": 2014,
+      "gpu": "2"
+    },
+    {
+      "variant": "joint",
+      "method": "mlp",
+      "seed": 2015,
+      "gpu": "3"
+    },
+    {
+      "variant": "joint",
+      "method": "mlp",
+      "seed": 2016,
+      "gpu": "4"
+    }
+  ],
+  "primary_heights": [
+    0.2,
+    0.3,
+    0.45,
+    0.525
+  ],
+  "all_heights": [
+    0,
+    0.2,
+    0.3,
+    0.45,
+    0.525
+  ],
+  "phase_panels": {
+    "confirmation": [
+      1903000020,
+      1903000021,
+      1903000024,
+      1903000042,
+      1903000043,
+      1903000064,
+      1903000067,
+      1903000082,
+      1903000003,
+      1903000009,
+      1903000015,
+      1903000025,
+      1903000035,
+      1903000049,
+      1903000060,
+      1903000061,
+      1903000002,
+      1903000008,
+      1903000014,
+      1903000022,
+      1903000026,
+      1903000030,
+      1903000034,
+      1903000056,
+      1903000005,
+      1903000007,
+      1903000036,
+      1903000038,
+      1903000041,
+      1903000051,
+      1903000053,
+      1903000055,
+      1903000004,
+      1903000006,
+      1903000016,
+      1903000017,
+      1903000018,
+      1903000029,
+      1903000031,
+      1903000044,
+      1903000000,
+      1903000011,
+      1903000019,
+      1903000023,
+      1903000027,
+      1903000045,
+      1903000050,
+      1903000054,
+      1903000001,
+      1903000028,
+      1903000032,
+      1903000033,
+      1903000039,
+      1903000066,
+      1903000092,
+      1903000096,
+      1903000010,
+      1903000012,
+      1903000013,
+      1903000037,
+      1903000040,
+      1903000071,
+      1903000074,
+      1903000080
+    ]
+  },
+  "phase_bins": [
+    [
+      1903000020,
+      1903000021,
+      1903000024,
+      1903000042,
+      1903000043,
+      1903000064,
+      1903000067,
+      1903000082
+    ],
+    [
+      1903000003,
+      1903000009,
+      1903000015,
+      1903000025,
+      1903000035,
+      1903000049,
+      1903000060,
+      1903000061
+    ],
+    [
+      1903000002,
+      1903000008,
+      1903000014,
+      1903000022,
+      1903000026,
+      1903000030,
+      1903000034,
+      1903000056
+    ],
+    [
+      1903000005,
+      1903000007,
+      1903000036,
+      1903000038,
+      1903000041,
+      1903000051,
+      1903000053,
+      1903000055
+    ],
+    [
+      1903000004,
+      1903000006,
+      1903000016,
+      1903000017,
+      1903000018,
+      1903000029,
+      1903000031,
+      1903000044
+    ],
+    [
+      1903000000,
+      1903000011,
+      1903000019,
+      1903000023,
+      1903000027,
+      1903000045,
+      1903000050,
+      1903000054
+    ],
+    [
+      1903000001,
+      1903000028,
+      1903000032,
+      1903000033,
+      1903000039,
+      1903000066,
+      1903000092,
+      1903000096
+    ],
+    [
+      1903000010,
+      1903000012,
+      1903000013,
+      1903000037,
+      1903000040,
+      1903000071,
+      1903000074,
+      1903000080
+    ]
+  ],
+  "evaluation_models": [
+    {
+      "variant": "joint",
+      "method": "connectome",
+      "budget": 8192
+    },
+    {
+      "variant": "joint",
+      "method": "mlp",
+      "budget": 8192
+    },
+    {
+      "variant": "joint",
+      "method": "connectome",
+      "budget": 32768
+    },
+    {
+      "variant": "joint",
+      "method": "mlp",
+      "budget": 32768
+    }
+  ],
+  "final_budget": 32768,
+  "expected_unique_cases": 17920,
+  "expected_new_cases": 7680,
+  "max_concurrent_training": 6,
+  "eval_workers": 64,
+  "independent_confirmatory": false,
+  "launch_status": "evaluation_of_completed_main_pair",
+  "primary_decision": "Four mean matched Adult-minusMLP success differences at32768allpositive; high2Adult changes vsown8192nonnegative. Report everyseedanduncertainty; no perheightmodelselection.",
+  "strong_control": "Canceled at explicit user request before evaluation; no native40 or CPG cases in this comparison",
+  "failure_rule": "All physical/numerical failures retained; no retry to replace outcomes. Resume only from fully reproducible state; otherwise report interruption.",
+  "training_gpu_rule": "Two isolated sequential job queues perGPU2/3/4; atmost2trainersperGPU and6overall.",
+  "evaluation_time_matching": "Both final methods32768*40ms; own8192 checkpoints retained for the original learning/high-height protection audit",
+  "parent_frozen_experiment": "historical experiment: EXP127_nmf_frozen_sixseed_32k_20261007",
+  "scope_amended": 1791365925.9141355,
+  "user_scope": "Only the six Adult and six matched MLP training runs; optional native40 MLP canceled before evaluation"
+}

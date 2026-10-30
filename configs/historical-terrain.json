@@ -1,0 +1,23 @@
+{
+  "experiment": "historical-terrain",
+  "family": "historical",
+  "paper": "Fig. S1",
+  "graph": "terrain",
+  "methods": [
+    "connectome",
+    "mlp"
+  ],
+  "seeds": [
+    2011,
+    2012,
+    2013,
+    2014,
+    2015,
+    2016
+  ],
+  "protocol": "historical/protocol.json",
+  "mechanisms": [
+    "dense-state-adjoint",
+    "activity-scaled-state"
+  ]
+}

@@ -10,4 +10,8 @@ The authors' controller, training and analysis code is distributed under the roo
 - **[MuJoCo Menagerie](https://github.com/google-deepmind/mujoco_menagerie):** Go1 geometry is downloaded from a fixed revision together with its LICENSE and README. The asset-specific terms apply.
 - **FlyWire FAFB v783:** source annotations and connections are downloaded from the official Codex static data service. Dataset use and citation follow FlyWire/Codex terms. Exact files, source URLs and checksums are in `configs/inputs/flywire783.json`.
 
+- **BANC v626:** public Brain and Nerve Cord annotations and Princeton connection counts from the official Codex static data service. `configs/inputs/banc626.json` pins both files. Their upstream dataset/citation terms apply.
+- **Larval Drosophila connectome:** the public `brain-networks/larval-drosophila-connectome` supplementary matrix and annotations, pinned by commit and member checksums in `configs/inputs/larva.json`. Dataset terms remain with the original authors.
+- The supplemental, historical and developmental engines include the necessary FlyGym numerical source from their respective frozen experimental versions. FlyGym's Apache-2.0 attribution also applies to those namespaced copies.
+
 Scientific results, trained FlyControl weights, research logs and manuscript figure files are not bundled as inputs. Previously published supplementary videos remain available at tag v1.0.0. This code license grants no additional rights to third-party datasets, meshes or videos.

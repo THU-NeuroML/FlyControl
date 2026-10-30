@@ -1,0 +1,17 @@
+{
+  "path": "inputs/larva/source.zip",
+  "url": "https://raw.githubusercontent.com/brain-networks/larval-drosophila-connectome/15e065f5c29f08c96ccd64ea8fe0f51510629009/Supplementary-Data-S1.zip",
+  "bytes": 1107380,
+  "sha256": "8c1f43809ed5d527ba61b154e377cc21da26383a75eda8aab85ce05607a72a4c",
+  "doi": "10.1126/science.add9330",
+  "members": {
+    "Supplementary-Data-S1/ad_connectivity_matrix.csv": {
+      "path": "ad_connectivity_matrix.csv",
+      "sha256": "6c758683f657e787fca5626dcab2a8e31fbcaf687ad6c9b2cb4fdd6b584a426f"
+    },
+    "Supplementary-Data-S1/annotations.csv": {
+      "path": "science.add9330_data_s2.csv",
+      "sha256": "477250fc559684f0e898a12016f41221bfa320012e378ab7ae8c5125c7776f7e"
+    }
+  }
+}

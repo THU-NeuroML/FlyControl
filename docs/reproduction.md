@@ -6,7 +6,7 @@ The public interface is `flycontrol`. Each stage reads an explicitly selected ru
 
 Input URLs, exact revisions, sizes and SHA-256 hashes are recorded under `configs/inputs/`. A corrupt existing input is rejected. Downloads use temporary files and become visible only after validation. The loader verifies graph dimensions, edge order, weights and array hashes before training.
 
-Three FlyWire v783 partitions are used:
+The main-task FlyWire v783 partitions are:
 
 | Graph | Input / internal / output cells | Use |
 |---|---|---|
@@ -64,6 +64,7 @@ runs/<experiment>/
   assets/                        Downloaded simulator geometry
   training/                      Newly trained checkpoints and model hashes
   evaluation/                    New episode records and traces
+  mechanisms/, data/             Generated neural histories and assay records
   analysis/                      Episode tables, seed means and comparisons
   figures/                       PDF, SVG and PNG diagnostic plots
   status/                        Completed stage markers
@@ -84,3 +85,33 @@ python -m pytest -q
 ```
 
 See [validation](validation.md) for actual execution evidence and its limits. Exact numerical equality across hardware, drivers and library versions is not assumed. The source/config guards prevent accidental mixing within a run; statistical replication still requires the complete registered cohorts.
+
+## Neural and supplementary stages
+
+All runs now include `probe` between `evaluate` and `analyze`. Presets without a neural assay record that explicitly. Paired main-fly probes require Adult and MLP histories; a single-method smoke test skips that assay and records the reason. Full runs do not silently replace missing histories or pad terminated trajectories into complete neural windows.
+
+Terrain uses the first phase in each of eight registered phase bins for its 80 common histories (five heights × eight phases × two controller origins). The full physical evaluation still uses 64 phases. ER preserves the signed weight multiset and node coordinates, not the degree sequence. Surface axes remain the manuscript's exploratory choice. Discovery/validation seed splits and the original coarser grid are retained for held-out inference; the displayed dense surface is directly measured.
+
+Turning trains independent angle and push cohorts for all three architectures. Neural analyses regenerate the common seed-4301 bank, nine activity histories per Adult model, four initial/final interface exchanges and matched anatomical cuts. The input-learning family contains nine classes × two endpoints. Zero initial readouts are recorded as undefined relative sensitivities.
+
+Turning pathway effects retain all ten comparisons against intact control and the separate four-comparison specificity family. Physical states are averaged within each training seed before paired tests and t-based intervals. No undisplayed intervention is dropped from multiplicity correction.
+
+The speed workflow uses the same newly trained policies for tracking, fixed-history response, neuronal sensitivity, signed activity, input holds, parameter perturbation and the 45-association family. `--smoke` retains both required neural-history cases. Prespecified histories that terminate early are reported; their absence cannot be repaired by choosing another model after seeing the outcome.
+
+The S1 six-model protocol has its own numerical engine and does not reuse the current terrain policies. Unit-state and activity-scaled derivatives use the original dense horizons and finite-difference checks. The same historical cohort also supplies the Methods' obstacle/flat, height-cue exchange and encounter-aligned response analysis. Its complete-window counts are retained.
+
+Adult/larva speed, turning and terrain are independent cohorts with their original graph normalization and physics. The terrain configuration supplies the ten undisplayed tests in the joint 22-contrast developmental family. The separate speed family contains 20 contrasts. Use `combine-development` after both relevant complete analyses; the turning-only table reserves the ten missing slots conservatively and is not the final joint result.
+
+## BANC and larval inputs
+
+BANC uses **release 626**, matching the manuscript experiment, not release 888. Both readout partitions are reconstructed from public annotations and connections, and every graph array is checked against the frozen numerical contract. The current public v626 annotation file contains updated names for two cells; partition-defining annotations and the resulting graph arrays match the experiment. The exact downloaded annotation checksum is pinned.
+
+The larval matrix and annotations come from a pinned revision of `brain-networks/larval-drosophila-connectome`. Speed uses its row-L1 graph; the turning configuration retains its distinct normalization. The additional developmental terrain Adult graph has 16,477 input, 120,817 internal and 1,290 output cells; it must not be replaced with the main-fly partition.
+
+BANC sensitivity uses four source-model histories, initial/final input and readout combinations, two evaluation resets and the registered event windows. A history too short for a full window is marked as excluded with its reason. Regional recovery separately saves a complete physics, neural, CPG and RNG snapshot. Each intervention runs in a separate process, verifies the model/state identity, and checks zero-force shams and the first action against the reference. Region fractions are based on synapse location. Fixed-input assays and physical recovery are separate outputs.
+
+## Rendering and configuration tables
+
+`flycontrol materials --output runs/materials` exports configuration tables with source checksums and an editable architecture SVG. These are machine-readable records of the actual recipes; they do not create measured results.
+
+`flycontrol replay` requires a completed evaluation and `ffmpeg`. Saved terrain/body states are rendered without stepping physics; turning, speed and Ant clips rerun the configured deterministic policy and initial state. Video recipes follow supplementary-caption numbering. Separate clips retain their method/condition labels and failure terminations; original cinematic compositions and outcome-selected examples are not assumed to recur after new training.

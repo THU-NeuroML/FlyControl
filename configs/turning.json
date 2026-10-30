@@ -5,7 +5,8 @@
   "graph": "descending",
   "methods": [
     "connectome",
-    "mlp"
+    "mlp",
+    "er"
   ],
   "seeds": [
     4301,
@@ -33,5 +34,14 @@
     4323,
     4324
   ],
-  "protocol": "figure3/protocol.json"
+  "protocol": "figure3/protocol.json",
+  "registered_push": true,
+  "mechanisms": [
+    "histories",
+    "sensitivity",
+    "interface",
+    "activity",
+    "intervention",
+    "input_gain"
+  ]
 }

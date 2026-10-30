@@ -6,6 +6,8 @@ import torch
 
 
 def graph_path(method="connectome", seed=None):
+    if method == "er":
+        return DATA / "registered_graphs" / f"er_seed{seed}.npz"
     if method not in ("connectome", "mlp", "cpg"):
         raise ValueError(method)
     return DATA / "graph.npz"
@@ -26,13 +28,13 @@ def build_policy(
         graph_path(method, seed),
         obs_dim,
         action_dim,
-        method,
+        "connectome" if method == "er" else method,
         seed,
         device,
         readout,
         log_std,
     )
-    if method == "connectome":
+    if method in ("connectome", "er"):
         core = policy.actor.core
         core.dt = 0.04
         core.internal_substeps = 4

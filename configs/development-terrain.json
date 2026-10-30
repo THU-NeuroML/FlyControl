@@ -1,0 +1,19 @@
+{
+  "experiment": "development-terrain",
+  "family": "development_terrain",
+  "paper": "S3 statistical family",
+  "graph": "development",
+  "methods": [
+    "adult",
+    "larva"
+  ],
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "protocol": "development_terrain/protocol.json"
+}

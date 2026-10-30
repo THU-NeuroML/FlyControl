@@ -1,0 +1,19 @@
+{
+  "experiment": "development-speed",
+  "family": "supplemental",
+  "paper": "Fig. S4",
+  "methods": [
+    "adult",
+    "larva"
+  ],
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "protocol": "supplemental/protocol.json",
+  "task": "speed"
+}

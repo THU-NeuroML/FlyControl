@@ -5,7 +5,8 @@
   "graph": "terrain",
   "methods": [
     "connectome",
-    "mlp"
+    "mlp",
+    "er"
   ],
   "seeds": [
     2011,
@@ -29,5 +30,12 @@
     2029,
     2030
   ],
-  "protocol": "figure2/protocol.json"
+  "protocol": "figure2/protocol.json",
+  "mechanisms": [
+    "coarse",
+    "dense",
+    "circuit",
+    "er",
+    "input_gain"
+  ]
 }

@@ -12,7 +12,7 @@ import sys
 from .paths import CONFIGS, ENGINES, read_json, write_json, sha256, source_digest, configuration_manifest
 from .runtime import worker
 
-STAGES = ("prepare", "train", "evaluate", "analyze", "plot")
+STAGES = ("prepare", "train", "evaluate", "probe", "analyze", "plot")
 BODIES = ("cassie", "tripod", "go1", "hexapod")
 
 
@@ -47,7 +47,7 @@ def initialize(root, config, smoke=False, methods=None, seeds=None):
     (root / "engines").symlink_to(ENGINES, target_is_directory=True)
     protocol_path = root / "configs" / spec["protocol"]
     protocol = read_json(protocol_path)
-    if smoke and spec["family"] != "ant":
+    if smoke and spec["family"] not in ("ant", "supplemental"):
         protocol["ppo"].update(total_timesteps=128, n_envs=2, n_steps=32,
                                seq_len=8, n_epochs=1, n_minibatches=2)
         protocol["evaluation_budgets"] = [0, 128]
@@ -59,7 +59,7 @@ def initialize(root, config, smoke=False, methods=None, seeds=None):
         if spec["family"] == "speed":
             evaluation = root / "configs/figure4/evaluation.json"
             ev = read_json(evaluation)
-            ev["cases"] = ev["cases"][:1]
+            ev["cases"] = read_json(root / "configs/figure4/analysis.json")["mechanism_cases"]
             write_json(evaluation, ev)
             for method in spec["methods"]:
                 for seed in spec["seeds"]:
@@ -69,6 +69,13 @@ def initialize(root, config, smoke=False, methods=None, seeds=None):
                         conf[stage + "_ppo"].update(total_timesteps=steps, n_envs=2, n_steps=32,
                             seq_len=8, n_epochs=1, n_minibatches=2)
                     write_json(p, conf)
+    if spec["family"] == "turning":
+        registered = root / "configs/figure3/registered_protocol.json"
+        control = read_json(registered)
+        control["ppo"] = protocol["ppo"]
+        control["evaluation_budgets"] = protocol["evaluation_budgets"]
+        if smoke: control["final_phase_seeds"] = control["final_phase_seeds"][:1]
+        write_json(registered, control)
     write_json(protocol_path, protocol)
     write_json(root / "protocol.json", protocol)
     if spec["family"] == "body":
@@ -125,8 +132,16 @@ def checkpoint(root, spec, method, seed):
 
 
 def prepare(root, spec):
+    if spec["family"]=="development_terrain":
+        from .development_terrain import prepare
+        return prepare(root,spec)
+    if spec["family"] == "supplemental":
+        from .supplemental import prepare as run
+        return run(root, spec)
     from .inputs import prepare as prepare_inputs
     prepare_inputs(root, spec)
+    from .mechanisms import prepare as prepare_mechanisms
+    prepare_mechanisms(root, spec)
     if spec["family"] == "body":
         dest = root / "training/inputs"
         if not dest.exists():
@@ -134,6 +149,15 @@ def prepare(root, spec):
 
 
 def train(root, spec, device):
+    if spec["family"]=="development_terrain":
+        from .development_terrain import train
+        return train(root,spec,device)
+    if spec["family"] == "supplemental":
+        from .supplemental import train as run
+        return run(root, spec, device)
+    if spec["family"] == "historical":
+        from .historical import train
+        return train(root,spec,device)
     records_path = root / "training/models.json"
     records = read_json(records_path) if records_path.exists() else []
     for method in spec["methods"]:
@@ -152,8 +176,21 @@ def train(root, spec, device):
             records.append(record)
             write_json(records_path, records)
 
+    if spec.get("registered_push"):
+        from .turning_mechanisms import registered_train
+        registered_train(root, spec, device)
+
 
 def evaluate(root, spec, workers):
+    if spec["family"]=="development_terrain":
+        from .development_terrain import worker as development_worker
+        return development_worker(root,"evaluate")
+    if spec["family"] == "supplemental":
+        from .supplemental import evaluate as run
+        return run(root, spec, workers)
+    if spec["family"] == "historical":
+        from .historical import worker as historical_worker
+        return historical_worker(root,"evaluate")
     records = read_json(root / "training/models.json")
     expected = {(m, s) for m in spec["methods"] for s in spec["seeds"]}
     if {(r["method"], r["seed"]) for r in records} != expected:
@@ -171,6 +208,10 @@ def evaluate(root, spec, workers):
         family = spec["experiment"] if spec["family"] == "body" else spec["family"]
         worker(root, family, "evaluate", row["method"], row["seed"], workers)
 
+    if spec.get("registered_push"):
+        from .turning_mechanisms import registered_evaluate
+        registered_evaluate(root, spec, workers)
+
 
 def execute(root, stage, *, device="cpu", workers=1):
     root = Path(root).resolve()
@@ -185,6 +226,9 @@ def execute(root, stage, *, device="cpu", workers=1):
         train(root, spec, device)
     elif stage == "evaluate":
         evaluate(root, spec, workers)
+    elif stage == "probe":
+        from .mechanisms import probe
+        probe(root, spec, device)
     elif stage == "analyze":
         from .analysis import analyze
         analyze(root, spec)

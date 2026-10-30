@@ -1,0 +1,149 @@
+{
+  "created": "2026-10-22 feedback+CPG revision",
+  "frozen_before_new_axis_results": false,
+  "question": "Does Adult show lower local policy sensitivity to interpretable input-projection gains in the original 24 turning seed pairs?",
+  "cohort": "Fresh final models, seeds 4301\u20134324, fixed 8192 decisions",
+  "discovery_seeds": [
+    4301,
+    4302,
+    4303,
+    4304,
+    4305,
+    4306,
+    4307,
+    4308,
+    4309,
+    4310,
+    4311,
+    4312
+  ],
+  "validation_seeds": [
+    4313,
+    4314,
+    4315,
+    4316,
+    4317,
+    4318,
+    4319,
+    4320,
+    4321,
+    4322,
+    4323,
+    4324
+  ],
+  "candidate_axes": {
+    "Feet": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+    ],
+    "Contact": [
+      18,
+      19,
+      20,
+      21,
+      22,
+      23
+    ],
+    "Orientation": [
+      24,
+      25,
+      26,
+      52,
+      53,
+      54
+    ],
+    "Height": [
+      27
+    ],
+    "CPG": [
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45
+    ],
+    "Velocity": [
+      46,
+      47,
+      48,
+      49,
+      50,
+      51
+    ],
+    "Heading": [
+      55,
+      56,
+      57
+    ],
+    "Task state": [
+      58,
+      59
+    ],
+    "Previous action": [
+      60,
+      61
+    ],
+    "Turn feedback": [
+      62,
+      63
+    ]
+  },
+  "perturbation": "Multiply specified encoded input channels by1+dose during fixed windows, equivalent to multiplying the corresponding input-projection columns; all biases, recurrent weights, readout and log_std fixed. Not a physical alteration of angles or a reward landscape.",
+  "screen_doses": [
+    -0.05,
+    0.05
+  ],
+  "selection": "Turn feedback fixed by author; replace Height by the other input group with pooled absolute response closest to feedback. Pool all24 seeds and both methods without using group differences; score=max(abs(log2(pooled group/pool feedback))) across policy KL and unit KL. CPG chosen. Data-dependent exploratory revision after previous screen; old held-out subset is no longer independent validation.",
+  "histories": "Fresh seed4301 phase790000 trajectories from both controller origins, all six signed angles; own native baseline hidden states. Windows8,20,32,44, four decisions each.",
+  "metrics": [
+    "policy_kl",
+    "unit_variance_kl",
+    "action_rms"
+  ],
+  "grid": {
+    "points_per_axis": 21,
+    "range": [
+      -0.1,
+      0.1
+    ],
+    "method": "Direct evaluation of every coordinate, no fitted or interpolated surfaces"
+  },
+  "inference": "All24-pair descriptive mean surfaces and paired-seed bootstrap intervals. Existing single-axis Holm30 screen remains exploratory. New plane nominal tests may be provided only as explicitly exploratory, not selection-adjusted or independent validation. No inferential stars on J.",
+  "display": "All24 original pairs, identical dose\u00b110%, axis scaling,z/color/camera for MLP andAdult; retain prior Height plane in previous revision. Separate cross-sections at zero orthogonal dose verify that both axes contribute visibly.",
+  "verification": "Verify checkpoint and window hashes; sparse kernel vs archived native forward,state gate2e-5; origin below numerical gates in numerical_amendment_before_screen, finite nonnegative metrics; input gain vs parameter-column perturbation equivalence; checkpoint hashes unchanged.",
+  "numerical_amendment_before_screen": "GPU sparse baseline self-comparison KL4.65e-15/actionRMS2.21e-8 due floatingpoint reduction. Accept KL<1e-12 and actionRMS<2e-6, retain measured origin without subtraction or forcedzero; archived native forward/state comparison remains2e-5.",
+  "frozen_before_new_plane": true,
+  "axis_semantics": {
+    "Turn feedback": "channels62,63: gait-averaged yaw rate and lateral displacement",
+    "CPG": "channels28\u201345: encoded oscillator phase sine/cosine and magnitude; input-projection gain, not a direct physical gait-phase change"
+  }
+}

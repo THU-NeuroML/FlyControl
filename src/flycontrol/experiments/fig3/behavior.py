@@ -4,6 +4,8 @@ import json, hashlib, itertools
 import numpy as np
 import pandas as pd
 from scipy.stats import t as student_t
+from fig6.paths import ROOT
+from .paths import DATA
 
 METHODS = ["connectome", "mlp", "er"]
 SECONDARY = {
@@ -112,3 +114,175 @@ def metrics(path):
         initial_state=r["initial"]["initial_state_sha256"],
         initial_obs=r["initial"]["initial_observation_sha256"],
     )
+
+
+def statistic(sm, family, metric, control, role):
+    p = (
+        sm[(sm.family == family) & sm.method.isin(["connectome", control])]
+        .pivot(index="seed", columns="method", values=metric)
+        .sort_index()
+    )
+    a = p["connectome"].to_numpy()
+    b = p[control].to_numpy()
+    diff = a - b
+    n = len(diff)
+    finite = np.isfinite(diff).all()
+    half = (
+        float(student_t.ppf(0.975, n - 1) * diff.std(ddof=1) / np.sqrt(n))
+        if finite
+        else np.nan
+    )
+    return dict(
+        family=family,
+        metric=metric,
+        control=control,
+        role=role,
+        n=n,
+        adult=float(np.mean(a)),
+        control_mean=float(np.mean(b)),
+        adult_sd=float(np.std(a, ddof=1)),
+        control_sd=float(np.std(b, ddof=1)),
+        difference=float(np.mean(diff)),
+        ci_low=float(np.mean(diff) - half),
+        ci_high=float(np.mean(diff) + half),
+        p_raw=exact_p(diff) if finite else 1.0,
+        assessable=bool(finite),
+        lower_seeds=int((diff < 0).sum()),
+        higher_seeds=int((diff > 0).sum()),
+        tied_seeds=int((diff == 0).sum()),
+    )
+
+
+def holm(rows):
+    indices = np.argsort([r["p_raw"] for r in rows])
+    last = 0.0
+    for j, i in enumerate(indices):
+        last = max(last, min(1.0, rows[i]["p_raw"] * (len(rows) - j)))
+        rows[i]["p_holm"] = last
+
+
+def analyze(root):
+    self_check()
+    plan = json.loads((ROOT / "configs/figure3/study_plan.json").read_text())
+    rows = []
+    for family in plan["families"]:
+        for seed in plan["seeds"]:
+            for method in METHODS:
+                steps=json.loads((ROOT/'protocol.json').read_text())['ppo']['total_timesteps']
+                folder = ROOT/f'evaluation/{method}_seed{seed}' if family=='angle' else ROOT/f'registered/evaluation/final/push_aligned_{method}_seed{seed}_step{steps}'
+                episodes = sorted(folder.glob("phase*.json"))
+                expected = len(plan["phase_seeds"]) * (6 if family == "angle" else 3)
+                assert len(episodes) == expected, (folder, len(episodes), expected)
+                rows.extend(metrics(p) for p in episodes)
+    df = pd.DataFrame(rows)
+    assert not df.duplicated(
+        ["family", "seed", "method", "phase", "angle", "force", "side"]
+    ).any()
+    keys = ["family", "seed", "phase", "angle", "force", "side"]
+    for column in ["initial_state", "initial_obs"]:
+        p = df.pivot(index=keys, columns="method", values=column)
+        assert p.nunique(axis=1).eq(1).all()
+    out = root
+    out.mkdir(exist_ok=True)
+    df.to_csv(out / "episodes.csv", index=False)
+    main = df[(df.family == "angle") | ((df.family == "push") & (df.force == 5))]
+    metric_columns = [
+        "terminal_error",
+        "success",
+        "failure",
+        "command_variation",
+        "speed",
+        "relative_command_roughness",
+        "late_heading_upright_fraction",
+        "last_window_error",
+        "recovery_auc",
+    ]
+    sm = main.groupby(["family", "seed", "method"])[metric_columns].mean().reset_index()
+    # Do not silently drop failed/truncated episodes from the roughness endpoint.
+    invalid = main.groupby(
+        ["family", "seed", "method"]
+    ).relative_command_roughness.apply(lambda x: x.isna().any())
+    for idx, row in sm.iterrows():
+        if invalid.loc[(row.family, row.seed, row.method)]:
+            sm.loc[idx, "relative_command_roughness"] = np.nan
+    if "angle" in plan["families"]:
+        t = main[main.family == "angle"].assign(direction=lambda d: np.sign(d.angle))
+        worst = (
+            t.groupby(["family", "seed", "method", "direction"])
+            .terminal_error.mean()
+            .groupby(["family", "seed", "method"])
+            .max()
+            .rename("worst_direction_error")
+            .reset_index()
+        )
+        sm = sm.merge(
+            worst, on=["family", "seed", "method"], how="left", validate="one_to_one"
+        )
+    sm.to_csv(out / "seed_means.csv", index=False)
+    primary = [
+        statistic(sm, f, plan["primary"][f], c, "primary")
+        for f in plan["families"]
+        for c in ["mlp", "er"]
+    ]
+    secondary = [
+        statistic(sm, f, m, c, "secondary")
+        for f in plan["families"]
+        for m in SECONDARY[f]
+        for c in ["mlp", "er"]
+    ]
+    holm(primary)
+    holm(secondary)
+    stats = pd.DataFrame(primary + secondary)
+    stats.to_csv(out / "statistics.csv", index=False)
+    flat = (
+        df[(df.family == "push") & (df.force == 0)]
+        .groupby(["family", "seed", "method"])[metric_columns]
+        .mean()
+        .reset_index()
+    )
+    flat.to_csv(out / "flat_reference_seed_means.csv", index=False)
+    (out / "statistics.json").write_text(
+        stats.to_json(orient="records", indent=2) + "\n"
+    )
+    lines = [
+        "# Three-way complete cohort review",
+        "",
+        f"Role: {plan['role']}. Independent training seeds: {len(plan['seeds'])}. No seed or physical episode excluded.",
+        "",
+        "Primary comparisons (Adult versus MLP and ER):",
+        "",
+        primary_table(stats),
+        "",
+        "Full secondary family, all individual seed values, failure rates and physical speeds are in statistics.csv / seed_means.csv.",
+        "Pointwise paired-t confidence intervals are descriptive; significance uses exact two-sided paired sign flips and the specified complete Holm families.",
+        "ER is a fixed-N/E uniform random control with matched rate scaling. Its degree and edge-weight distributions are not matched; no topology-only causal claim.",
+        "Any undefined roughness from a failed/short episode invalidates that seed endpoint; its test is marked unassessable with P=1 in the unchanged correction family.",
+    ]
+    (out / "REVIEW.md").write_text("\n".join(lines) + "\n")
+    summary = dict(
+        complete=True,
+        training_seeds=len(plan["seeds"]),
+        episodes=len(df),
+        all_initial_states_paired=True,
+        role=plan["role"],
+        primary_tests=len(primary),
+        secondary_tests=len(secondary),
+    )
+    (out / "COMPLETE.json").write_text(json.dumps(summary, indent=2) + "\n")
+    print(json.dumps(summary), flush=True)
+
+
+def primary_table(stats):
+    return stats[stats.role == "primary"][
+        [
+            "family",
+            "metric",
+            "control",
+            "n",
+            "adult",
+            "control_mean",
+            "difference",
+            "p_raw",
+            "p_holm",
+        ]
+    ].to_string(index=False)

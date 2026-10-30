@@ -1,0 +1,38 @@
+{
+  "adult": {
+    "dimensions": [
+      18756,
+      118538,
+      1290
+    ],
+    "arrays": {
+      "edge_pre": "11efb3f922f3db85d9507f2887744fb255ade087ccaf2f64e889502654522315",
+      "edge_post": "ac4198530b9f5f015b4b59d14d5c8bd50872275a1ac3bc2d2bc2d593cf6355fe",
+      "edge_weight": "54ce7393a24699029dbfbaa346438a8d088b37e45892ba8284ec91a18cd14770"
+    }
+  },
+  "banc_descending": {
+    "dimensions": [
+      12250,
+      99323,
+      1312
+    ],
+    "arrays": {
+      "edge_pre": "a9d6e1f60fd808ad73a29ec713c70e35b078c02c206fc6ef9ff19432c14214ef",
+      "edge_post": "6a9f1c55e57d1acc6319bcf483ec91f78a67116f56b1dd5fd23ab14a86d6de52",
+      "edge_weight": "9bde8d0ba6e8c84513a1196f3a8656942a157b042053c63be6de83e994f49c38"
+    }
+  },
+  "banc_motor": {
+    "dimensions": [
+      12250,
+      99804,
+      831
+    ],
+    "arrays": {
+      "edge_pre": "e0028e6537fd2160c28f78a3dd85afc295d220aa3db5a6ea2ffea495628548c1",
+      "edge_post": "881eb33bcacd0291c7c5e1943be69b0a76362eb6c1b74b12e2692a4c91b88771",
+      "edge_weight": "1f7cca04e50e996f2779753cad4b9e8ab022c0ae6f112db4a820b906437c7dee"
+    }
+  }
+}

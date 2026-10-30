@@ -1,4 +1,4 @@
-"""Public entry point: prepare -> train -> evaluate -> analyze -> plot."""
+"""Public entry point: prepare -> train -> evaluate -> probe -> analyze -> plot."""
 
 import argparse
 from pathlib import Path
@@ -15,6 +15,16 @@ def main(argv=None):
     combined = commands.add_parser("combine-bodies", help="Combine four full body runs and correct the four-body family")
     combined.add_argument("--run-dirs", type=Path, nargs=4, required=True)
     combined.add_argument("--output", type=Path, required=True)
+    dev = commands.add_parser("combine-development",help="Joint 22-comparison Adult/Larva family")
+    dev.add_argument("--terrain",type=Path,required=True)
+    dev.add_argument("--turning",type=Path,required=True)
+    dev.add_argument("--output",type=Path,required=True)
+    replay=commands.add_parser("replay",help="Render newly generated native trajectories using Supplementary Video numbering")
+    replay.add_argument("--run-dir",type=Path,required=True)
+    replay.add_argument("--video",type=int,choices=range(1,21),required=True)
+    replay.add_argument("--output",type=Path,required=True)
+    materials = commands.add_parser("materials",help="Export architecture SVG and actual Tables S1–S4 settings")
+    materials.add_argument("--output",type=Path,required=True)
     for name in (*STAGES, "run"):
         sub = commands.add_parser(name)
         sub.add_argument("--run-dir", type=Path, required=True)
@@ -29,6 +39,7 @@ def main(argv=None):
     if args.command == "list":
         for path in sorted(CONFIGS.glob("*.json")):
             spec = read_json(path)
+            if not isinstance(spec,dict) or "experiment" not in spec:continue
             print(f"{spec['experiment']:12} {spec['paper']:20} {len(spec['seeds'])} seeds × {len(spec['methods'])} methods")
         return
     if args.command == "combine-bodies":
@@ -36,6 +47,17 @@ def main(argv=None):
         with run_lock(args.output):
             combine(args.run_dirs, args.output)
         return
+    if args.command == "combine-development":
+        from .supplemental_analysis import combine_development
+        with run_lock(args.output):combine_development(args.terrain.resolve(),args.turning.resolve(),args.output.resolve())
+        return
+    if args.command == "replay":
+        from .media import render
+        with run_lock(args.run_dir):render(args.run_dir.resolve(),args.video,args.output.resolve())
+        return
+    if args.command == "materials":
+        from .materials import export
+        export(args.output);return
     if args.workers < 1:
         parser.error("--workers must be positive")
     try:

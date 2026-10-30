@@ -1,0 +1,20 @@
+{
+  "experiment": "banc-recovery",
+  "family": "supplemental",
+  "paper": "Fig. S6",
+  "methods": [
+    "banc_motor",
+    "banc_descending"
+  ],
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "protocol": "supplemental/protocol.json",
+  "task": "heading",
+  "mechanisms": [
+    "paired-regional-clamp",
+    "fixed-input-neural-probe"
+  ]
+}

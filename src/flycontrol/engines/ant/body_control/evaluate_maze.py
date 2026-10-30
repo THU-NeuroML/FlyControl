@@ -474,6 +474,7 @@ def evaluate_antmaze_run(
                         if first_success_step is not None
                         else None
                     ),
+                    "trajectory_xy": positions_array.tolist(),
                     "initial_direct_distance": direct_distance,
                     "shortest_path_length": shortest_path_length,
                     "shortest_path_cell_steps": len(shortest_cells) - 1,

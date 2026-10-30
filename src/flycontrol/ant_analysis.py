@@ -88,6 +88,24 @@ def analyze(root, spec):
         tests["p_holm_26"] = holm(tests.p_raw.fillna(1.))
         tests.loc[tests.p_raw.isna(), "p_holm_26"] = np.nan
     tests.to_csv(output / "paired_comparisons.csv", index=False)
+    # Supplementary friction belongs to the original ten-pair, 25-contrast
+    # family, including its undisplayed flat and maze contrasts.
+    friction_seeds=[s for s in protocol['friction_training_seeds'] if s in spec['seeds']]
+    supplementary=[]
+    for key,frame,metric in contrasts:
+        if key=='deadline_auc':continue
+        q=frame[frame.training_seed.isin(friction_seeds)&frame.method.isin(['connectome','mlp'])]
+        wide=q.groupby(['training_seed','method'])[metric].mean().unstack().reindex(friction_seeds)
+        row=dict(contrast=key,metric=metric,n_pairs=len(friction_seeds),p_raw=np.nan)
+        if {'connectome','mlp'}<=set(wide) and not wide.isna().any().any():
+            delta=(wide.connectome-wide.mlp).to_numpy();row.update(adult_mean=wide.connectome.mean(),mlp_mean=wide.mlp.mean(),difference=delta.mean())
+            if not spec['smoke'] and len(delta)==10:
+                draw=np.random.default_rng(20260907).integers(0,10,(50000,10));lo,hi=np.quantile(delta[draw].mean(1),[.025,.975]);row.update(p_raw=signflip(delta),ci95_low=lo,ci95_high=hi)
+        supplementary.append(row)
+    if supplementary:
+        q=pd.DataFrame(supplementary);assert len(q)==25
+        q['p_holm25']=holm(q.p_raw.fillna(1));q.loc[q.p_raw.isna(),'p_holm25']=np.nan;q.to_csv(output/'supplementary_25_comparisons.csv',index=False)
+
     # The S7 display uses ten seeds, while all twenty remain in the main family.
     if "friction" in frames:
         frames["friction"][frames["friction"].training_seed.isin(protocol["friction_training_seeds"])].to_csv(output / "supplementary_friction_episodes.csv", index=False)

@@ -73,6 +73,9 @@ def summarize(episodes, spec, metrics):
 
 
 def analyze(root, spec):
+    if spec['family'] in ('supplemental','historical','development_terrain'):
+        from .supplemental_analysis import analyze
+        return analyze(root,spec)
     # Analysis imports only the pure metric functions from the numerical code.
     os.environ["FLYCONTROL_RUN"] = str(root)
     sys.path.insert(0, str(EXPERIMENTS))
@@ -161,6 +164,8 @@ def analyze(root, spec):
         pd.DataFrame(window_rows).to_csv(output / "body_windows.csv", index=False)
     from .paper_statistics import behavior
     behavior(root, spec, episodes)
+    from .mechanism_analysis import analyze as analyze_neural
+    analyze_neural(root,spec)
     write_json(output / "manifest.json", dict(sources=sources, episodes=len(rows), complete_grid=True,
         statistical_unit="training seed; average evaluation repeats within each seed first",
         difference="Adult minus MLP; units and desirability depend on metric",

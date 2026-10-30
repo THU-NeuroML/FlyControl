@@ -1,0 +1,69 @@
+{
+  "kind": "fresh24",
+  "seeds": [
+    4301,
+    4302,
+    4303,
+    4304,
+    4305,
+    4306,
+    4307,
+    4308,
+    4309,
+    4310,
+    4311,
+    4312,
+    4313,
+    4314,
+    4315,
+    4316,
+    4317,
+    4318,
+    4319,
+    4320,
+    4321,
+    4322,
+    4323,
+    4324
+  ],
+  "families": [
+    "angle",
+    "push"
+  ],
+  "methods": [
+    "connectome",
+    "mlp",
+    "er"
+  ],
+  "fixed_budget": 8192,
+  "phase_seeds": [
+    790000,
+    790001,
+    790002,
+    790003,
+    790004,
+    790005,
+    790006,
+    790007,
+    790008,
+    790009,
+    790010,
+    790011,
+    790012,
+    790013,
+    790014,
+    790015,
+    790016,
+    790017,
+    790018,
+    790019
+  ],
+  "primary": {
+    "angle": "terminal_error",
+    "push": "success"
+  },
+  "primary_family": "Four Adult-vs-control tests across two tasks, Holm; formal main only.",
+  "secondary_family": "32 comparisons specified in registered local plan; formal main only.",
+  "role": "Fresh fixed-recipe replication",
+  "sample_size_fixed": true
+}

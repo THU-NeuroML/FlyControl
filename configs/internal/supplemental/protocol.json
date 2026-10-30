@@ -1,0 +1,33 @@
+{
+  "description": "Independent historical supplemental cohorts. Per-model YAML files specify training; no primary-figure checkpoint substitution.",
+  "evaluation_seeds": [
+    101000,
+    101001,
+    101002,
+    101003,
+    101004
+  ],
+  "turning_evaluation_seeds": [
+    100,
+    101,
+    102,
+    103,
+    104,
+    105,
+    106,
+    107,
+    108,
+    109,
+    110,
+    111,
+    112,
+    113,
+    114,
+    115,
+    116,
+    117,
+    118,
+    119
+  ],
+  "training_budget": 499200
+}

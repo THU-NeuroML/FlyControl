@@ -1,0 +1,61 @@
+{
+  "status": "frozen_before_regional_outcomes",
+  "signed_forces": [
+    0,
+    -10,
+    10,
+    -15,
+    15,
+    -20,
+    20
+  ],
+  "modes": [
+    "brain_reference",
+    "vnc_reference",
+    "brain_vnc_reference",
+    "dn_vnc_reference",
+    "an_brain_reference",
+    "replay_all_observations"
+  ],
+  "reference_rule": "For selected synapses replace only force-dependent presynaptic rate deviations by the matched no-force trajectory: drive += sum(w * anatomical_fraction * (r_reference - r_current)). No weight renormalization; neck retained.",
+  "region_rule": "Synapse location, not neuron soma. DN/AN have a single shared model state; no compartment model.",
+  "window_s": 0.5,
+  "push_duration_s": 0.04,
+  "readouts": [
+    "banc_motor",
+    "banc_descending"
+  ],
+  "trained_models_per_readout": 3,
+  "eval_seeds": [
+    700,
+    701,
+    702
+  ],
+  "phase_bins": [
+    0,
+    1,
+    2
+  ],
+  "no_retraining": true,
+  "independent_physics_states": 54,
+  "new_intervention_branches": 2268,
+  "reused_intact_branches": 378,
+  "additional_zero_reference_branches": 108,
+  "primary": "Paired change in failure-adjusted heading AUC, averaged over signs, states, and amplitudes 10,15,20 within checkpoint.",
+  "mechanistic": "Separate unconditional flip risk, survival without heading recovery, and joint success; report brain by VNC interaction and readout by intervention differences.",
+  "heading_detail": "Heading error in pairs where both branches survive is descriptive and selected after treatment; report the number retained and transitions across all pairs.",
+  "temporal": "0..500 ms curves; absorbing flip risk; heading error missing after termination shown with explicit pi penalty. Do not mistake penalized error for measured heading.",
+  "statistics": "Exploratory. Individual checkpoint paired effects and checkpoint bootstrap 95% intervals (20000 draws); no episode-level significance tests, no additive causal percentages, no equivalence claim for small effects.",
+  "pairing": "Same complete physics/CPG/hidden/RNG snapshot within a checkpoint, force sign and magnitude; different models have separately reached states, not identical cross-model posture.",
+  "qc": [
+    "Exact saved-edge mapping",
+    "Archived zero reference digest exact",
+    "All zero-force shams exact",
+    "First action unchanged",
+    "Final reference exact",
+    "Applied impulse audited",
+    "Raw metric reconstruction"
+  ],
+  "pilot": "Two seed0 readouts, eval700 phase0, all six interventions at 0 and +/-15; engineering subset only, not used to choose arms or force grid.",
+  "reuse": "All branches and reference states are newly simulated within this run."
+}

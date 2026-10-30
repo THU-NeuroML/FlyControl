@@ -1,0 +1,67 @@
+connectome:
+  kind: original
+  randomize_seed: 0
+  rescale: 0.04
+  sensory_type: all
+  species: larva
+env:
+  action_mode: command2
+  decision_interval: 100
+  flip_penalty: 1000.0
+  max_correction: 10.0
+  max_time: 1.5
+  observation_mode: proprio_task
+  reorientation_targets_rad:
+  - -1.0471975512
+  - -0.5235987756
+  - 0.5235987756
+  - 1.0471975512
+  task: reorientation
+  terrain_seeds:
+  - 0
+  - 1
+  - 2
+  - 3
+  terrains:
+  - flat
+  timestep: 0.0001
+nmi_phase7:
+  condition: larva_original
+  experiment: EXP02_reorientation
+  formal: true
+  graph_seed: null
+  model_scope: frozen connectome rate model
+  phase: phase7_cross_architecture_seed_completion
+  run_id: REOR-LARVA-TS004
+  train_seed: 4
+policy:
+  actor_kwargs:
+    dt: 0.01
+    input_target: sensory
+    mode: rate
+    tau_init: 0.02
+    use_lora: false
+  log_std_init: -0.5
+  name: connectome_cfc
+  value_hidden:
+  - 128
+  - 128
+ppo:
+  clip_range: 0.2
+  ent_coef: 0.0
+  gamma: 0.99
+  lam: 0.95
+  lr: 0.0001
+  max_grad_norm: 0.5
+  n_envs: 16
+  n_epochs: 2
+  n_minibatches: 5
+  n_steps: 160
+  normalize_reward: true
+  rollout_heartbeat: 8
+  seq_len: 32
+  total_timesteps: 500000
+  vf_clip_range: 0.2
+  vf_coef: 0.5
+seed: 4
+vec_env: subproc

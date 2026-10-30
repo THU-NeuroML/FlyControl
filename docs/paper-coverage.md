@@ -1,37 +1,38 @@
-# Manuscript coverage
+# Manuscript-to-code map
 
-Reference: the author-confirmed **Fly_Locomotion (13).pdf**. The manuscript and historical research archive are not runtime inputs and are not copied into this repository.
+Reference: author-confirmed **Fly_Locomotion (13).pdf**. The PDF and research archive are not runtime inputs. Paths below are relative to an experiment's run directory. Execute the six stages shown in the README; `run` executes them in order.
 
-This is an implementation checklist, not a claim that all paper results have already been reproduced. “Workflow implemented” means the public command connects fresh inputs to training/evaluation/analysis. Full-budget scientific replication and pixel-identical reconstruction of the manuscript panels have not been certified.
-
-| Manuscript result | Current implementation | Remaining work |
+| Results / claim | Preset and implementation | Generated evidence |
 |---|---|---|
-| Fig. 1: fixed connectome with learned interfaces | Shared policies and three verified graph partitions | Editable overview figure and complete parameter tables |
-| Fig. 2b–d: terrain behavior | `terrain`: fresh training, common-state evaluation, seed summaries and fixed behavior comparison families | Full 20-pair run; final paper panel composition |
-| Fig. 2e: matched ER sensitivity | Matched ER construction/training kernel retained internally | Public control/probe orchestration and comparison family |
-| Fig. 2f–g: temporal organization and transmission blocks | Not exposed in the public workflow | Fresh anatomical annotation, history collection, neural probes and complete intervention family |
-| Fig. 2h–i: selected trajectory and input-gain surface | New evaluation traces are generated | Explicit selection rule, measured surface and rendering |
-| Fig. 3b–d: heading behavior | `turning`: fresh training, six signed-angle evaluations, failure-aware metrics and diagnostic figures | Registered angle/push/ER control family and final directional inference |
-| Fig. 3e–h: sensitivity, learned input, activity and AN→DN intervention | Not exposed | All 144 registered final models, initial/final probes and full statistical families |
-| Fig. 3i–j: +60° example and gain surface | New heading trajectories are generated | Fresh common histories, axis-selection rule and measured surfaces |
-| Fig. 4b–c: speed behavior | `speed`: base PPO → continuation → fixed histories; failure-aware metrics and three-endpoint family | Full 20-pair run and onset-response panel |
-| Fig. 4d–g: pathway response, input hold and 45 associations | Not exposed | Anatomical preparation, neural collection, interventions and all 45 associations |
-| Fig. 4h–i: actor-parameter perturbations | Not exposed | Fixed perturbation directions, new policy responses and surfaces |
-| Fig. 5: Ant flat and maze behavior | `maze`: explicit prerequisite DAG, seven architectures, four tasks, additional motion checks, 26-slot Adult/MLP comparison family | Full cohorts; trajectory/path panels and paper composition |
-| Fig. 6: four bodies × seven conditions | Four presets plus `combine-bodies`; primary seven-condition aggregate and detailed condition/window statistics | Full cohorts and paper figure composition |
-| Fig. S1: historical six-model terrain neural cohort | Not migrated | Separate original cohort and probe protocol; do not substitute the current terrain cohort |
-| Fig. S2: speed neural dynamics | Not migrated | Fresh neural histories and registered logarithmic-summary convention |
-| Fig. S3–S4: Adult/larva turning and speed | Not migrated | Public larval input preparation, distinct training/evaluation protocols and focused panels |
-| Fig. S5: BANC readout sensitivity | Not migrated | BANC graph preparation, both readouts, six-model initial/final probes |
-| Fig. S6: BANC regional recovery | Not migrated | Anatomical regional masks and matched physics/neural/RNG branching |
-| Fig. S7: Ant friction robustness | `maze` evaluates the full comparison cohort and exports the specified ten-seed display subset | Full run and supplementary composition |
-| Fig. S8: seven-model Large maze | `maze` includes Large adaptation and evaluation | Full 7 × 20 cohort and supplementary composition |
-| Fig. S9–S10: Tripod/Hexapod details | Body traces and condition/window metric extraction are implemented | Full cohorts and supplementary panel composition |
-| Tables S1–S4 | Policy dimensions/counts are recorded by individual trainers | Unified tables, all supplemental model families and manuscript cross-check |
-| Supplementary videos 1–20 | Previously published archive remains at tag v1.0.0 | Fresh rendering/selection workflows are not yet implemented |
+| Fig. 1: frozen anatomy, learned interfaces | Graph construction, fixed policy buffers; `materials` | Graph array contracts, initialization records, editable overview |
+| Fig. 2b–d: smoothness, crossing and corridor retention | `terrain`; behavior metrics and `paper_statistics` | Episode/seed tables; five primary and 130 secondary slots |
+| Fig. 2e: matched ER | `terrain`; independent ER graphs/training; `er_probe` | `analysis/neural/{atlas,er_atlas}.csv`; 45 Adult–ER contrasts |
+| Fig. 2f–g: temporal sensitivity and transmission blockade | `terrain`; coarse/dense adjoints, anatomical and matched masks | All horizons/classes, native-gradient checks, six blockade contrasts |
+| Fig. 2h–i: example and input perturbations | `terrain`; recorded trajectories, screen and measured planes | 21 × 21 grids; original 11 × 11 subset for held-out tests; video recipe 3 |
+| Fig. 3b–d: turning and registered controls | `turning`; separate angle/push cohorts, ER and zero-control evaluation | 144 final models; main, directional and registered comparisons |
+| Fig. 3e–h: sensitivity, learned inputs, activity, AN→DN | `turning`; shared histories, E/C exchange, nine activity histories, cuts | `analysis/neural/`; zero-readout enrichment remains undefined |
+| Fig. 3i–j: example and gain plane | `turning`; fixed manuscript axes with regenerated exploratory screen | All 48 Adult/MLP planes; recipes 1–2 |
+| Fig. 4b–c: tracking and onset response | `speed`; initial PPO and continuation | Eight histories/model, three behavioral endpoints, ramp increments |
+| Fig. 4d–g: pathways, holds and associations | `speed`; local response, signed replay, events and associations | Per-class seed values and all 45 associations |
+| Fig. 4h–i: example and actor perturbation | `speed`; row/tensor-relative parameter directions | Directly measured KL/action grids and auxiliary directions; recipes 4–5 |
+| Fig. 5: Ant locomotion and mazes | `maze`; prerequisite, teacher, router and seven student chains | Complete episodes and 26 main contrasts; recipes 6–12 |
+| Fig. 6: four bodies and perturbations | Four body presets plus `combine-bodies` | Seven-condition scores, four primary comparisons and full window families |
+| S1: unit-state/activity-scaled sensitivity | `historical-terrain`; separate original numerical engine | `analysis/{state_sensitivity.csv.gz,seed_sensitivity.csv}`; dense adjoints and finite-difference checks |
+| S2: acceleration/deceleration dynamics | `speed` | Seed-level log2 enrichment; mean(log2) and log2(mean) both explicitly reported |
+| S3: Adult/larva control | `development-turning`, `development-terrain`, `combine-development` | Twelve turning plus ten terrain endpoints; exact 924 allocations and Holm over 22 |
+| S4: Adult/larva dynamic speed | `development-speed` | 30 profiles × 5 reset seeds/model; paired push controls and 20 contrasts |
+| S5: BANC readout-dependent sensitivity | `banc-sensitivity`; BANC v626 and four initial/final E/C combinations | 16 BANC afferent groups, initial/final projections, neural energies and readout decomposition |
+| S6: BANC regional recovery | `banc-recovery`; anatomy-weighted message replacement | Same-state branches, zero-force/replay audits, fixed-input probes, seed effects, readout/factorial contrasts and survivor counts |
+| S7: friction | `maze` | Specified original ten-seed display cohort and 25-comparison family |
+| S8: Large maze | `maze` | Seven architectures × 20 models × 100 resets |
+| S9–S10: Tripod/Hexapod | `tripod`, `hexapod` | Shared Fig. 6 episodes and window metrics, without counting them again as independent data |
+| Tables S1–S4 | `materials` | Setting/value/configuration/checksum records from the actual training files |
+| Videos 1–20 | `replay` with `configs/videos.json` | Native per-method clips, explicit selection and source/checkpoint checksums |
 
-## Release criterion
+## Interpretation and completion
 
-A reviewer release requires every row to have an executable from-scratch recipe, complete fixed cohorts, explicit statistical families, readable final figures/tables and a clean-environment run record. It must not depend on copying old CSVs, trained policies, manually prepared neural histories or local workstation paths.
+This release connects the numerical workflows. Full-budget cohorts have **not** all been rerun: [validation](validation.md) states exactly what was executed. Do not describe smoke plots as replicated manuscript results. The editable panels are deliberately separate files; the manuscript's artistic layout and original selected video montages are not copied into the source tree.
 
-The current branch provides the core execution system and behavior recipes. The missing rows above remain release blockers. Diagnostic plots are clearly distinguished from the manuscript's finished panels.
+Fixed-input neural effects measure policy response under specified recorded histories. They are distinct from closed-loop behavioral interventions. ER coordinates carry no biological cell identity. Initial zero readouts do not have a defined relative enrichment. BANC summaries remain descriptive; no episode-level significance tests or additive causal percentages are implied. Failure-adjusted heading error includes an explicit π penalty after termination; measured survivor-only heading is separately labelled and counted.
+
+Summative claims about adaptation and cross-body transfer require the corresponding complete cohorts across tasks. A model example, a small local sensitivity or a video cannot establish such a claim alone.

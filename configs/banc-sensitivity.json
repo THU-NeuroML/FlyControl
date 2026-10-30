@@ -1,0 +1,26 @@
+{
+  "experiment": "banc-sensitivity",
+  "family": "supplemental",
+  "paper": "Fig. S5",
+  "methods": [
+    "adult",
+    "banc_descending",
+    "banc_motor",
+    "er"
+  ],
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "protocol": "supplemental/protocol.json",
+  "task": "speed",
+  "mechanisms": [
+    "initial-final-interface-exchange",
+    "state-sensitivity",
+    "input-routing"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "dataset": "BANC",
+  "materialization": "626",
+  "files": {
+    "neurons.csv.gz": {
+      "source_url": "https://storage.googleapis.com/flywire-data/codex/data/banc/626/neurons.csv.gz",
+      "bytes": 2150430,
+      "sha256": "0fe7581c32081ce171752afd942becbe0739e27de7af41b67a2fc190e24d9455"
+    },
+    "connections_princeton.csv.gz": {
+      "source_url": "https://storage.googleapis.com/flywire-data/codex/data/banc/626/connections_princeton.csv.gz",
+      "bytes": 26868883,
+      "sha256": "05ad6d8cbbcc240b41e3f029c8ed8a3acca168f46f7659772b2617f4a7e776c1"
+    }
+  },
+  "annotation_note": "The public v626 annotation table has two cell-type label updates relative to the original local download. Connectivity and graph-defining annotations are unchanged."
+}

@@ -1,0 +1,127 @@
+[
+  {
+    "number": 1,
+    "config": "turning",
+    "sign": -1,
+    "label": "Left turns"
+  },
+  {
+    "number": 2,
+    "config": "turning",
+    "sign": 1,
+    "label": "Right turns"
+  },
+  {
+    "number": 3,
+    "config": "terrain",
+    "label": "Obstacle crossing"
+  },
+  {
+    "number": 4,
+    "config": "speed",
+    "kind": "ramps",
+    "label": "Speed ramps"
+  },
+  {
+    "number": 5,
+    "config": "speed",
+    "kind": "sine",
+    "label": "Speed sinusoid"
+  },
+  {
+    "number": 6,
+    "config": "maze",
+    "task": "umaze",
+    "seven": false,
+    "label": "umaze"
+  },
+  {
+    "number": 7,
+    "config": "maze",
+    "task": "umaze",
+    "seven": true,
+    "label": "umaze"
+  },
+  {
+    "number": 8,
+    "config": "maze",
+    "task": "medium",
+    "seven": false,
+    "label": "medium"
+  },
+  {
+    "number": 9,
+    "config": "maze",
+    "task": "medium",
+    "seven": true,
+    "label": "medium"
+  },
+  {
+    "number": 10,
+    "config": "maze",
+    "task": "large",
+    "seven": false,
+    "label": "large"
+  },
+  {
+    "number": 11,
+    "config": "maze",
+    "task": "large",
+    "seven": true,
+    "label": "large"
+  },
+  {
+    "number": 12,
+    "config": "maze",
+    "task": "flat",
+    "label": "Flat Ant"
+  },
+  {
+    "number": 13,
+    "config": "cassie",
+    "condition": "flat",
+    "label": "cassie flat"
+  },
+  {
+    "number": 14,
+    "config": "cassie",
+    "condition": "push_010",
+    "label": "cassie push_010"
+  },
+  {
+    "number": 15,
+    "config": "tripod",
+    "condition": "flat",
+    "label": "tripod flat"
+  },
+  {
+    "number": 16,
+    "config": "tripod",
+    "condition": "push_010",
+    "label": "tripod push_010"
+  },
+  {
+    "number": 17,
+    "config": "go1",
+    "condition": "flat",
+    "label": "go1 flat"
+  },
+  {
+    "number": 18,
+    "config": "go1",
+    "condition": "push_010",
+    "label": "go1 push_010"
+  },
+  {
+    "number": 19,
+    "config": "hexapod",
+    "condition": "flat",
+    "label": "hexapod flat"
+  },
+  {
+    "number": 20,
+    "config": "hexapod",
+    "condition": "push_010",
+    "label": "hexapod push_010"
+  }
+]

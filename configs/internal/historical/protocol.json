@@ -1,0 +1,163 @@
+{
+  "ppo": {
+    "total_timesteps": 32768,
+    "n_envs": 8,
+    "n_steps": 32,
+    "seq_len": 8,
+    "n_epochs": 4,
+    "n_minibatches": 8,
+    "lr": 0.0001,
+    "gamma": 0.9920319148370607,
+    "lam": 0.951229424500714,
+    "clip_range": 0.2,
+    "vf_clip_range": 0.2,
+    "vf_coef": 0.5,
+    "ent_coef": 0.0,
+    "max_grad_norm": 0.5,
+    "normalize_reward": true,
+    "normalize_observation": false,
+    "observation_clip": 10.0,
+    "separate_rng_streams": true,
+    "initial_hidden_mode": "zero",
+    "separate_actor_critic_grad_clipping": true,
+    "target_kl": 0.03,
+    "rollout_heartbeat": 4,
+    "actor_lr": 0.0001,
+    "critic_lr": 0.0001,
+    "log_std_lr": 0.001
+  },
+  "adaptive_policy_kl": {
+    "target": 0.015,
+    "factor": 1.5,
+    "min_lr": 1e-05,
+    "max_lr": 0.001
+  },
+  "task": {
+    "horizon_s": 1.2,
+    "physics_dt": 5e-05,
+    "control_dt": 0.04,
+    "near_x_mm": 3.0,
+    "success": "all six feet past far edge and up_z >= .8 continuously for .1s; no hard lateral corridor gate",
+    "phase_mode": "tripod",
+    "objective": "stable physical obstacle crossing; path deviation remains a soft cost and separately reported metric",
+    "finite_task_deadline_is_terminal": true,
+    "micro_control_dt": 0.01
+  },
+  "policy": {
+    "initial_log_std": -1.0,
+    "selection": "Same normalized Gaussian initial log_std=-1; expected joint correction squared norm per leg matches parent18D at zero policy mean."
+  },
+  "sampling": {
+    "rule": "environment halves antithetic",
+    "formal_pairs": [
+      [
+        0,
+        4
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        2,
+        6
+      ],
+      [
+        3,
+        7
+      ]
+    ],
+    "smoke_pairs": [
+      [
+        0,
+        1
+      ]
+    ],
+    "per_environment_marginal": "Gaussian unchanged",
+    "full_original_random_draw_count_preserved": true
+  },
+  "action_hold": {
+    "repeat": 4,
+    "micro_gamma": 0.9980019986673331,
+    "micro_lambda": 0.9875778004938814,
+    "policy_control_dt_s": 0.04,
+    "physics_dt_s": 5e-05,
+    "micro_control_dt_s": 0.01,
+    "reward": "discounted sum of the unchanged shaped micro rewards; stop at first terminal",
+    "neural_gate_per_substep": 0.5,
+    "held_input_neural_substeps": null,
+    "nominal_budget_caveat": "Early terminal can shorten a hold; actual physics time is recorded.",
+    "neural_input_mode": "four causal consecutive10ms frames, not four copies ofcurrentframe"
+  },
+  "cells": [
+    [
+      "blocks",
+      0.2
+    ],
+    [
+      "blocks",
+      0.3
+    ],
+    [
+      "blocks",
+      0.45
+    ],
+    [
+      "blocks",
+      0.525
+    ]
+  ],
+  "evaluation_budgets": [
+    8192,
+    32768
+  ],
+  "reward_intervention": {
+    "balanced": true,
+    "heading_scale": 0.0
+  },
+  "onset_gate": {
+    "start_x_mm": 1.8,
+    "full_x_mm": 2.6,
+    "floor": 0.0
+  },
+  "training_phase_cycle": {
+    "bins": 8,
+    "origin_salt": 20261006,
+    "rule": "Initial common tripod phase visits each of eight equal-width bins cyclically; uniform-within-bin draw from original CPG random phase. Rank r and r+4 start four bins apart. Evaluation reset unchanged.",
+    "scope": "Episode starts, not equal decision budget per phase. Changes initial-phase placement relative to antithetic ranks as well as episode-phase coverage."
+  },
+  "training_height_jitter": {
+    "half_width_mm": 0.025,
+    "salt": 2026100614,
+    "distribution": "Independent uniform around the rank-assigned nominal height at every training reset"
+  },
+  "curriculum_probabilities": {
+    "0.2": 0.25,
+    "0.3": 0.25,
+    "0.45": 0.25,
+    "0.525": 0.25
+  },
+  "observation_history": {
+    "frames": 4,
+    "frame_dim": 172,
+    "frame_interval_s": 0.01,
+    "policy_interval_s": 0.04,
+    "reset_padding": "repeat initial observation",
+    "ordering": "oldest to newest",
+    "actor": "Adult processes4frames withone neural .5-gate step each;MLP concatenates all4frames;one action per40ms"
+  },
+  "fixed_observation_scale": true,
+  "physical_interface": "One signed bundled multijoint correction vector per leg; normalize each vector to joint L2 length.15*sqrt(3)rad and mirror individual right coordinates; no phase mask.",
+  "neural_ports": {
+    "input": 2279,
+    "internal": 135015,
+    "output": 1290,
+    "graph_nodes": 138584,
+    "note": "CV ascending annotations are not exclusively leg proprioception. Changed projection width also changes capacity/initialization scale; MLP rematched."
+  },
+  "actor_parameter_counts": {
+    "connectome": 404593,
+    "mlp": 404527
+  },
+  "critic_parameter_count": 242433
+}

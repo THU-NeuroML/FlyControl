@@ -2,4 +2,4 @@
 from flycontrol.paths import run_root
 REPO = run_root()
 DATA = REPO / "data/figure2"
-OUTPUT = DATA
+OUTPUT = DATA / "mechanisms"

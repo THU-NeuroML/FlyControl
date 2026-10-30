@@ -1,0 +1,56 @@
+{
+  "status": "Post hoc exploratory reanalysis of an already inspected cohort; not preregistered",
+  "cohort": "All 24 paired training seeds 4301\u20134324; fixed 8192-decision policies",
+  "independent_unit": "Paired training seed; phases and target angles are repeated evaluations",
+  "direction_family": [
+    "terminal_error_positive",
+    "terminal_error_negative",
+    "terminal_error_negative_minus_positive"
+  ],
+  "direction_family_correction": "Holm over all three contrasts",
+  "extended_family": "All remaining contrasts emitted by the fixed analysis script, jointly Holm-corrected; global Holm over every new contrast also reported",
+  "tests": "Two-sided exact paired sign-flip test; bootstrap and t intervals, paired t and sign tests as sensitivities",
+  "original_statistics": "Retain original primary four-test and secondary 32-test correction families unchanged",
+  "dynamic_endpoints": {
+    "normalized_iae": "Mean absolute heading error / absolute target angle, at 0.31\u20132.00 s",
+    "settling_time_s": "Time after 0.30 s of final entry into <=10 degree error and up_z>=0.8, remaining inside through 2.00 s for at least 0.20 s; unresolved episodes assigned horizon 1.70 s",
+    "overshoot_fraction": "Maximum positive excess of direction-aligned unwrapped rotation over absolute target, divided by absolute target",
+    "wrongway_fraction": "Fraction of 0.31\u20132.00 s with direction-aligned unwrapped rotation < 0",
+    "late_yaw_rms": "RMS of trailing 100 ms averaged yaw rate during 1.51\u20132.00 s, rad/s",
+    "turn_command_variation": "Sum of absolute successive changes in turn command (action channel 1), macro samples 0.32\u20132.00 s"
+  },
+  "bilateral_endpoints": {
+    "worst_direction_error": "Maximum of positive and negative mean terminal errors within each seed",
+    "direction_gap": "Absolute difference between positive and negative mean terminal errors within each seed",
+    "bilateral_10deg": "Fraction of matched phase and absolute-angle pairs with terminal error <=10 degrees in BOTH directions, no physical failures",
+    "bilateral_success": "Fraction of matched phase and absolute-angle pairs passing original sustained walking-angle success in BOTH directions",
+    "joint_worst_error": "Mean maximum terminal error across matched positive/negative episodes"
+  },
+  "sensitivity": "Bilateral threshold curve 5,10,15,20,30 degrees is descriptive, with no threshold selection or additional tests",
+  "claim_boundary": "No unilateral-only training arm exists in this cohort. Direction-stratified evaluation cannot identify a cost of bilateral training or a learning-speed difference.",
+  "figure_contract": {
+    "question": "Does Adult improve directional accuracy, joint bilateral coverage, or control smoothness after identical bilateral training?",
+    "claim": "Show the supported control-smoothness advantage and quantify the uncertain direction-specific accuracy trend",
+    "panels": [
+      "Signed-angle accuracy profile",
+      "Direct model-by-direction contrast",
+      "Full post-command tracking",
+      "Joint bilateral coverage",
+      "Paired control roughness",
+      "Accuracy versus control variation"
+    ],
+    "archetype": "quantitative grid",
+    "backend": "python",
+    "size_mm": [
+      183,
+      125
+    ],
+    "exports": [
+      "PDF",
+      "SVG",
+      "PNG"
+    ],
+    "uncertainty": "95% t confidence intervals over training seeds; exploratory pointwise intervals, not simultaneous",
+    "minimum_font_pt": 6
+  }
+}

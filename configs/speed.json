@@ -29,5 +29,13 @@
     4419,
     4420
   ],
-  "protocol": "figure4/protocol.json"
+  "protocol": "figure4/protocol.json",
+  "mechanisms": [
+    "collect",
+    "local_response",
+    "neurons",
+    "events",
+    "signed",
+    "associations"
+  ]
 }

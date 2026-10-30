@@ -105,6 +105,8 @@ def prepare(root, spec):
         dest.parent.mkdir(parents=True, exist_ok=True)
         if not dest.exists():
             dest.symlink_to(os.path.relpath(graph, dest.parent))
+    elif family == "historical":
+        download(read_json(CONFIGS / "inputs/nmf_assets.json"), root)
     elif family == "body" and spec["experiment"] != "tripod":
         records = read_json(CONFIGS / "inputs/robot_assets.json")
         body = spec["experiment"]

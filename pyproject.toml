@@ -15,7 +15,7 @@ dependencies = [
   "gymnasium==1.2.3", "gymnasium-robotics==1.4.2",
   "dm-control==1.0.27", "PyYAML==6.0.3", "imageio==2.37.3",
   "opencv-python==4.13.0.92", "stable-baselines3==2.8.0",
-  "numba==0.60.0", "tqdm==4.67.3", "dm-tree==0.1.8",
+  "sb3-contrib==2.8.0", "numba==0.60.0", "tqdm==4.67.3", "dm-tree==0.1.8",
 ]
 
 [project.optional-dependencies]
@@ -31,7 +31,7 @@ packages = ["src/flycontrol"]
 "configs" = "flycontrol/configs"
 
 [tool.hatch.build.targets.sdist]
-include = ["src", "configs", "tests", "docs", "README.md", "LICENSE", "THIRD_PARTY_NOTICES.md", "pyproject.toml"]
+include = ["src", "configs", "scripts", "tests", "docs", "README.md", "LICENSE", "THIRD_PARTY_NOTICES.md", "pyproject.toml"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

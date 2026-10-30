@@ -18,9 +18,14 @@ LABELS = {
 
 
 def plot(root, spec):
+    if spec["family"] in ("supplemental","historical","development_terrain"):
+        from .paper_panels import plot
+        return plot(root,spec)
     if spec["family"] == "ant":
         from .ant_analysis import plot
-        return plot(root, spec)
+        plot(root, spec)
+        from .paper_panels import plot as panels
+        return panels(root,spec)
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
@@ -89,3 +94,6 @@ def plot(root, spec):
         source_table_sha256=sha256(analysis / "seed_means.csv"),
         role="Reproduction diagnostics; quantitative paired seed differences, no archived values",
         exclusions=exclusions, alignment="Single plot per exported figure; multi-panel alignment not applicable"))
+
+    from .paper_panels import plot as paper_panels
+    paper_panels(root,spec)

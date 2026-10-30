@@ -53,10 +53,10 @@ def policy_for(method, seed):
             (checkpoint.parent / "initialization.json").read_text()
         )
         policy = build_policy(
-            BASE / "graph.npz",
+            BASE / "er_inputs" / f"er_seed{seed}.npz" if method == "er" else BASE / "graph.npz",
             688,
             6,
-            method,
+            "connectome" if method == "er" else method,
             seed,
             "cpu",
             "normalized",

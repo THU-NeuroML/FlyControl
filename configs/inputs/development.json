@@ -1,0 +1,61 @@
+{
+  "loader": {
+    "chunksize": 250000,
+    "min_syn_count": 1,
+    "normalization": "row_l1",
+    "global_gain": 1.0,
+    "sensory_selector": {
+      "source": "classification",
+      "field": "super_class",
+      "include": [
+        "sensory"
+      ]
+    },
+    "output_selector": {
+      "source": "classification",
+      "field": "super_class",
+      "include": [
+        "descending"
+      ]
+    },
+    "polarity": {
+      "unknown_action": "zero",
+      "nt_signs": {
+        "ACH": 1.0,
+        "GLUT": 1.0,
+        "GABA": -1.0,
+        "DA": 1.0,
+        "SER": 1.0,
+        "OCT": 1.0
+      }
+    }
+  },
+  "dimensions": [
+    16477,
+    120817,
+    1290
+  ],
+  "arrays": {
+    "edge_pre": {
+      "shape": [
+        3732460
+      ],
+      "dtype": "int64",
+      "sha256": "2e84cbe0de95a78c4d1bbae0e670a6351163734befe4c5119d37c46480af4592"
+    },
+    "edge_post": {
+      "shape": [
+        3732460
+      ],
+      "dtype": "int64",
+      "sha256": "9d3f88c84520db4d1ee89362826f6ad9dc0ea787f4d143f1f0ca2c069e9370ff"
+    },
+    "edge_weight": {
+      "shape": [
+        3732460
+      ],
+      "dtype": "float32",
+      "sha256": "4f6df6e5d8b121e98bed8adade85d66711c435618251fe3d7a5f29416ad8b0c4"
+    }
+  }
+}

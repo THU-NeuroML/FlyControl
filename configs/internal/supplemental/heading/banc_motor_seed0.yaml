@@ -1,0 +1,72 @@
+connectome:
+  banc_dir: inputs/banc626
+  chunksize: 250000
+  global_gain: 1.0
+  kind: original
+  min_syn_count: 1
+  normalization: row_l1
+  output_selector:
+    field: super_class
+    include:
+    - motor
+  polarity:
+    unknown_action: zero
+  randomize_seed: 0
+  sensory_selector:
+    field: flow
+    include:
+    - afferent
+  species: banc
+env:
+  action_mode: command2
+  decision_interval: 100
+  flip_penalty: 1000.0
+  max_correction: 10.0
+  max_time: 1.5
+  observation_mode: proprio_task
+  perturbation:
+    direction: lateral
+    duration_s: 0.04
+    force: 10.0
+    start_time_s: 0.75
+    type: side_push
+  task: heading_hold
+  terrain_seeds:
+  - 0
+  - 1
+  - 2
+  - 3
+  terrains:
+  - flat
+  timestep: 0.0001
+policy:
+  actor_kwargs:
+    dt: 0.01
+    input_target: sensory
+    mode: rate
+    tau_init: 0.02
+    use_lora: false
+  log_std_init: -0.5
+  name: connectome_cfc
+  value_hidden:
+  - 128
+  - 128
+ppo:
+  clip_range: 0.2
+  ent_coef: 0.0
+  gamma: 0.99
+  lam: 0.95
+  lr: 0.0001
+  max_grad_norm: 0.5
+  n_envs: 16
+  n_epochs: 2
+  n_minibatches: 5
+  n_steps: 160
+  normalize_reward: true
+  rollout_heartbeat: 8
+  seq_len: 32
+  total_timesteps: 500000
+  vf_clip_range: 0.2
+  vf_coef: 0.5
+seed: 0
+vec_env: subproc

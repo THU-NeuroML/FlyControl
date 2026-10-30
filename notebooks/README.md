@@ -23,7 +23,7 @@ Select **Python (FlyControl)**, open a notebook and run its cells in order. Star
 | Figure 6 · Go1 | [`go1`](06_go1.ipynb) | [`06_go1.py`](../scripts/06_go1.py) |
 | Figure 6 · Figure S9 | [`tripod`](06_tripod.ipynb) | [`06_tripod.py`](../scripts/06_tripod.py) |
 | Figure 6 · Figure S10 | [`hexapod`](06_hexapod.ipynb) | [`06_hexapod.py`](../scripts/06_hexapod.py) |
-| Figure S1 | [`historical-terrain`](S01_historical_terrain.ipynb) | [`S01_historical_terrain.py`](../scripts/S01_historical_terrain.py) |
+| Figure S1 | [`terrain-sensitivity`](S01_terrain_sensitivity.ipynb) | [`S01_terrain_sensitivity.py`](../scripts/S01_terrain_sensitivity.py) |
 | Figure S3 · terrain comparison family | [`development-terrain`](S03_development_terrain.ipynb) | [`S03_development_terrain.py`](../scripts/S03_development_terrain.py) |
 | Figure S3 · turning | [`development-turning`](S03_development_turning.ipynb) | [`S03_development_turning.py`](../scripts/S03_development_turning.py) |
 | Figure S4 | [`development-speed`](S04_development_speed.ipynb) | [`S04_development_speed.py`](../scripts/S04_development_speed.py) |

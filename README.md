@@ -129,7 +129,7 @@ Scripts use `02_`–`06_` for main figures and `S01_`–`S06_` for supplementary
 | [06_go1.py](scripts/06_go1.py) | [Notebook](notebooks/06_go1.ipynb) | Fig. 6 Go1 | Adult / MLP × 20 seeds |
 | [06_tripod.py](scripts/06_tripod.py) | [Notebook](notebooks/06_tripod.ipynb) | Fig. 6, S9 Tripod | Adult / MLP × 20 seeds |
 | [06_hexapod.py](scripts/06_hexapod.py) | [Notebook](notebooks/06_hexapod.ipynb) | Fig. 6, S10 Hexapod | Adult / MLP × 20 seeds |
-| [S01_historical_terrain.py](scripts/S01_historical_terrain.py) | [Notebook](notebooks/S01_historical_terrain.ipynb) | S1 unit-state and activity-scaled sensitivity | Separate Adult / MLP × 6 seeds |
+| [S01_terrain_sensitivity.py](scripts/S01_terrain_sensitivity.py) | [Notebook](notebooks/S01_terrain_sensitivity.ipynb) | S1 unit-state and activity-scaled sensitivity | Separate Adult / MLP × 6 seeds |
 | [S03_development_terrain.py](scripts/S03_development_terrain.py) | [Notebook](notebooks/S03_development_terrain.ipynb) | Ten terrain contrasts in S3's joint statistical family | Adult / larva × 6 seeds |
 | [S03_development_turning.py](scripts/S03_development_turning.py) | [Notebook](notebooks/S03_development_turning.ipynb) | S3 Adult/larva direction and angle control | Adult / larva × 6 seeds per task |
 | [S04_development_speed.py](scripts/S04_development_speed.py) | [Notebook](notebooks/S04_development_speed.ipynb) | S4 dynamic speed and perturbation protocols | Adult / larva × 6 seeds |

@@ -16,7 +16,7 @@ Date: 2026-10-30. These checks validate software execution and numerical contrac
 | Main terrain | Fresh Adult/MLP/ER policies, 128 decisions; a small physical grid, coarse/dense sensitivities, matched blockade, ER atlas, ten-axis screen, measured gain surfaces, analysis and plots completed |
 | Main speed and S2 | Fresh Adult/MLP base training and continuation to 128 decisions; both 12-second neural-history cases, local parameter perturbations, neuronal sensitivity, signed responses, target holds, analysis and plots completed |
 | Main turning | Fresh Adult/MLP/ER policies in separate angle/push cohorts, 128 decisions; signed-angle, push and zero-control evaluations, common histories, sensitivity, interface exchange, activity replay, all 22 closed-loop intervention/force conditions, gain screens/surfaces, analysis and plots completed; restored intact replay is bit-exact |
-| Historical S1 | Separate fresh Adult/MLP policies, 128 decisions; unit-state and activity-scaled derivatives, finite-difference checks, five-height natural-response histories, cue exchanges, encounter-aligned analysis and plots completed |
+| Terrain sensitivity (S1) | Separate fresh Adult/MLP policies, 128 decisions; unit-state and activity-scaled derivatives, finite-difference checks, five-height natural-response histories, cue exchanges, encounter-aligned analysis and plots completed |
 | Developmental S3 | Fresh Adult/larva terrain and direction/angle policies; small physical evaluation grids, seed-level analyses and plots completed |
 | Developmental S4 | Fresh Adult/larva speed policies, 128 steps; eight physical cases per model, native-policy replay checks, analysis and plots completed |
 | BANC S5 | Fresh Adult/BANC-DN/BANC-motor/ER policies, 128 steps; behavior evaluation, initial/final and hybrid sensitivities, native/finite-difference checks, aggregation and plots completed |
@@ -41,6 +41,8 @@ python scripts/06_tripod.py --run-dir runs/check-tripod \
 Component checks use real simulator episodes and newly trained short-budget models. They exercise the larger numerical protocols without pretending that 128-step policies are trained paper models. The main turning and speed checks retain the native physical horizons required by their neural assays. These component runs were used during integration; source/configuration guards intentionally require a new public run directory after a code change.
 
 The notebook organization change preserves the numerical source/configuration digest. All 14 notebook entry paths were checked, but only the Tripod notebook was executed end to end in Jupyter; the component checks above describe the other workflows' existing validation. The figure-numbered notebooks and setup instructions are indexed [here](../notebooks/README.md).
+
+The subsequent S1 preset rename to `terrain-sensitivity` changes the configuration digest. The numerical engine, training settings and cohorts are unchanged. New runs should use fresh directories; earlier run records remain associated with the code/configuration version that created them.
 
 The automated tests cover code/configuration changes, incomplete cohorts, concurrent writers, download corruption/path traversal, subprocess import isolation, checkpoint tampering, statistical units, exact sign-flip calculations, missing-endpoint multiplicity slots, complete intervention families, neural-history selection, seven-condition body aggregation, recurrent resets/gradients, frozen reservoirs, maze prerequisites and stage-policy construction.
 

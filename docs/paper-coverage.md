@@ -2,6 +2,8 @@
 
 Reference: author-confirmed **Fly_Locomotion (13).pdf**. The PDF and research archive are not runtime inputs. Paths below are relative to an experiment's run directory. Execute the six stages shown in the README; `run` executes them in order.
 
+**Latest-manuscript check for S1:** **Fly_Locomotion (14).pdf** retains this experiment in the main text (page 6), methods (page 29) and Figure S1 (page 32). Its public preset is `terrain-sensitivity`, covering unit-state and activity-scaled sensitivity in the separate six-model Adult cohort. This check updates the S1 mapping; the remaining rows retain the coverage baseline above.
+
 | Results / claim | Preset and implementation | Generated evidence |
 |---|---|---|
 | Fig. 1: frozen anatomy, learned interfaces | Graph construction, fixed policy buffers; `materials` | Graph array contracts, initialization records, editable overview |
@@ -17,7 +19,7 @@ Reference: author-confirmed **Fly_Locomotion (13).pdf**. The PDF and research ar
 | Fig. 4h–i: example and actor perturbation | `speed`; row/tensor-relative parameter directions | Directly measured KL/action grids and auxiliary directions; recipes 4–5 |
 | Fig. 5: Ant locomotion and mazes | `maze`; prerequisite, teacher, router and seven student chains | Complete episodes and 26 main contrasts; recipes 6–12 |
 | Fig. 6: four bodies and perturbations | Four body presets plus `combine-bodies` | Seven-condition scores, four primary comparisons and full window families |
-| S1: unit-state/activity-scaled sensitivity | `historical-terrain`; separate original numerical engine | `analysis/{state_sensitivity.csv.gz,seed_sensitivity.csv}`; dense adjoints and finite-difference checks |
+| S1: unit-state/activity-scaled sensitivity | `terrain-sensitivity`; separate original numerical engine | `analysis/{state_sensitivity.csv.gz,seed_sensitivity.csv}`; dense adjoints and finite-difference checks |
 | S2: acceleration/deceleration dynamics | `speed` | Seed-level log2 enrichment; mean(log2) and log2(mean) both explicitly reported |
 | S3: Adult/larva control | `development-turning`, `development-terrain`, `combine-development` | Twelve turning plus ten terrain endpoints; exact 924 allocations and Holm over 22 |
 | S4: Adult/larva dynamic speed | `development-speed` | 30 profiles × 5 reset seeds/model; paired push controls and 20 contrasts |

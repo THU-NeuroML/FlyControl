@@ -2,7 +2,27 @@
 
 Date: 2026-10-30. These checks validate software execution and numerical contracts. They do not establish the manuscript's scientific conclusions.
 
-## Executed checks
+## Ant capacity-control update (2026-10-30)
+
+The current source/configuration SHA-256 is `ec7a0a8e27306db0ced8bb688b0ef75d579aeb5120369af2ba3f31cac33f6374`. The checks below cover the new flat-ground workflow; the earlier release records follow separately.
+
+| Check | Result |
+|---|---|
+| Automated tests | 37 passed, including the archived 20-pair numerical regression, complete reset grids, failure definitions and separation of flat/maze configurations |
+| Published flat statistics | Recomputed from all 4,000 native and 4,000 motion endpoint records; means and Holm-29 P values reproduce the manuscript to numerical precision |
+| Published curves and S7 | Seed displacement means/SD reproduce the original trajectory summaries; the entire empirical efficiency CDF and its intervals match the manuscript; all 4,000 S7 episodes reproduce every mean and 95% interval |
+| Fresh flat workflow | Adult and matched MLP at seed 0, both base/refinement stages at 128 steps; all six public stages completed; native, motion and four-friction evaluations retained failures |
+| Capacity audit | Actual base actors: 1,989,016 / 2,057,362; final actors: 2,064,040 / 2,062,874 (Adult / matched MLP); both new MLP YAML recipes exactly match the completed full-budget research experiment |
+| Flat notebook | `05_ant_flat.ipynb` executed in 161.6 s, requesting CUDA 0 for training and CPU evaluation; nine executed code cells, eight embedded PNGs, no error outputs; archived analysis and fresh smoke outputs clearly separated |
+| Figure/display checks | Six quantitative PDF/SVG/PNG exports; PDF collision audit: zero failures/warnings, minimum text size 8 pt; notebook HTML, tables and embedded figures inspected in Chrome |
+| Independent installation | Final wheel installed separately, editable import hooks disabled; all 15 presets and archived observations present; source/configuration checksum matches; archived analysis reproduces the same three adjusted P values |
+| Maze regression | `05_maze.ipynb` re-executed in 698.2 s with CUDA 1 training and CPU evaluation: all seven methods, 46 prerequisite/student training stages, 34 evaluation files and all six public stages completed; original 26-test analysis retained |
+| Notebook integrity | All 15 notebook schemas and 121 executed code cells checked; 50 embedded PNGs; both updated notebooks have current stage/source hashes and images matching generated files byte for byte |
+| Materials | Tables S1/S2 export the new base/refinement PPO and architecture settings alongside the original maze settings |
+
+The updated notebook and README provide both archived-data reanalysis and full-budget training commands. **This validation did not repeat the full-budget 20-seed training experiment in the public repository.** It verifies the recorded scientific results and fresh short-budget execution separately. Original maze model YAML files and numerical engines remain unchanged. Earlier notebook outputs outside the two Ant notebooks retain their original validation records.
+
+## Earlier executed checks
 
 | Check | Result |
 |---|---|

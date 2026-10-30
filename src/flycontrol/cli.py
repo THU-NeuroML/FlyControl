@@ -12,6 +12,8 @@ def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     commands = parser.add_subparsers(dest="command", required=True)
     commands.add_parser("list", help="List fixed experiment configurations")
+    reference = commands.add_parser("ant-reference", help="Recompute Figure 5b–d/S7 from archived 20-seed observations (no training)")
+    reference.add_argument("--output", type=Path, required=True)
     combined = commands.add_parser("combine-bodies", help="Combine four full body runs and correct the four-body family")
     combined.add_argument("--run-dirs", type=Path, nargs=4, required=True)
     combined.add_argument("--output", type=Path, required=True)
@@ -46,6 +48,11 @@ def main(argv=None):
         from flycontrol.experiments.fig6.comparison import combine
         with run_lock(args.output):
             combine(args.run_dirs, args.output)
+        return
+    if args.command == "ant-reference":
+        from flycontrol.experiments.fig5.flat_analysis import reference
+        with run_lock(args.output):
+            reference(args.output.resolve())
         return
     if args.command == "combine-development":
         from flycontrol.experiments.supp_s3.analysis import combine_development

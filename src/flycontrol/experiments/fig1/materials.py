@@ -14,8 +14,8 @@ def flatten(value,prefix=''):
 
 def export(output):
     output=Path(output);output.mkdir(parents=True,exist_ok=True)
-    families={'S1_PPO':['figure2/protocol.json','figure3/protocol.json','figure4/protocol.json','figure6/experiments/*.json','maze/*base*.yaml','maze/*prerequisite*.yaml'],
-              'S2_architectures':['maze/*base*.yaml'],
+    families={'S1_PPO':['figure2/protocol.json','figure3/protocol.json','figure4/protocol.json','figure6/experiments/*.json','maze/*base*.yaml','maze/*prerequisite*.yaml','ant_flat/*.yaml'],
+              'S2_architectures':['maze/*base*.yaml','ant_flat/*.yaml','ant_flat/protocol.json'],
               'S3_maze_adaptation':['maze/*umaze*.yaml','maze/*medium*.yaml','maze/*large*.yaml','maze/prerequisites.json'],
               'S4_body_interfaces':['figure6/experiments/*.json']}
     sources={}

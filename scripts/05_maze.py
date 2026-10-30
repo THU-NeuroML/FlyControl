@@ -1,4 +1,4 @@
-"""Figure 5 · Figures S7–S8: run the complete maze workflow; use --smoke for a short check."""
+"""Figure 5e–j and S8: complete maze workflow; flat capacity control uses 05_ant_flat.py."""
 
 import sys
 

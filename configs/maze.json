@@ -1,7 +1,7 @@
 {
   "experiment": "maze",
   "family": "ant",
-  "paper": "Fig. 5; Fig. S7\u2013S8",
+  "paper": "Fig. 5e\u2013j; Fig. S8",
   "graph": "motor",
   "methods": [
     "connectome",

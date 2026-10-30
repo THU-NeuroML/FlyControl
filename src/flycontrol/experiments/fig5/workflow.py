@@ -17,9 +17,9 @@ def stage_dir(root, method, seed, stage):
     return root / f"training/{method}_seed{seed}/{stage}"
 
 
-def configuration(root, spec, name):
+def configuration(root, spec, name, config_group="maze"):
     import yaml
-    source = root / "configs/maze" / (name + ".yaml")
+    source = root / "configs" / config_group / (name + ".yaml")
     config = yaml.safe_load(source.read_text())
     if spec["smoke"]:
         if "ppo" in config:
@@ -29,20 +29,20 @@ def configuration(root, spec, name):
                                         checkpoint_interval_updates=1, batch_size=4)
         if "dagger_updates_per_stage" in config.get("imitation", {}):
             config["imitation"]["dagger_updates_per_stage"] = 2
-    dest = root / "configs/resolved_maze" / (name + ".yaml")
+    dest = root / "configs/resolved_maze" / config_group / (name + ".yaml")
     dest.parent.mkdir(parents=True, exist_ok=True)
     dest.write_text(yaml.safe_dump(config, sort_keys=False))
     return dest, config
 
 
-def train_stage(root, spec, name, run, seed, device, source=None, shared=None, collection_seed=None):
+def train_stage(root, spec, name, run, seed, device, source=None, shared=None, collection_seed=None, config_group="maze"):
     cp = run / "best_checkpoint.pt"
     marker = run / "COMPLETE.json"
     if marker.exists():
         if read_json(marker)["checkpoint_sha256"] != sha256(cp):
             raise ValueError(f"Changed completed checkpoint: {cp}")
         return cp
-    config_path, config = configuration(root, spec, name)
+    config_path, config = configuration(root, spec, name, config_group)
     run.mkdir(parents=True, exist_ok=True)
     command = [sys.executable, "-m", "body_control.train_maze" if "imitation" in config else "body_control.train",
                "--config", str(config_path), "--seed", str(seed), "--output", str(run), "--device", device]

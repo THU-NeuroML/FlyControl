@@ -148,11 +148,6 @@ def plot(root,spec):
             for threshold in np.linspace(0,1,21):
                 q=episodes[['method','training_seed']].copy();q['efficiency_threshold']=threshold;q['success_above_threshold']=(episodes.success & episodes[field].ge(threshold)).astype(float);rows.append(q)
             panel(pd.concat(rows),'efficiency_threshold','success_above_threshold','method','training_seed',f'F5_{task}_efficiency_threshold','Success fraction (all resets)',lines=True)
-        p=root/'analysis/supplementary_friction_episodes.csv'
-        if p.exists():
-            d=pd.read_csv(p)
-            for metric in ['functional_failure','mean_x_velocity']:
-                if metric in d:panel(d,'friction',metric,'method','training_seed','S7_'+metric,metric.replace('_',' '),lines=True)
     elif family=='body':
         d=load('analysis/episodes.csv');number={'tripod':'S9','hexapod':'S10'}.get(spec['experiment'],'F6_'+spec['experiment'])
         for metric in ['lateral_max_m','velocity_mps','corridor_025_time_s','corridor_050_time_s','corridor_075_time_s','corridor_100_time_s','success','horizon_speed_error_m_s']:

@@ -80,7 +80,10 @@ def analyze(root, spec):
     os.environ["FLYCONTROL_RUN"] = str(root)
     family = spec["family"]
     if family == "ant":
-        from flycontrol.experiments.fig5.analysis import analyze
+        if spec["experiment"] == "ant-flat":
+            from flycontrol.experiments.fig5.flat_analysis import analyze
+        else:
+            from flycontrol.experiments.fig5.analysis import analyze
         return analyze(root, spec)
     records = read_json(root / "training/models.json")
     models = {(r["method"], r["seed"]): r["sha256"] for r in records}

@@ -37,6 +37,10 @@ Full runs are substantial experiments. Wall time depends on CPU workers, the acc
 
 ## Ant dependencies
 
+The updated flat-ground comparison uses the independent `ant-flat` preset (Fig. 5b–d and S7): base PPO → flat refinement → native flat/motion/friction evaluation. It does not require the maze teacher or routers. See [the fixed 20-seed protocol, archived-data command and 29-test correction](ant-flat.md).
+
+### Original maze chain (Fig. 5e–j and S8)
+
 The complete chain is explicit in [`experiments/fig5/workflow.py`](../src/flycontrol/experiments/fig5/workflow.py) and `configs/internal/maze/`:
 
 1. Train the shared Adult and MLP prerequisite policies through their five registered stages.

@@ -96,7 +96,7 @@ def prepare(root, spec):
     else:
         build_graph(root, spec["graph"])
     family = spec["family"]
-    if family == "ant":
+    if family == "ant" and spec["experiment"] != "ant-flat":
         fetch(read_json(CONFIGS / "inputs/teacher.json"), root)
     if family in {"turning", "speed", "terrain"}:
         download(read_json(CONFIGS / "inputs/nmf_assets.json"), root)

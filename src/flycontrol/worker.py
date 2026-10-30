@@ -16,7 +16,10 @@ def main():
     out = root / f"evaluation/{method}_seed{seed}"
     cp = checkpoint(root, spec, method, seed)
     if family == "ant":
-        from flycontrol.experiments.fig5.workflow import train, evaluate
+        if spec["experiment"] == "ant-flat":
+            from flycontrol.experiments.fig5.flat_workflow import train, evaluate
+        else:
+            from flycontrol.experiments.fig5.workflow import train, evaluate
         if action == "train":
             train(root, spec, method, seed, option)
         else:

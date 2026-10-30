@@ -27,17 +27,5 @@
     1.5
   ],
   "friction_episodes": 25,
-  "friction_seed": 9030000,
-  "friction_training_seeds": [
-    0,
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    8,
-    9
-  ]
+  "friction_seed": 9030000
 }

@@ -53,7 +53,7 @@ This repository provides **from-scratch training, evaluation, neural analysis an
 prepare → train → evaluate → probe → analyze → plot
 ```
 
-Code, fixed configurations, notebooks and documentation live here. Public anatomical inputs and simulator assets are downloaded with version and checksum checks. Policies are trained within each run; checkpoints, full numerical outputs and videos stay outside Git. Notebooks retain compact tables and figure previews from real short tests. The overview image above is a documentation asset from the manuscript.
+Code, fixed configurations, notebooks and documentation live here. Public anatomical inputs and simulator assets are downloaded with version and checksum checks. Policies are trained within each run; checkpoints and videos stay outside Git. The Ant capacity-control source observations are included for independent statistical verification. Notebooks retain tables and figure previews from real executions. The overview image above is a documentation asset from the manuscript.
 
 **Reproduction status.** Short-run and component checks are documented in [Validation](docs/validation.md); full-budget scientific replication has not yet been completed for this code version. [Paper coverage](docs/paper-coverage.md) maps each manuscript result to its workflow and outputs.
 
@@ -83,7 +83,7 @@ python -m ipykernel install --user --name flycontrol --display-name "Python (Fly
 jupyter lab notebooks/
 ```
 
-Select **Python (FlyControl)** and start with [`06_tripod.ipynb`](notebooks/06_tripod.ipynb). **Run All executes only the short test.** Neural assays and maze prerequisites can still take substantial time despite reduced training budgets.
+Select **Python (FlyControl)** and start with [`06_tripod.ipynb`](notebooks/06_tripod.ipynb). **Run All uses short training budgets; the Ant flat notebook also reanalyzes archived paper data.** Neural assays and maze prerequisites can still take substantial time despite reduced training budgets.
 
 The same short test can be run from a terminal:
 
@@ -116,6 +116,22 @@ Each run records effective configurations, source checksums, checkpoint checksum
 
 ## Manuscript workflows
 
+**Updated Ant flat-ground comparison (Fig. 5b–d and S7).** Recompute the published 20-seed results without training:
+
+```bash
+flycontrol ant-reference --output runs/ant-reference
+```
+
+This reads archived observations and reproduces the updated means, paired tests and quantitative panels. Holm-adjusted P values for velocity, path efficiency and failure are **0.059109, 0.044634 and 0.218330**, respectively. The correction includes all original 26 tests plus the three new endpoints. S7 uses all 20 seed pairs and is descriptive. This command does not train policies.
+
+To train and evaluate both models from scratch:
+
+```bash
+python scripts/05_ant_flat.py --run-dir runs/ant-flat --device cuda:0
+```
+
+The new MLP has two 1378-unit hidden layers; both models use four PPO minibatches in each training stage. The 109-input mean-action actors contain 2,064,040 (Adult) and 2,062,874 (MLP) parameters. The separate `maze` workflow retains its original policies and 26-test analysis. See the [Ant protocol and source-data description](docs/ant-flat.md) and [executed notebook](notebooks/05_ant_flat.ipynb).
+
 Scripts use `02_`–`06_` for main figures and `S01_`–`S06_` for supplementary-only experiments. Each experiment has a notebook with the same filename stem. Figures derived from the same experiment share one entry.
 
 | Full-run script | Short test | Results | Fixed cohort |
@@ -123,7 +139,8 @@ Scripts use `02_`–`06_` for main figures and `S01_`–`S06_` for supplementary
 | [02_terrain.py](scripts/02_terrain.py) | [Notebook](notebooks/02_terrain.ipynb) | Fig. 2 behavior, ER control, temporal sensitivity, blockade and gain planes | Adult / MLP / ER × 20 seeds |
 | [03_turning.py](scripts/03_turning.py) | [Notebook](notebooks/03_turning.ipynb) | Fig. 3 behavior, input learning, activity, AN–DN interventions and gain planes | Adult / MLP / ER × 24 seeds × angle/push cohorts |
 | [04_speed.py](scripts/04_speed.py) | [Notebook](notebooks/04_speed.ipynb) | Fig. 4, S2 tracking, neural responses, target holds, parameter planes and associations | Adult / MLP × 20 seeds |
-| [05_maze.py](scripts/05_maze.py) | [Notebook](notebooks/05_maze.ipynb) | Fig. 5, S7 friction, S8 Large maze | Seven architectures × 20 seeds |
+| [05_ant_flat.py](scripts/05_ant_flat.py) | [Notebook](notebooks/05_ant_flat.ipynb) | Fig. 5b–d, S7 friction; capacity-matched MLP | Adult / matched MLP × 20 seeds |
+| [05_maze.py](scripts/05_maze.py) | [Notebook](notebooks/05_maze.ipynb) | Fig. 5e–j, S8 Large maze | Seven architectures × 20 seeds |
 | [06_cassie.py](scripts/06_cassie.py) | [Notebook](notebooks/06_cassie.ipynb) | Fig. 6 Cassie | Adult / MLP × 20 seeds |
 | [06_go1.py](scripts/06_go1.py) | [Notebook](notebooks/06_go1.ipynb) | Fig. 6 Go1 | Adult / MLP × 20 seeds |
 | [06_tripod.py](scripts/06_tripod.py) | [Notebook](notebooks/06_tripod.ipynb) | Fig. 6, S9 Tripod | Adult / MLP × 20 seeds |
@@ -183,7 +200,7 @@ tests/                   Integrity and numerical regression checks
 docs/                    Protocol, coverage, validation and the manuscript overview image
 ```
 
-The [source index by figure](src/flycontrol/experiments/README.md) maps every main and supplementary figure to its implementation. S2 shares `fig4/`, S7–S8 share `fig5/`, and S9–S10 share `fig6/`; these figures reuse the same experiment cohorts.
+The [source index by figure](src/flycontrol/experiments/README.md) maps every main and supplementary figure to its implementation. S2 shares `fig4/`, S7–S8 share `fig5/`, and S9–S10 share `fig6/`. Within `fig5/`, S7 uses `ant-flat`, while S8 uses `maze`.
 
 The four body experiments share policy components, PPO training and orchestration through `engines/common/`. Their adapters retain different physics and control interfaces, including Tripod's matched feedback branch and Hexapod's CPG. Supplementary and developmental fly protocols retain separate engine versions because their observation scaling, anatomical partitions or recurrent updates differ. Some implementation duplication remains; see the [architecture notes](docs/architecture.md) for the boundaries and current tradeoffs.
 
@@ -193,4 +210,4 @@ The current code version is **0.1.0**, as declared in [pyproject.toml](pyproject
 
 ## License and external inputs
 
-See [LICENSE](LICENSE) and [third-party notices](THIRD_PARTY_NOTICES.md). Downloaded anatomy, geometry and the public third-party Ant teacher retain their upstream terms. The teacher is a required distillation input, not a FlyControl trained result. Optional future model releases can be hosted separately on Hugging Face; no Hugging Face account or downloaded FlyControl checkpoint is required here.
+See [LICENSE](LICENSE) and [third-party notices](THIRD_PARTY_NOTICES.md). Downloaded anatomy, geometry and the public third-party Ant teacher retain their upstream terms. The teacher is required for maze distillation, not for `ant-flat`, and is not a FlyControl trained result. Optional future model releases can be hosted separately on Hugging Face; no Hugging Face account or downloaded FlyControl checkpoint is required here.

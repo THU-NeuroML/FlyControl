@@ -127,7 +127,8 @@ def checkpoint(root, spec, method, seed):
         cfg = read_json(root / f"configs/figure4/experiments/{method}_seed{seed}.json")
         return root / f"training/{method}_seed{seed}/continuation/policy_{cfg['continuation_ppo']['total_timesteps']:08d}.pt"
     if family == "ant":
-        return root / f"training/{method}_seed{seed}/large/best_checkpoint.pt"
+        stage = "flat" if spec["experiment"] == "ant-flat" else "large"
+        return root / f"training/{method}_seed{seed}/{stage}/best_checkpoint.pt"
     raise ValueError(family)
 
 

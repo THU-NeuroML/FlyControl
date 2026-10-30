@@ -22,6 +22,9 @@ def plot(root, spec):
         from flycontrol.plotting.paper import plot
         return plot(root,spec)
     if spec["family"] == "ant":
+        if spec["experiment"] == "ant-flat":
+            from flycontrol.experiments.fig5.flat_analysis import plot
+            return plot(root, spec)
         from flycontrol.experiments.fig5.analysis import plot
         plot(root, spec)
         from flycontrol.plotting.paper import plot as panels

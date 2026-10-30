@@ -8,7 +8,8 @@ Start with the figure below, then follow its fixed preset through `prepare → t
 | 2 | [`fig2/`](fig2/) | Terrain workflow; behavior, ER controls, state sensitivity, circuit blockade and input-gain assays | `terrain` |
 | 3 | [`fig3/`](fig3/) | Turning anatomy and workflow; registered push cohort; neural histories, activity, AN–DN interventions and gain assays | `turning` |
 | 4; S2 | [`fig4/`](fig4/) | Speed analysis, target holds, local response, signed responses and neural associations | `speed` |
-| 5; S7–S8 | [`fig5/`](fig5/) | Ant prerequisites, training and evaluation (`workflow.py`); maze/friction statistics and plots (`analysis.py`) | `maze` |
+| 5b–d; S7 | [`fig5/`](fig5/) | Matched flat-ground training (`flat_workflow.py`); archived/fresh analysis and plots (`flat_analysis.py`) | `ant-flat` |
+| 5e–j; S8 | [`fig5/`](fig5/) | Original maze prerequisites, training and evaluation (`workflow.py`); maze statistics and plots (`analysis.py`) | `maze` |
 | 6; S9–S10 | [`fig6/`](fig6/) | Body training/evaluation, condition and time-window analyses, joint four-body comparison | `cassie`, `go1`, `tripod`, `hexapod` |
 | S1 | [`supp_s1/`](supp_s1/) | Independent terrain cohort, state-sensitivity and activity-scaled sensitivity analyses | `terrain-sensitivity` |
 | S3 | [`supp_s3/`](supp_s3/) | Adult/larva terrain and turning workflows; shared 22-comparison statistical family | `development-terrain`, `development-turning` |
@@ -16,7 +17,7 @@ Start with the figure below, then follow its fixed preset through `prepare → t
 | S5 | [`supp_s5/`](supp_s5/) | BANC readout sensitivity, initial/final parameter hybrids and aggregation | `banc-sensitivity` |
 | S6 | [`supp_s6/`](supp_s6/) | BANC regional anatomy, same-state branching, stable replay, neural probing and recovery statistics | `banc-recovery` |
 
-S2 extends the Figure 4 speed analysis. S7 (friction) and S8 (Large maze) use the Figure 5 policies. S9 (Tripod) and S10 (Hexapod) use the Figure 6 body runs. Their implementation is in the indicated main-figure directory: they do not require duplicate packages or new training cohorts.
+S2 extends the Figure 4 speed analysis. S7 (friction) uses the updated `ant-flat` policies; S8 (Large maze) retains the original `maze` policies. S9 (Tripod) and S10 (Hexapod) use the Figure 6 body runs. Their implementation is in the indicated main-figure directory: they do not require duplicate packages or new training cohorts.
 
 [`shared/`](shared/) contains the common supplemental workflow dispatcher, paths, perturbation/statistical utilities and speed evaluation used by S4 and S5. S3, S4, S5 and S6 use the same supplemental trainer through `shared/workflow.py`; their specific assays and statistical families remain in their figure directories.
 

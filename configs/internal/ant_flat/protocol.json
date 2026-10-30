@@ -1,0 +1,33 @@
+{
+  "episodes": 100,
+  "flat_reset_seed": 9010000,
+  "frictions": [
+    0.5,
+    0.75,
+    1.25,
+    1.5
+  ],
+  "friction_episodes": 25,
+  "friction_reset_seed": 9030000,
+  "action_scale": 0.9,
+  "horizon_steps": 1000,
+  "dt": 0.05,
+  "bootstrap_resamples": 50000,
+  "bootstrap_seed": 20261030,
+  "expected_actor_parameters": {
+    "connectome": {
+      "base": 1989016,
+      "flat": 2064040
+    },
+    "mlp": {
+      "base": 2057362,
+      "flat": 2062874
+    }
+  },
+  "actual_training_steps": {
+    "base": 2998272,
+    "flat": 198656
+  },
+  "comparison_family": "26 frozen original hypotheses plus 3 new capacity-control endpoints; Holm 29 for new endpoints",
+  "s7_inference": "Descriptive; pointwise paired-seed bootstrap intervals, no tests"
+}

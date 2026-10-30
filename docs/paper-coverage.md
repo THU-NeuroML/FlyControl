@@ -33,7 +33,7 @@ Reference: author-confirmed **Fly_Locomotion (13).pdf**. The PDF and research ar
 
 ## Interpretation and completion
 
-This release connects the numerical workflows. Full-budget cohorts have **not** all been rerun: [validation](validation.md) states exactly what was executed. Do not describe smoke plots as replicated manuscript results. The editable panels are deliberately separate files; the manuscript's artistic layout and original selected video montages are not copied into the source tree.
+This release connects the numerical workflows. Full-budget cohorts have **not** all been rerun: [validation](validation.md) states exactly what was executed. Do not describe smoke plots as replicated manuscript results. The editable panels are deliberately separate files. The manuscript's artistic layout and original selected video montages are not copied into the source tree.
 
 Fixed-input neural effects measure policy response under specified recorded histories. They are distinct from closed-loop behavioral interventions. ER coordinates carry no biological cell identity. Initial zero readouts do not have a defined relative enrichment. BANC summaries remain descriptive; no episode-level significance tests or additive causal percentages are implied. Failure-adjusted heading error includes an explicit π penalty after termination; measured survivor-only heading is separately labelled and counted.
 

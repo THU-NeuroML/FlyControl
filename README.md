@@ -53,9 +53,9 @@ This repository provides **from-scratch training, evaluation, neural analysis an
 prepare → train → evaluate → probe → analyze → plot
 ```
 
-Code, fixed configurations, notebooks and documentation live here. Public anatomical inputs and simulator assets are downloaded with version and checksum checks. Policies are trained within each run; checkpoints and videos stay outside Git. The Ant capacity-control source observations are included for independent statistical verification. Notebooks retain tables and figure previews from real executions. The overview image above is a documentation asset from the manuscript.
+Code, fixed configurations, notebooks and documentation live here. Public anatomical inputs and simulator assets are downloaded with version and checksum checks. Policies are trained within each run. Checkpoints and videos stay outside Git. The Ant capacity-control source observations are included for independent statistical verification. Notebooks retain tables and figure previews from real executions. The overview image above is a documentation asset from the manuscript.
 
-**Reproduction status.** Short-run and component checks are documented in [Validation](docs/validation.md); full-budget scientific replication has not yet been completed for this code version. [Paper coverage](docs/paper-coverage.md) maps each manuscript result to its workflow and outputs.
+**Reproduction status.** Short-run and component checks are documented in [Validation](docs/validation.md). Full-budget scientific replication has not yet been completed for this code version. [Paper coverage](docs/paper-coverage.md) maps each manuscript result to its workflow and outputs.
 
 ## Install
 

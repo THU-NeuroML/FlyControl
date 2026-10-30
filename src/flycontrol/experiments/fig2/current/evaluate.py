@@ -5,16 +5,16 @@ The in-place restore leaves dm_control bindings valid. No body translation,
 resampling, checkpoint update, or phase exclusion is allowed.
 """
 
-from .steady_state import *
+from flycontrol.experiments.fig2.current.steady_state import *
 import argparse, copy, ctypes, time, traceback, multiprocessing as mp
 from concurrent.futures import ProcessPoolExecutor, as_completed
 from collections import OrderedDict
 import mujoco, torch
-from .steady_task import SteadyObstacleTask
+from flycontrol.experiments.fig2.current.steady_task import SteadyObstacleTask
 from terrain_control.policy import build_policy
 from fly_control.ppo import ObservationRunningMeanStd
 
-from fig6.paths import ROOT as REPO
+from flycontrol.experiments.shared.paths import ROOT as REPO
 
 BASE = REPO / "data/figure2"
 HEIGHTS = [0.0, 0.2, 0.3, 0.45, 0.525]

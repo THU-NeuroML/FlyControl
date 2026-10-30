@@ -18,8 +18,8 @@ import sys, json, time, subprocess, concurrent.futures
 import numpy as np
 import pandas as pd
 import torch
-from .paths import DATA, OUTPUT as ROOT
-from .probe import Probe, sha
+from flycontrol.experiments.fig2.current.paths import DATA, OUTPUT as ROOT
+from flycontrol.experiments.fig2.current.probe import Probe, sha
 
 HORIZONS = [1, 4, 8, 16, 32]
 ANN = pd.read_csv(DATA / "anatomy/current_graph_annotations.csv")

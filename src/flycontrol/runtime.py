@@ -7,13 +7,13 @@ import os
 import subprocess
 import sys
 
-from .paths import PACKAGE, ENGINES, EXPERIMENTS, read_json
+from flycontrol.paths import PACKAGE, ENGINES, read_json
 
 
 def environment(root, *engines):
     root = Path(root).resolve()
     env = os.environ.copy()
-    paths = [PACKAGE.parent, EXPERIMENTS] + [ENGINES / name for name in engines]
+    paths = [PACKAGE.parent] + [ENGINES / name for name in engines]
     env.update(
         FLYCONTROL_RUN=str(root),
         PYTHONPATH=os.pathsep.join(map(str, paths)),

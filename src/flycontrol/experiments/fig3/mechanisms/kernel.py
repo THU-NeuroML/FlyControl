@@ -4,7 +4,7 @@ import gc
 import numpy as np
 import torch
 from scipy import sparse
-from fig3.paths import DATA, MECHANISMS, checkpoint as cp_path
+from flycontrol.experiments.fig3.paths import DATA, MECHANISMS, checkpoint as cp_path
 from turning_control.policy import build_policy
 
 S, I, D = 18756, 118538, 1290

@@ -14,8 +14,8 @@ import sys, json, time, subprocess, concurrent.futures
 import numpy as np
 import pandas as pd
 import torch
-from .paths import DATA, OUTPUT as R
-from .probe import Probe, sha
+from flycontrol.experiments.fig2.current.paths import DATA, OUTPUT as R
+from flycontrol.experiments.fig2.current.probe import Probe, sha
 
 ANN = pd.read_csv(DATA / "anatomy/current_graph_annotations.csv")
 CLASSES = [
@@ -239,7 +239,7 @@ def run(seed):
 def launch(seed):
     with (R / "logs" / f"circuit_{seed}.log").open("w") as f:
         r = subprocess.run(
-            [sys.executable, "-m", "fig2.current.circuit_probe", str(seed)],
+            [sys.executable, "-m", 'flycontrol.experiments.fig2.current.circuit_probe', str(seed)],
             stdout=f,
             stderr=subprocess.STDOUT,
         )

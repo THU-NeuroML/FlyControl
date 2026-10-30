@@ -21,12 +21,12 @@ import numpy as np
 import pandas as pd
 import torch
 
-from fig6.paths import ROOT
-from fig3.paths import DATA, MECHANISMS, BANK, checkpoint as cp_path
-from fig3.runtime import activate
+from flycontrol.experiments.shared.paths import ROOT
+from flycontrol.experiments.fig3.paths import DATA, MECHANISMS, BANK, checkpoint as cp_path
+from flycontrol.experiments.fig3.runtime import activate
 
 activate()
-from .kernel import Kernel, read_state, STARTS, NAMES, S, N, D
+from flycontrol.experiments.fig3.mechanisms.kernel import Kernel, read_state, STARTS, NAMES, S, N, D
 
 O = MECHANISMS / "interface"
 B = MECHANISMS / "anatomy"

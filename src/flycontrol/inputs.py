@@ -8,7 +8,7 @@ import shutil
 import urllib.request
 import time
 
-from .paths import CONFIGS, ENGINES, read_json, write_json, sha256
+from flycontrol.paths import CONFIGS, ENGINES, read_json, write_json, sha256
 
 
 def fetch(record, destination):
@@ -48,7 +48,7 @@ def download(records, root):
 
 def build_graph(root, name):
     import numpy as np
-    from .connectomes.adult import load_adult
+    from flycontrol.connectomes.adult import load_adult
 
     cfg = read_json(CONFIGS / "inputs" / f"{name}.json")
     output = root / "inputs/graph.npz"

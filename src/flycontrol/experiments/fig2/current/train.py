@@ -1,8 +1,8 @@
 """Current 20-pair Adult/MLP/ER training; frozen numerical engine."""
 
-from .paths import DATA
-from fig6.paths import ROOT as REPO
-from fig2.runtime import activate
+from flycontrol.experiments.fig2.current.paths import DATA
+from flycontrol.experiments.shared.paths import ROOT as REPO
+from flycontrol.experiments.fig2.runtime import activate
 
 activate()
 from terrain_control.context import ROOT, CONFIG, write_json, configure_process, sha

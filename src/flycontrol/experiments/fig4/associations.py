@@ -5,8 +5,8 @@ import numpy as np
 import pandas as pd
 import torch
 from scipy.stats import rankdata
-from fig6.paths import ROOT, read_json, sha256
-from .statistics import holm
+from flycontrol.experiments.shared.paths import ROOT, read_json, sha256
+from flycontrol.experiments.fig4.statistics import holm
 
 DATA = ROOT / "data/figure4"
 SEEDS = read_json(ROOT / "run.json")["seeds"]
@@ -14,7 +14,7 @@ METHODS = ["connectome", "mlp"]
 
 
 def analyze(output):
-    from .mechanisms.study import checkpoint
+    from flycontrol.experiments.fig4.mechanisms.study import checkpoint
     from body_control.policy import build_policy
 
     records = []

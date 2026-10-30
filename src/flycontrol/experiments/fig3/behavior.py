@@ -4,8 +4,8 @@ import json, hashlib, itertools
 import numpy as np
 import pandas as pd
 from scipy.stats import t as student_t
-from fig6.paths import ROOT
-from .paths import DATA
+from flycontrol.experiments.shared.paths import ROOT
+from flycontrol.experiments.fig3.paths import DATA
 
 METHODS = ["connectome", "mlp", "er"]
 SECONDARY = {

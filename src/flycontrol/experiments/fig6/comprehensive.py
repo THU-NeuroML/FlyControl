@@ -16,9 +16,9 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from fig4.statistics import holm
-from locomotion.statistics import signflip
-from .paths import ROOT, read_json, write_json, sha256
+from flycontrol.experiments.fig4.statistics import holm
+from flycontrol.experiments.shared.statistics import signflip
+from flycontrol.experiments.shared.paths import ROOT, read_json, write_json, sha256
 
 KEY = ["body", "condition", "training_seed", "evaluation_seed"]
 GROUP = ["body", "condition", "training_seed"]

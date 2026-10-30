@@ -4,7 +4,7 @@ The environment alone squashes raw Gaussian actions. No teacher or trained
 policy supplies the CPG. Force values use the original FlyGym model units.
 """
 
-from .common import DATA, PROTOCOL, REPO, ROOT
+from flycontrol.experiments.fig3.registered.common import DATA, PROTOCOL, REPO, ROOT
 import copy, hashlib, json
 from collections import deque
 import numpy as np

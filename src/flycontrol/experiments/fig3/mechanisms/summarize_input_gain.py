@@ -7,7 +7,7 @@ for k in ["OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS", "MKL_NUM_THREADS"]:
 from pathlib import Path
 import json, hashlib
 import numpy as np, pandas as pd
-from fig6.paths import ROOT
+from flycontrol.experiments.shared.paths import ROOT
 
 O = ROOT / "data/figure3/mechanisms/input_gain"
 OUT = (

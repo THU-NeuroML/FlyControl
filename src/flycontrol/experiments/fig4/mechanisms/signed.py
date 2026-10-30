@@ -6,17 +6,7 @@ import numpy as np
 import pandas as pd
 import torch
 from scipy import sparse
-from .study import (
-    O,
-    ANATOMY,
-    METHODS,
-    CASES,
-    checkpoint,
-    baseline_path,
-    evaluation_path,
-    sha,
-    write_json,
-)
+from flycontrol.experiments.fig4.mechanisms.study import O, ANATOMY, METHODS, CASES, checkpoint, baseline_path, evaluation_path, sha, write_json
 
 S, I, D = 18756, 118538, 1290
 N = S + I + D
@@ -26,8 +16,8 @@ PHASES = [
     "acceleration_early",
     "acceleration_middle",
 ]
-from .neurons import Kernel, csr
-from .study import event_path
+from flycontrol.experiments.fig4.mechanisms.neurons import Kernel, csr
+from flycontrol.experiments.fig4.mechanisms.study import event_path
 
 
 @torch.no_grad()

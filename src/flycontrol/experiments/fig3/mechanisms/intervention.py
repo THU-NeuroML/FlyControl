@@ -5,8 +5,8 @@ import json, time, hashlib
 import numpy as np
 import pandas as pd
 import torch
-from fig6.paths import sha256 as sha
-from fig3.paths import DATA, MECHANISMS, checkpoint as cp_path
+from flycontrol.experiments.shared.paths import sha256 as sha
+from flycontrol.experiments.fig3.paths import DATA, MECHANISMS, checkpoint as cp_path
 from turning_control.policy import build_policy
 
 S, I, D = 18756, 118538, 1290

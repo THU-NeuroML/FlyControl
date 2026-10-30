@@ -8,10 +8,10 @@ from pathlib import Path
 import sys, json
 import numpy as np
 import pandas as pd
-from .paths import DATA, OUTPUT as R
+from flycontrol.experiments.fig2.current.paths import DATA, OUTPUT as R
 
 S = R / "source_data"
-from .behavior import exact_sign_flip, holm
+from flycontrol.experiments.fig2.current.behavior import exact_sign_flip, holm
 
 
 def main():

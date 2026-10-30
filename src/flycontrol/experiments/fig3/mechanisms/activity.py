@@ -6,8 +6,8 @@ import numpy as np
 import pandas as pd
 import torch
 from scipy import sparse
-from fig6.paths import sha256 as sha
-from fig3.paths import MECHANISMS, checkpoint as cp_path, generated_path
+from flycontrol.experiments.shared.paths import sha256 as sha
+from flycontrol.experiments.fig3.paths import MECHANISMS, checkpoint as cp_path, generated_path
 
 S, I, D = 18756, 118538, 1290
 N = S + I + D
@@ -17,7 +17,7 @@ NAMES = [
     for m in ["connectome", "mlp"]
     for a in [-90, -60, -30, 30, 60, 90]
 ]
-from .kernel import Kernel
+from flycontrol.experiments.fig3.mechanisms.kernel import Kernel
 
 PHASES = [790000, 790101, 790102]
 ANGLES = [-60, 0, 60]

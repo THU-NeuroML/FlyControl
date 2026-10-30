@@ -4,15 +4,15 @@ Task-specific orchestration only; optimizer/replay semantics are inherited
 from its frozen PPO, with the same full-rollout KL adaptive actor schedule.
 """
 
-from .common import DATA, PROTOCOL, REPO, ROOT, write_json, configure_process, sha
+from flycontrol.experiments.fig3.registered.common import DATA, PROTOCOL, REPO, ROOT, write_json, configure_process, sha
 import argparse, json, time, hashlib, traceback
 from functools import partial
 import numpy as np
 import torch
-from .task import make_env, OBS_DIM, ACTION_DIM
+from flycontrol.experiments.fig3.registered.task import make_env, OBS_DIM, ACTION_DIM
 from fly_control.ppo import PPOConfig, RecurrentPPO
 from fly_control.vector_env import SubprocVecEnv
-from .policy_adapter import build_policy, graph_path
+from flycontrol.experiments.fig3.registered.policy_adapter import build_policy, graph_path
 
 
 def tensor_hash(items):

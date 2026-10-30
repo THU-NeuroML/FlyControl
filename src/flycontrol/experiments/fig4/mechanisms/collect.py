@@ -5,16 +5,7 @@ import time
 import numpy as np
 import torch
 from body_control.task import ContinuousSpeedTask
-from .study import (
-    O,
-    CASES,
-    checkpoint,
-    load_policy,
-    name_case,
-    evaluation_path,
-    sha,
-    write_json,
-)
+from flycontrol.experiments.fig4.mechanisms.study import O, CASES, checkpoint, load_policy, name_case, evaluation_path, sha, write_json
 
 
 @torch.inference_mode()

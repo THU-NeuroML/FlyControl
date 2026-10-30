@@ -2,6 +2,8 @@
 
 Each notebook includes **saved outputs from a real short test**: stage completion times, numerical tables and generated figures. Open a notebook on GitHub to inspect these results directly. The embedded previews are labelled **SMOKE TEST** and do not establish the paper's conclusions.
 
+The saved executions were published in [commit `2bf8f5f`](https://github.com/THU-NeuroML/FlyControl/commit/2bf8f5fee28156f518f5f7595bb84308a66da49f), before the source directories were reorganized by figure. Their original outputs and source checksums are preserved. The current notebooks call the same public CLI; use a fresh `RUN_DIR` if you have results from an earlier code revision. Validation of the reorganized code is recorded [separately](../docs/validation.md).
+
 To regenerate the outputs, run the notebook through **prepare → train → evaluate → probe → analyze → plot** with the existing `--smoke` configuration. Use the matching numbered script for full reproduction.
 
 From the repository root, activate the environment and install the optional notebook tools:

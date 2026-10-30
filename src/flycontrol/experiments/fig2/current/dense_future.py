@@ -15,8 +15,8 @@ import sys, json, time, gc
 import numpy as np
 import pandas as pd
 import torch
-from .paths import DATA, OUTPUT as R
-from .probe import Probe, sha
+from flycontrol.experiments.fig2.current.paths import DATA, OUTPUT as R
+from flycontrol.experiments.fig2.current.probe import Probe, sha
 
 D = torch.device(os.environ.get("FLYCONTROL_DEVICE", "cpu"))
 torch.backends.cuda.matmul.allow_tf32 = False

@@ -4,7 +4,7 @@ import json
 import numpy as np
 import pandas as pd
 from scipy.stats import t
-from fig6.paths import sha256 as sha
+from flycontrol.experiments.shared.paths import sha256 as sha
 
 ORDER = [
     "mechanosensory",

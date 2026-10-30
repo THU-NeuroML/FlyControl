@@ -1,17 +1,13 @@
-import importlib.util
 from itertools import product
 
 import numpy as np
 import pytest
 
-from flycontrol.paths import CONFIGS, EXPERIMENTS, read_json
+from flycontrol.paths import CONFIGS, read_json
 
 
 def load_body_analysis(monkeypatch):
-    monkeypatch.syspath_prepend(str(EXPERIMENTS))
-    spec = importlib.util.spec_from_file_location('body_primary_statistics',EXPERIMENTS/'fig6/analysis.py')
-    module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
+    from flycontrol.experiments.fig6 import analysis as module
     return module
 
 

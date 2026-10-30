@@ -4,7 +4,7 @@ import json
 import numpy as np
 import pytest
 from flycontrol import pipeline
-from flycontrol.paths import CONFIGS,read_json,write_json,sha256
+from flycontrol.paths import CONFIGS, read_json, write_json, sha256
 from flycontrol.mechanisms import terrain_history_phases
 
 
@@ -45,7 +45,7 @@ def test_video_recipes_cover_caption_numbering():
 
 def test_turning_family_keeps_undisplayed_modes_and_rejects_missing_states(tmp_path):
     import pandas as pd
-    from flycontrol.mechanism_statistics import turning_intervention_comparisons
+    from flycontrol.analysis.mechanism_statistics import turning_intervention_comparisons
     modes=['intact','AN_off','AN_half','AN_restore','matched_off','mech_off',
            'ocellar_off','AN_DN_cut','AN_I_cut','AN_DN_matchcut','steering_off']
     rows=[]

@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-from .paths import DATA, OUTPUT
+from flycontrol.experiments.fig2.current.paths import DATA, OUTPUT
 
 BOOT = np.random.default_rng(2026102101).integers(0, 20, (20000, 20))
 

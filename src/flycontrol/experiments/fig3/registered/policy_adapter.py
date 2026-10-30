@@ -1,6 +1,6 @@
 """Original graph-only ER control with the exact four-substep actor."""
 
-from .common import DATA
+from flycontrol.experiments.fig3.registered.common import DATA
 from fly_control.policy import build_policy as build_shared
 import torch
 

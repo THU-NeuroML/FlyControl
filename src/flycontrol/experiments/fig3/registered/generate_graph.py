@@ -3,8 +3,8 @@
 import argparse
 from pathlib import Path
 import numpy as np
-from .common import DATA
-from .graph_null import ConnectomeData, size_density_random
+from flycontrol.experiments.fig3.registered.common import DATA
+from flycontrol.experiments.fig3.registered.graph_null import ConnectomeData, size_density_random
 
 
 def generate(seed, output):

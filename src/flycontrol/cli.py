@@ -3,9 +3,9 @@
 import argparse
 from pathlib import Path
 
-from .paths import CONFIGS, read_json
-from .pipeline import STAGES, initialize, execute
-from .runtime import run_lock
+from flycontrol.paths import CONFIGS, read_json
+from flycontrol.pipeline import STAGES, initialize, execute
+from flycontrol.runtime import run_lock
 
 
 def main(argv=None):
@@ -43,20 +43,20 @@ def main(argv=None):
             print(f"{spec['experiment']:12} {spec['paper']:20} {len(spec['seeds'])} seeds × {len(spec['methods'])} methods")
         return
     if args.command == "combine-bodies":
-        from .bodies import combine
+        from flycontrol.experiments.fig6.comparison import combine
         with run_lock(args.output):
             combine(args.run_dirs, args.output)
         return
     if args.command == "combine-development":
-        from .supplemental_analysis import combine_development
+        from flycontrol.experiments.supp_s3.analysis import combine_development
         with run_lock(args.output):combine_development(args.terrain.resolve(),args.turning.resolve(),args.output.resolve())
         return
     if args.command == "replay":
-        from .media import render
+        from flycontrol.plotting.media import render
         with run_lock(args.run_dir):render(args.run_dir.resolve(),args.video,args.output.resolve())
         return
     if args.command == "materials":
-        from .materials import export
+        from flycontrol.experiments.fig1.materials import export
         export(args.output);return
     if args.workers < 1:
         parser.error("--workers must be positive")

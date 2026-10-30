@@ -12,8 +12,8 @@ for k in [
     os.environ[k] = "1"
 os.environ["CUDA_VISIBLE_DEVICES"] = ""
 os.environ.setdefault("MUJOCO_GL", "egl")
-from .paths import DATA, OUTPUT as ROOT
-from fig2.runtime import activate
+from flycontrol.experiments.fig2.current.paths import DATA, OUTPUT as ROOT
+from flycontrol.experiments.fig2.runtime import activate
 
 activate()
 from terrain_control import task

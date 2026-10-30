@@ -5,11 +5,11 @@ import os, sys, json, time, types
 
 for k in ["OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS", "MKL_NUM_THREADS"]:
     os.environ[k] = "1"
-from .paths import DATA, OUTPUT as R
-from . import probe as f
+from flycontrol.experiments.fig2.current.paths import DATA, OUTPUT as R
+from flycontrol.experiments.fig2.current import probe as f
 import torch, numpy as np, pandas as pd
 from terrain_control.policy import build_policy, FixedRateCore
-from fig6.paths import ROOT as REPO
+from flycontrol.experiments.shared.paths import ROOT as REPO
 
 ANN = pd.read_csv(DATA / "anatomy/current_graph_annotations.csv")
 GROUPS = {

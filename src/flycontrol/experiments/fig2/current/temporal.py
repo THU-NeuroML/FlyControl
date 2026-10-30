@@ -1,7 +1,7 @@
 import json
 import numpy as np
 import pandas as pd
-from .paths import DATA, OUTPUT as R
+from flycontrol.experiments.fig2.current.paths import DATA, OUTPUT as R
 
 S = R / "source_data"
 Q = R / "qa"

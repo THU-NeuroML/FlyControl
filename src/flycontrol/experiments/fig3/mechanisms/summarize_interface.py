@@ -7,7 +7,7 @@ import numpy as np
 import pandas as pd
 from scipy.stats import t
 
-from fig6.paths import ROOT
+from flycontrol.experiments.shared.paths import ROOT
 
 O = ROOT / "data/figure3/mechanisms/interface"
 S = ROOT / "build/figure3_analysis/interface"

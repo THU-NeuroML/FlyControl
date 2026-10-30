@@ -3,7 +3,7 @@
 from pathlib import Path
 import argparse, hashlib, json
 import numpy as np
-from .paths import DATA
+from flycontrol.experiments.fig2.current.paths import DATA
 
 
 def generate(seed, output):

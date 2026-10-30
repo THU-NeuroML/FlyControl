@@ -4,7 +4,7 @@ import csv
 import math
 from collections import defaultdict
 import numpy as np
-from fig4.statistics import signflip, holm
+from flycontrol.experiments.fig4.statistics import signflip, holm
 
 
 def summarize_condition_means(cells, config):

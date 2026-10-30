@@ -1,13 +1,9 @@
 """Common-history local input responses and actor-parameter sensitivity."""
 
-from .study import *
+from flycontrol.experiments.fig4.mechanisms.study import *
 import numpy as np, json, time
 import argparse, time, pandas as pd
-from locomotion.perturbation import (
-    actor_filter_relative_direction,
-    multiply_perturbed_actor,
-    policy_mean_on_windows,
-)
+from flycontrol.experiments.shared.perturbation import actor_filter_relative_direction, multiply_perturbed_actor, policy_mean_on_windows
 
 STARTS = [25, 75, 125, 175, 225, 275]
 BLOCKS = dict(

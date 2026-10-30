@@ -37,7 +37,7 @@ Full runs are substantial experiments. Wall time depends on CPU workers, the acc
 
 ## Ant dependencies
 
-The complete chain is explicit in `src/flycontrol/ant.py` and `configs/internal/maze/`:
+The complete chain is explicit in [`experiments/fig5/workflow.py`](../src/flycontrol/experiments/fig5/workflow.py) and `configs/internal/maze/`:
 
 1. Train the shared Adult and MLP prerequisite policies through their five registered stages.
 2. Train each architecture's base → flat → U-Maze chain.

@@ -9,8 +9,8 @@ import importlib.metadata
 import platform
 import sys
 
-from .paths import CONFIGS, ENGINES, read_json, write_json, sha256, source_digest, configuration_manifest
-from .runtime import worker
+from flycontrol.paths import CONFIGS, ENGINES, read_json, write_json, sha256, source_digest, configuration_manifest
+from flycontrol.runtime import worker
 
 STAGES = ("prepare", "train", "evaluate", "probe", "analyze", "plot")
 BODIES = ("cassie", "tripod", "go1", "hexapod")
@@ -42,8 +42,8 @@ def initialize(root, config, smoke=False, methods=None, seeds=None):
         raise ValueError("Incomplete initialization: choose a fresh --run-dir")
     root.mkdir(parents=True, exist_ok=True)
     shutil.copytree(CONFIGS / "internal", root / "configs")
-    # Internal modules retain their figure-specific names to keep numerical
-    # changes small. All paths still resolve inside this new run.
+    # Keep numerical engines isolated while all generated paths resolve
+    # inside this new run.
     (root / "engines").symlink_to(ENGINES, target_is_directory=True)
     protocol_path = root / "configs" / spec["protocol"]
     protocol = read_json(protocol_path)
@@ -133,14 +133,14 @@ def checkpoint(root, spec, method, seed):
 
 def prepare(root, spec):
     if spec["family"]=="development_terrain":
-        from .development_terrain import prepare
+        from flycontrol.experiments.supp_s3.terrain import prepare
         return prepare(root,spec)
     if spec["family"] == "supplemental":
-        from .supplemental import prepare as run
+        from flycontrol.experiments.shared.workflow import prepare as run
         return run(root, spec)
-    from .inputs import prepare as prepare_inputs
+    from flycontrol.inputs import prepare as prepare_inputs
     prepare_inputs(root, spec)
-    from .mechanisms import prepare as prepare_mechanisms
+    from flycontrol.mechanisms import prepare as prepare_mechanisms
     prepare_mechanisms(root, spec)
     if spec["family"] == "body":
         dest = root / "training/inputs"
@@ -150,13 +150,13 @@ def prepare(root, spec):
 
 def train(root, spec, device):
     if spec["family"]=="development_terrain":
-        from .development_terrain import train
+        from flycontrol.experiments.supp_s3.terrain import train
         return train(root,spec,device)
     if spec["family"] == "supplemental":
-        from .supplemental import train as run
+        from flycontrol.experiments.shared.workflow import train as run
         return run(root, spec, device)
     if spec["family"] == "historical":
-        from .historical import train
+        from flycontrol.experiments.supp_s1.workflow import train
         return train(root,spec,device)
     records_path = root / "training/models.json"
     records = read_json(records_path) if records_path.exists() else []
@@ -177,19 +177,19 @@ def train(root, spec, device):
             write_json(records_path, records)
 
     if spec.get("registered_push"):
-        from .turning_mechanisms import registered_train
+        from flycontrol.experiments.fig3.workflow import registered_train
         registered_train(root, spec, device)
 
 
 def evaluate(root, spec, workers):
     if spec["family"]=="development_terrain":
-        from .development_terrain import worker as development_worker
+        from flycontrol.experiments.supp_s3.terrain import worker as development_worker
         return development_worker(root,"evaluate")
     if spec["family"] == "supplemental":
-        from .supplemental import evaluate as run
+        from flycontrol.experiments.shared.workflow import evaluate as run
         return run(root, spec, workers)
     if spec["family"] == "historical":
-        from .historical import worker as historical_worker
+        from flycontrol.experiments.supp_s1.workflow import worker as historical_worker
         return historical_worker(root,"evaluate")
     records = read_json(root / "training/models.json")
     expected = {(m, s) for m in spec["methods"] for s in spec["seeds"]}
@@ -209,7 +209,7 @@ def evaluate(root, spec, workers):
         worker(root, family, "evaluate", row["method"], row["seed"], workers)
 
     if spec.get("registered_push"):
-        from .turning_mechanisms import registered_evaluate
+        from flycontrol.experiments.fig3.workflow import registered_evaluate
         registered_evaluate(root, spec, workers)
 
 
@@ -227,13 +227,13 @@ def execute(root, stage, *, device="cpu", workers=1):
     elif stage == "evaluate":
         evaluate(root, spec, workers)
     elif stage == "probe":
-        from .mechanisms import probe
+        from flycontrol.mechanisms import probe
         probe(root, spec, device)
     elif stage == "analyze":
-        from .analysis import analyze
+        from flycontrol.analysis import analyze
         analyze(root, spec)
     elif stage == "plot":
-        from .plotting import plot
+        from flycontrol.plotting import plot
         plot(root, spec)
     write_json(root / f"status/{stage}.json", dict(completed=time.time(), elapsed_s=time.time()-started,
         source_sha256=spec["source_sha256"], smoke=spec["smoke"]))

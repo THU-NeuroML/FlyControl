@@ -2,6 +2,16 @@
 
 The public reading path is **figure entry → fixed configuration → six-stage pipeline → task engine → generated analyses and figures**. Numbered scripts only select an experiment and call the CLI. Notebooks call the same CLI with `--smoke`, using the kernel's interpreter. Neither layer implements a second trainer or analysis method.
 
+## Source ownership
+
+[`experiments/`](../src/flycontrol/experiments/README.md) follows manuscript numbering: `fig1`–`fig6` for main figures and `supp_s1`, `supp_s3`–`supp_s6` for independent supplementary experiments. Figure 5's Ant training dependencies, evaluation and statistics live in `experiments/fig5/`. S3's developmental analyses and S6's regional analyses are stored with their respective experiments.
+
+Supplementary figures derived from a main cohort share its implementation: S2 → `fig4`, S7–S8 → `fig5`, S9–S10 → `fig6`. The source index links every figure and preset. `experiments/shared/` holds cross-figure workflow, run paths and numerical utilities; paths for Figures 2–4 no longer come from a Figure 6 module. `analysis/` handles common statistical dispatch, `plotting/` common rendering, and `connectomes/` anatomical inputs and annotations.
+
+All experiment imports use the `flycontrol.experiments` namespace. Subprocesses add the package source and selected engine roots to `PYTHONPATH`, without adding `experiments/` as a second import root. Public presets, numbered scripts, numerical configurations and engine implementations retain their existing interfaces.
+
+The saved notebook outputs record the source checksum that produced them. A source-layout change changes that checksum even when numerical functions are preserved. Use a fresh run directory to execute the reorganized code; the pipeline continues to reject mixed-version runs.
+
 ## Four body experiments
 
 The four bodies already share the graph-policy components, recurrent PPO base, training entry point and pipeline through `engines/common/fly_control/`. During preparation, common code and the selected body's adapter are copied into a run-local source snapshot and checksummed. Workers isolate the imports so one body's `body_control` module cannot leak into another experiment.

@@ -1,6 +1,6 @@
 """Fixed-budget CPU evaluation on paired, explicitly recorded initial states."""
 
-from .common import DATA, PROTOCOL, REPO, ROOT, write_json, configure_process, sha
+from flycontrol.experiments.fig3.registered.common import DATA, PROTOCOL, REPO, ROOT, write_json, configure_process, sha
 import os
 
 os.environ["CUDA_VISIBLE_DEVICES"] = ""
@@ -8,8 +8,8 @@ import argparse, json, multiprocessing as mp, time
 from concurrent.futures import ProcessPoolExecutor, as_completed
 import numpy as np
 import torch
-from .task import PushTurnTask, ANGLES, OBS_DIM, ACTION_DIM
-from .policy_adapter import build_policy, graph_path
+from flycontrol.experiments.fig3.registered.task import PushTurnTask, ANGLES, OBS_DIM, ACTION_DIM
+from flycontrol.experiments.fig3.registered.policy_adapter import build_policy, graph_path
 
 STATE = {}
 

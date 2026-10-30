@@ -1,6 +1,6 @@
 """Continuous flat run-in: move a non-contacting obstacle, never the body state."""
 
-from .steady_state import task, np, raw
+from flycontrol.experiments.fig2.current.steady_state import task, np, raw
 from terrain_control import physical_interface as physical
 from terrain_control.physics_cache import install
 import mujoco

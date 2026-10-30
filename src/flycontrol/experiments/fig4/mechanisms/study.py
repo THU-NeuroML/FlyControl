@@ -3,7 +3,7 @@
 from pathlib import Path
 import os
 import torch
-from fig6.paths import ROOT, read_json, sha256 as sha
+from flycontrol.experiments.shared.paths import ROOT, read_json, sha256 as sha
 from body_control.policy import build_policy
 from body_control.context import write_json
 

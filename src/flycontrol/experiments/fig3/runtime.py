@@ -2,7 +2,7 @@
 
 import os
 import sys
-from fig6.paths import ROOT
+from flycontrol.experiments.shared.paths import ROOT
 
 
 def activate():

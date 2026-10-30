@@ -3,8 +3,8 @@
 import argparse, time, json
 import numpy as np
 import pandas as pd
-from .paths import OUTPUT
-from .probe import Probe, BLOCKS
+from flycontrol.experiments.fig2.current.paths import OUTPUT
+from flycontrol.experiments.fig2.current.probe import Probe, BLOCKS
 
 
 def run(method, seed):

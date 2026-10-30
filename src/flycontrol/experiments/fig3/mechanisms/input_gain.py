@@ -15,9 +15,9 @@ import sys, json, time, argparse, types, hashlib
 import numpy as np
 import pandas as pd
 import torch
-from fig6.paths import ROOT
-from fig3.paths import DATA, BANK, checkpoint
-from fig3.runtime import activate
+from flycontrol.experiments.shared.paths import ROOT
+from flycontrol.experiments.fig3.paths import DATA, BANK, checkpoint
+from flycontrol.experiments.fig3.runtime import activate
 
 activate()
 from turning_control.policy import build_policy

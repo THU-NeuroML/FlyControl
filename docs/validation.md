@@ -6,12 +6,12 @@ Date: 2026-10-30. These checks validate software execution and numerical contrac
 
 | Check | Result |
 |---|---|
-| Automated integrity/numerical tests | 31 passed |
+| Automated integrity/numerical tests | 32 passed, including canonical figure imports in an isolated worker |
 | Public inputs | Checksum-verified FlyWire v783, BANC v626, larval matrix and simulator assets; rebuilt graph arrays match their fixed contracts, including the separate developmental Adult partition |
 | Packaged installation | Wheel built and installed into a separate directory; imports the new workflows and lists all 14 presets with bundled JSON/YAML configurations |
 | Public CLI | Fresh Adult + MLP Tripod policies, seed 861, 128 training steps each; all six stages completed |
 | Numbered entries and notebooks | All 14 presets have matching scripts/notebooks; notebook schemas, saved-output integrity, executable cell syntax, root/notebook-directory setup, six-stage order, preset mapping, full-command documentation and script help checked; Figure 1 materials entry executed |
-| Notebook execution | All 14 notebooks executed in Jupyter with fresh short-budget policies and every configured method retained: 112 code cells, 84 stages, 42 embedded PNG previews and numerical tables; no error outputs. Saved stage records match the current source/configuration checksum, and embedded images match generated files byte for byte |
+| Notebook execution | All 14 notebooks executed in Jupyter with fresh short-budget policies and every configured method retained: 112 code cells, 84 stages, 42 embedded PNG previews and numerical tables; no error outputs. Saved stage records match their recorded source/configuration checksum, and embedded images match generated files byte for byte |
 | Notebook distribution | Source archive includes all 14 notebooks, their common presentation helper and numbered scripts; compact notebook tables and PNG previews are retained; checkpoints, complete run data and logs are excluded; helper rejects full or mismatched runs before launching a subprocess |
 | Main terrain | Fresh Adult/MLP/ER policies, 128 decisions; a small physical grid, coarse/dense sensitivities, matched blockade, ER atlas, ten-axis screen, measured gain surfaces, analysis and plots completed |
 | Main speed and S2 | Fresh Adult/MLP base training and continuation to 128 decisions; both 12-second neural-history cases, local parameter perturbations, neuronal sensitivity, signed responses, target holds, analysis and plots completed |
@@ -42,9 +42,27 @@ Component checks use real simulator episodes and newly trained short-budget mode
 
 The saved notebooks were executed after the S1 preset rename to `terrain-sensitivity`, using source/configuration SHA-256 `eaab77b7c7f8b5c50e7015c4c1c15e9ce272e2e432760c88fcc2e24c7a48ea9f`. Seven notebooks used CPU settings and seven requested CUDA for training and neural probes; the physical simulations run on CPU. Public inputs were already cached and revalidated, while all policies were trained afresh. Stage durations and execution settings are preserved in each notebook. The figure-numbered notebooks and setup instructions are indexed [here](../notebooks/README.md).
 
-The output-presentation change does not modify the numerical engine or configurations. Earlier component records remain associated with their original source/configuration version. Choose a fresh run directory after code/configuration changes.
+The saved notebook outputs were published in [commit `2bf8f5f`](https://github.com/THU-NeuroML/FlyControl/commit/2bf8f5fee28156f518f5f7595bb84308a66da49f), before the source directories were reorganized by figure. Those outputs and their original checksums are retained unchanged. Earlier component records remain associated with their original source/configuration version. Choose a fresh run directory after code/configuration changes.
 
 The automated tests cover code/configuration changes, incomplete cohorts, concurrent writers, download corruption/path traversal, subprocess import isolation, checkpoint tampering, statistical units, exact sign-flip calculations, missing-endpoint multiplicity slots, complete intervention families, neural-history selection, seven-condition body aggregation, recurrent resets/gradients, frozen reservoirs, maze prerequisites and stage-policy construction.
+
+## Source organization validation
+
+The figure-based source reorganization was checked with 32 automated tests, including imports in an isolated worker that rejects unqualified experiment package names. A source comparison retained the computation in 330 functions/classes after excluding imports, module identifiers, docstrings and the removed short-import-root injection. The three changed dispatch functions were reviewed separately. All 280 canonical internal import declarations resolve to packaged modules. Numerical engine files and fixed configurations are byte-identical to the preceding release.
+
+Five fresh smoke workflows retained every configured method and completed the public six-stage pipeline:
+
+| Preset | Result | Elapsed time |
+|---|---|---|
+| `maze` | All six stages passed | 15.5 min |
+| `tripod` | All six stages passed | 1.4 min |
+| `development-turning` | All six stages passed | 18.7 min |
+| `banc-recovery` | All six stages passed | 19.1 min |
+| `terrain-sensitivity` | All six stages passed | 13.9 min |
+
+These runs used source/configuration SHA-256 `547db804fbbeb246b3e1b5462ab51101da6a6d516ef5b6a17fd340fceced9576`. The Figure 5 run includes all seven architectures and their prerequisite/base/flat/U-Maze/Medium/Large training stages. S1 includes its neural sensitivity assays, S3 both direction and angle tasks, and S6 regional branching and fixed-input neural probes. Inputs were cached and reverified; the policies were newly trained.
+
+After whitespace cleanup, the final source/configuration checksum is `b3f6a1932b01d9988c4434b0b5f4a3dba16efc37c6c51f932b2e44679eddded1`. All 32 tests passed again, and a fresh CPU Tripod run completed all six stages in 83.6 seconds. The final wheel was installed into a separate directory and imported with editable-install hooks disabled; its source checksum matches the repository, all 14 presets are present, and obsolete experiment package paths are absent. The 14 saved notebook files remain byte-identical to the preceding release.
 
 ## Limits
 

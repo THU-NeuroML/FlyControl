@@ -3,9 +3,8 @@ from pathlib import Path
 import os
 import subprocess
 import sys
-from .paths import read_json, write_json, sha256
-from .runtime import environment
-
+from flycontrol.paths import read_json, write_json, sha256
+from flycontrol.runtime import environment
 
 
 def terrain_history_phases(grid,study):
@@ -34,7 +33,7 @@ def run_job(root, family, assay, seed, method='connectome', device='cpu'):
 
 
 def prepare(root, spec):
-    from .anatomy import prepare as prepare_anatomy
+    from flycontrol.connectomes.anatomy import prepare as prepare_anatomy
     prepare_anatomy(root, spec)
     if spec['family'] == 'terrain' and 'er' in spec['methods']:
         for seed in spec['seeds']: run_job(root, 'terrain', 'terrain_graph', seed)
@@ -45,12 +44,12 @@ def prepare(root, spec):
 def probe(root, spec, device='cpu'):
     family = spec['family']
     if family=='historical':
-        from .historical import worker
+        from flycontrol.experiments.supp_s1.workflow import worker
         worker(root,'probe',device=device)
         write_json(root/'mechanisms/complete.json',dict(assays=spec['mechanisms'],smoke=spec['smoke']))
         return
     if family=='supplemental':
-        from .supplemental import worker
+        from flycontrol.experiments.shared.workflow import worker
         worker(root,'probe',device=device)
         write_json(root/'mechanisms/complete.json',dict(assays=spec.get('mechanisms',[]),smoke=spec['smoke']))
         return
@@ -80,38 +79,38 @@ def probe(root, spec, device='cpu'):
             for method in ('connectome','mlp'): run_job(root,family,'speed_local_response',seed,method,device)
             for assay in ('neurons','events','signed'): run_job(root,family,'speed_'+assay,seed,device=device)
     elif family == 'turning':
-        from .turning_mechanisms import probe as run_turning
+        from flycontrol.experiments.fig3.workflow import probe as run_turning
         run_turning(root,spec,device)
     write_json(root/'mechanisms/complete.json', dict(assays=spec['mechanisms'], smoke=spec['smoke'],
         checkpoints={r['checkpoint']:sha256(root/r['checkpoint']) for r in read_json(root/'training/models.json')}))
 
 
 def main():
-    from .paths import run_root
+    from flycontrol.paths import run_root
     assay, method, seed, device = sys.argv[1:]
     seed = int(seed)
     root = run_root()
     if assay == 'terrain_graph':
-        from fig2.current.er_graph import generate
+        from flycontrol.experiments.fig2.current.er_graph import generate
         generate(seed,root/'data/figure2/er_inputs')
     elif assay.startswith('terrain_'):
         from importlib import import_module
         names={'coarse':'future_sensitivity','dense':'dense_future','circuit':'circuit_probe','er':'er_probe','gain':'input_gain'}
         kind=assay.removeprefix('terrain_')
-        module=import_module('fig2.current.'+names[kind])
+        module=import_module('flycontrol.experiments.fig2.current.'+names[kind])
         if kind=='gain': module.run(method,seed)
         else: module.run(seed)
     elif assay.startswith('speed_'):
         kind=assay.removeprefix('speed_')
         from importlib import import_module
-        module=import_module('fig4.mechanisms.'+kind)
+        module=import_module('flycontrol.experiments.fig4.mechanisms.'+kind)
         if kind=='collect': module.run(method,seed)
         elif kind=='local_response': module.run(method,seed,device)
         elif kind=='events': module.event_run(seed,device)
         elif kind=='signed': module.run_signed(seed,device)
         else: module.run(seed,device)
     elif assay.startswith('turning_'):
-        from .turning_mechanisms import job
+        from flycontrol.experiments.fig3.workflow import job
         job(root,assay.removeprefix('turning_'),method,seed,device)
     else: raise ValueError(assay)
 

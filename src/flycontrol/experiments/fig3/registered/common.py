@@ -2,8 +2,8 @@
 
 import os
 from pathlib import Path
-from fig6.paths import ROOT as REPO, sha256 as sha, write_json
-from fig3.runtime import activate
+from flycontrol.experiments.shared.paths import ROOT as REPO, sha256 as sha, write_json
+from flycontrol.experiments.fig3.runtime import activate
 
 activate()
 from turning_control.context import configure_process

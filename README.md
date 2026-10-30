@@ -165,19 +165,27 @@ flycontrol replay --run-dir runs/turning --video 1 --output runs/videos/01
 configs/                 Experiment presets, numerical recipes, public-input manifests
 src/flycontrol/
   cli.py, pipeline.py    Commands and stage integrity
-  inputs.py, anatomy.py Verified graphs and anatomical annotations
-  engines/              Task-specific policies, trainers and physics
-  experiments/          Numerical probes and metric definitions
-  *analysis.py          Behavior and neural analyses
-  plotting.py           Quantitative figures
-  media.py, materials.py Native replays, overview and configuration tables
+  inputs.py, connectomes/ Verified public inputs, graphs and anatomical annotations
+  engines/              Isolated policies, trainers and physics adapters
+  experiments/
+    fig1/ ... fig6/      Main-figure implementations, including Ant navigation in fig5/
+    supp_s1/            Terrain sensitivity
+    supp_s3/            Adult/larva terrain and turning
+    supp_s4/            Adult/larva speed
+    supp_s5/            BANC readout sensitivity
+    supp_s6/            BANC regional recovery
+    shared/             Common workflow, paths, statistics and speed evaluation
+  analysis/             Shared behavior/neural statistical dispatch
+  plotting/             Common panels, trajectories and native video rendering
 scripts/                 Figure-numbered full-run entries; 00_reproduce_all.sh runs the campaign
 notebooks/               One short test per experiment; matching figure-numbered names
 tests/                   Integrity and numerical regression checks
 docs/                    Protocol, coverage, validation and the manuscript overview image
 ```
 
-The four body experiments share policy components, PPO training and orchestration through `engines/common/`. Their adapters retain different physics and control interfaces, including Tripod's matched feedback branch and Hexapod's CPG. Historical fly experiments retain separate source versions because their observation scaling, anatomical partitions or recurrent updates differ. Some implementation duplication remains; see the [architecture notes](docs/architecture.md) for the boundaries and current tradeoffs.
+The [source index by figure](src/flycontrol/experiments/README.md) maps every main and supplementary figure to its implementation. S2 shares `fig4/`, S7–S8 share `fig5/`, and S9–S10 share `fig6/`; these figures reuse the same experiment cohorts.
+
+The four body experiments share policy components, PPO training and orchestration through `engines/common/`. Their adapters retain different physics and control interfaces, including Tripod's matched feedback branch and Hexapod's CPG. Supplementary and developmental fly protocols retain separate engine versions because their observation scaling, anatomical partitions or recurrent updates differ. Some implementation duplication remains; see the [architecture notes](docs/architecture.md) for the boundaries and current tradeoffs.
 
 ## Version
 

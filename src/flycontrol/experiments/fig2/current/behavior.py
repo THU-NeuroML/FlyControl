@@ -4,7 +4,7 @@ from pathlib import Path
 import json, hashlib, itertools, sys, time, platform
 import numpy as np
 import pandas as pd
-from .paths import DATA, OUTPUT as ROOT, REPO
+from flycontrol.experiments.fig2.current.paths import DATA, OUTPUT as ROOT, REPO
 
 HEIGHTS = [0.0, 0.2, 0.3, 0.45, 0.525]
 METRICS = [

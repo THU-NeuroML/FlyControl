@@ -5,8 +5,8 @@ import json
 import hashlib
 import numpy as np
 import pandas as pd
-from fig6.paths import ROOT, read_json, write_json, sha256
-from .statistics import contrast, holm
+from flycontrol.experiments.shared.paths import ROOT, read_json, write_json, sha256
+from flycontrol.experiments.fig4.statistics import contrast, holm
 
 DATA = ROOT / "data/figure4"
 CONFIG = read_json(ROOT / "configs/figure4/analysis.json")

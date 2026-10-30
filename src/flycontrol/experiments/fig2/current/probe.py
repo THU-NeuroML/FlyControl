@@ -15,15 +15,15 @@ import sys, json, time, argparse, types, hashlib
 import numpy as np
 import pandas as pd
 import torch
-from fig6.paths import ROOT as REPO
-from fig2.runtime import activate
+from flycontrol.experiments.shared.paths import ROOT as REPO
+from flycontrol.experiments.fig2.runtime import activate
 
 activate()
 from terrain_control.context import configure_process
 
 configure_process()
 from terrain_control.policy import build_policy
-from .paths import DATA, OUTPUT as ROOT
+from flycontrol.experiments.fig2.current.paths import DATA, OUTPUT as ROOT
 
 GRID = json.loads((REPO / "evaluation/grid.json").read_text())
 HEIGHTS = GRID["heights"]

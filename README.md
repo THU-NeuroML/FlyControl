@@ -34,8 +34,8 @@
 </div>
 
 <p align="center">
-  <a href="docs/assets/figure1.png">
-    <img src="docs/assets/figure1.png" width="1100" alt="Figure 1. A fixed fly connectome closes the sensorimotor loop, supports terrain, speed and turning tasks, and transfers to Ant navigation and two-, three-, four- and six-legged bodies.">
+  <a href="docs/assets/figure1.jpg">
+    <img src="docs/assets/figure1.jpg" width="1100" alt="Figure 1. A fixed fly connectome closes the sensorimotor loop, supports terrain, speed and turning tasks, and transfers to Ant navigation and two-, three-, four- and six-legged bodies.">
   </a>
 </p>
 

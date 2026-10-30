@@ -42,7 +42,6 @@
 <p align="center">
   <strong>Figure 1 · A shared connectome prior across control demands and bodies.</strong><br>
   Closed-loop fly locomotion → terrain, speed and turning → Ant navigation → transfer across embodiments.<br>
-  <sub>Figure from the manuscript; click to view at full resolution.</sub>
 </p>
 
 ## Overview

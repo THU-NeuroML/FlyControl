@@ -1,6 +1,8 @@
 # Short tests by figure
 
-Each notebook runs one experiment through **prepare → train → evaluate → probe → analyze → plot** with the existing `--smoke` configuration. Use notebooks to inspect the steps interactively; use the matching numbered script for full reproduction.
+Each notebook includes **saved outputs from a real short test**: stage completion times, numerical tables and generated figures. Open a notebook on GitHub to inspect these results directly. The embedded previews are labelled **SMOKE TEST** and do not establish the paper's conclusions.
+
+To regenerate the outputs, run the notebook through **prepare → train → evaluate → probe → analyze → plot** with the existing `--smoke` configuration. Use the matching numbered script for full reproduction.
 
 From the repository root, activate the environment and install the optional notebook tools:
 
@@ -11,7 +13,9 @@ python -m ipykernel install --user --name flycontrol --display-name "Python (Fly
 jupyter lab notebooks/
 ```
 
-Select **Python (FlyControl)**, open a notebook and run its cells in order. Start with `06_tripod.ipynb`. `DEVICE` defaults to `cpu`; CUDA can accelerate training and neural probes. Generated files go to `runs/notebooks/<notebook-name>/`. Every notebook ends with the full command as Markdown, so **Run All only executes the short test**. Source notebooks are distributed with outputs cleared.
+Select **Python (FlyControl)**, open a notebook and run its cells in order. Start with `06_tripod.ipynb`. `DEVICE` defaults to `cpu`; CUDA can accelerate training and neural probes. Set `DEVICE` in the notebook or launch Jupyter with `FLYCONTROL_NOTEBOOK_DEVICE=cuda:0`. The saved outputs record the device actually used. Generated files go to `runs/notebooks/<preset>/`. Every notebook ends with the full command as Markdown, so **Run All only executes the short test**.
+
+Keep the saved table and figure outputs when sharing these notebooks. Checkpoints, full numerical outputs and execution logs remain in the ignored run directory. Stage cells show concise completion records; complete logs are saved under `RUN_DIR/logs/notebook-<stage>.log`. The notebook metadata records the execution time, source/configuration checksum and run settings.
 
 | Figure | Short-test notebook | Full-run script |
 |---|---|---|
@@ -34,6 +38,6 @@ Figure S2 shares the speed workflow; S7–S8 share maze; S9 shares Tripod; S10 s
 
 “Short” means reduced training budgets and evaluation coverage. The first run downloads public inputs, and neural assays or maze prerequisites may still be slow. All configured methods are retained. Missing usable neural histories are recorded, not replaced with fabricated results. Smoke outputs are not evidence for the paper's claims.
 
-The common `notebook_utils.py` helper only streams CLI logs, stops child processes on interruption and displays generated files. Training, evaluation, analysis and plotting remain in the same package used by full runs. Use a fresh run directory after code/configuration changes. For a failed training stage, follow [resume rules](../docs/reproduction.md); notebooks do not add a separate resume mechanism.
+The common `notebook_utils.py` helper records CLI logs, displays progress, stops child processes on interruption and displays generated files. Training, evaluation, analysis and plotting remain in the same package used by full runs. Use a fresh run directory after code/configuration changes. For a failed training stage, follow [resume rules](../docs/reproduction.md); notebooks do not add a separate resume mechanism.
 
 For the complete campaign, run `bash scripts/00_reproduce_all.sh cuda:0 4 runs/paper` from the repository root. The combined developmental and body statistics require full cohorts and are included by that script; individual notebook endings also show these commands where applicable.

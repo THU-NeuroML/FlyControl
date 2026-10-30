@@ -53,7 +53,7 @@ This repository provides **from-scratch training, evaluation, neural analysis an
 prepare → train → evaluate → probe → analyze → plot
 ```
 
-Code, fixed configurations, notebooks and documentation live here. Public anatomical inputs and simulator assets are downloaded with version and checksum checks. Policies are trained within each run; generated weights, data, figures and videos stay outside Git. The overview image above is a documentation asset from the manuscript.
+Code, fixed configurations, notebooks and documentation live here. Public anatomical inputs and simulator assets are downloaded with version and checksum checks. Policies are trained within each run; checkpoints, full numerical outputs and videos stay outside Git. Notebooks retain compact tables and figure previews from real short tests. The overview image above is a documentation asset from the manuscript.
 
 **Reproduction status.** Short-run and component checks are documented in [Validation](docs/validation.md); full-budget scientific replication has not yet been completed for this code version. [Paper coverage](docs/paper-coverage.md) maps each manuscript result to its workflow and outputs.
 
@@ -75,7 +75,7 @@ Numerical dependencies are pinned in `pyproject.toml`. Headless rendering needs 
 
 ## Reproduce an experiment
 
-For an interactive short test, open a [figure-numbered notebook](notebooks/README.md). Each notebook runs all six stages, displays the generated outputs and ends with the corresponding full reproduction command. Install the optional tools once:
+Open a [figure-numbered notebook](notebooks/README.md) to view its saved short-test tables and plots directly on GitHub. Each notebook runs all six stages and ends with the corresponding full reproduction command. To regenerate the outputs interactively, install the optional tools once:
 
 ```bash
 python -m pip install -e '.[notebook]'

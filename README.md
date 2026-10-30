@@ -1,10 +1,63 @@
-# FlyControl
+<div align="center">
 
-From-scratch training, evaluation, neural analysis and plotting for connectome-based control.
+<h1>FlyControl</h1>
+<h2>A <em>Drosophila</em> connectome prior enables adaptable embodied control</h2>
 
-This repository contains **code, fixed configurations and documentation**. Public anatomical inputs and simulator assets are downloaded with version and checksum checks. Policies are trained within each run; generated weights, data, figures and videos stay outside Git.
+<p>
+  Siyu Yu<sup>1,2,3</sup> · Kanglei Zhou<sup>1,3</sup> · Hongwei Yan<sup>1,3</sup> · Xinyi Wang<sup>1</sup><br>
+  Sen Song<sup>2,3</sup> · Bo Hong<sup>2,3</sup> · Liyuan Wang<sup>1,3,*</sup>
+</p>
 
-The main and supplementary workflows share one interface. [Paper coverage](docs/paper-coverage.md) maps the manuscript to commands and outputs. [Validation](docs/validation.md) distinguishes executed software checks from full-budget scientific replication, which has not yet been completed for this release.
+<p>
+  <sup>1</sup> Department of Psychological and Cognitive Sciences, Tsinghua University<br>
+  <sup>2</sup> School of Biomedical Engineering, Tsinghua University<br>
+  <sup>3</sup> IDG/McGovern Institute for Brain Research, Tsinghua University<br>
+  Beijing, China<br>
+  <sup>*</sup> Correspondence: <a href="mailto:liyuanwang@tsinghua.edu.cn">Liyuan Wang</a>
+</p>
+
+<p>
+  <a href="pyproject.toml"><img src="https://img.shields.io/badge/Code-v0.1.0-176B87?style=flat-square" alt="Code version 0.1.0"></a>
+  <a href="#install"><img src="https://img.shields.io/badge/Python-3.10-3572A5?style=flat-square" alt="Tested with Python 3.10"></a>
+  <a href="#install"><img src="https://img.shields.io/badge/Platform-Linux-64748B?style=flat-square" alt="Platform: Linux"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-Apache--2.0-64748B?style=flat-square" alt="License: Apache-2.0"></a>
+</p>
+
+<p>
+  <a href="#install">Quick start</a> ·
+  <a href="notebooks/README.md">Notebooks</a> ·
+  <a href="#manuscript-workflows">Reproduce by figure</a> ·
+  <a href="docs/paper-coverage.md">Paper coverage</a> ·
+  <a href="docs/validation.md">Validation</a>
+</p>
+
+</div>
+
+<p align="center">
+  <a href="docs/assets/figure1.png">
+    <img src="docs/assets/figure1.png" width="1100" alt="Figure 1. A fixed fly connectome closes the sensorimotor loop, supports terrain, speed and turning tasks, and transfers to Ant navigation and two-, three-, four- and six-legged bodies.">
+  </a>
+</p>
+
+<p align="center">
+  <strong>Figure 1 · A shared connectome prior across control demands and bodies.</strong><br>
+  Closed-loop fly locomotion → terrain, speed and turning → Ant navigation → transfer across embodiments.<br>
+  <sub>Figure from the manuscript; click to view at full resolution.</sub>
+</p>
+
+## Overview
+
+FlyControl uses the adult <em>Drosophila</em> brain connectome as a **fixed recurrent structural prior**, while learning sensory and motor interfaces for embodied control. The experiments study adaptation to terrain, turning and speed demands, investigate the underlying neural mechanisms, and evaluate transfer to maze navigation and different body plans.
+
+This repository provides **from-scratch training, evaluation, neural analysis and plotting** for the main and supplementary experiments. Figure-numbered scripts and matching notebooks share the same six-stage pipeline:
+
+```text
+prepare → train → evaluate → probe → analyze → plot
+```
+
+Code, fixed configurations, notebooks and documentation live here. Public anatomical inputs and simulator assets are downloaded with version and checksum checks. Policies are trained within each run; generated weights, data, figures and videos stay outside Git. The overview image above is a documentation asset from the manuscript.
+
+**Reproduction status.** Short-run and component checks are documented in [Validation](docs/validation.md); full-budget scientific replication has not yet been completed for this code version. [Paper coverage](docs/paper-coverage.md) maps each manuscript result to its workflow and outputs.
 
 ## Install
 
@@ -123,10 +176,14 @@ src/flycontrol/
 scripts/                 Figure-numbered full-run entries; 00_reproduce_all.sh runs the campaign
 notebooks/               One short test per experiment; matching figure-numbered names
 tests/                   Integrity and numerical regression checks
-docs/                    Protocol, coverage and executed validation
+docs/                    Protocol, coverage, validation and the manuscript overview image
 ```
 
 The four body experiments share policy components, PPO training and orchestration through `engines/common/`. Their adapters retain different physics and control interfaces, including Tripod's matched feedback branch and Hexapod's CPG. Historical fly experiments retain separate source versions because their observation scaling, anatomical partitions or recurrent updates differ. Some implementation duplication remains; see the [architecture notes](docs/architecture.md) for the boundaries and current tradeoffs.
+
+## Version
+
+The current code version is **0.1.0**, as declared in [pyproject.toml](pyproject.toml). The documented execution environment is **Linux with Python 3.10**. Each run records its effective configurations, source checksums and numerical environment so results can be traced to the code that produced them.
 
 ## License and external inputs
 

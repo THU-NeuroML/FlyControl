@@ -10,6 +10,9 @@ Date: 2026-10-30. These checks validate software execution and numerical contrac
 | Public inputs | Checksum-verified FlyWire v783, BANC v626, larval matrix and simulator assets; rebuilt graph arrays match their fixed contracts, including the separate developmental Adult partition |
 | Packaged installation | Wheel built and installed into a separate directory; imports the new workflows and lists all 14 presets with bundled JSON/YAML configurations |
 | Public CLI | Fresh Adult + MLP Tripod policies, seed 861, 128 training steps each; all six stages completed |
+| Numbered entries and notebooks | All 14 presets have matching scripts/notebooks; notebook schemas, cleared outputs, executable cell syntax, root/notebook-directory setup, six-stage order, preset mapping, full-command documentation and script help checked; Figure 1 materials entry executed |
+| Notebook execution | `06_tripod.ipynb` executed in a Jupyter kernel on CPU with fresh Adult + MLP policies; all eight code cells and six stages completed, three generated PNG previews displayed, no error outputs; approximately 71 seconds with checksum-verified public input downloads already cached |
+| Notebook distribution | Source archive includes all 14 notebooks, their common presentation helper and numbered scripts; generated weights/data/figures are excluded; helper rejects full or mismatched runs before launching a subprocess |
 | Main terrain | Fresh Adult/MLP/ER policies, 128 decisions; a small physical grid, coarse/dense sensitivities, matched blockade, ER atlas, ten-axis screen, measured gain surfaces, analysis and plots completed |
 | Main speed and S2 | Fresh Adult/MLP base training and continuation to 128 decisions; both 12-second neural-history cases, local parameter perturbations, neuronal sensitivity, signed responses, target holds, analysis and plots completed |
 | Main turning | Fresh Adult/MLP/ER policies in separate angle/push cohorts, 128 decisions; signed-angle, push and zero-control evaluations, common histories, sensitivity, interface exchange, activity replay, all 22 closed-loop intervention/force conditions, gain screens/surfaces, analysis and plots completed; restored intact replay is bit-exact |
@@ -31,11 +34,13 @@ Date: 2026-10-30. These checks validate software execution and numerical contrac
 A short public-CLI check can be repeated with:
 
 ```bash
-flycontrol run --config tripod --run-dir runs/check-tripod \
+python scripts/06_tripod.py --run-dir runs/check-tripod \
   --smoke --device cpu --workers 1
 ```
 
 Component checks use real simulator episodes and newly trained short-budget models. They exercise the larger numerical protocols without pretending that 128-step policies are trained paper models. The main turning and speed checks retain the native physical horizons required by their neural assays. These component runs were used during integration; source/configuration guards intentionally require a new public run directory after a code change.
+
+The notebook organization change preserves the numerical source/configuration digest. All 14 notebook entry paths were checked, but only the Tripod notebook was executed end to end in Jupyter; the component checks above describe the other workflows' existing validation. The figure-numbered notebooks and setup instructions are indexed [here](../notebooks/README.md).
 
 The automated tests cover code/configuration changes, incomplete cohorts, concurrent writers, download corruption/path traversal, subprocess import isolation, checkpoint tampering, statistical units, exact sign-flip calculations, missing-endpoint multiplicity slots, complete intervention families, neural-history selection, seven-condition body aggregation, recurrent resets/gradients, frozen reservoirs, maze prerequisites and stage-policy construction.
 

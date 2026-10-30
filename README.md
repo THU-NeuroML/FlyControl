@@ -24,21 +24,31 @@ Numerical dependencies are pinned in `pyproject.toml`. Headless rendering needs 
 
 ## Reproduce an experiment
 
-First check installation with a short, real-simulator run:
+For an interactive short test, open a [figure-numbered notebook](notebooks/README.md). Each notebook runs all six stages, displays the generated outputs and ends with the corresponding full reproduction command. Install the optional tools once:
 
 ```bash
-flycontrol run --config tripod --run-dir runs/tripod-smoke \
+python -m pip install -e '.[notebook]'
+python -m ipykernel install --user --name flycontrol --display-name "Python (FlyControl)"
+jupyter lab notebooks/
+```
+
+Select **Python (FlyControl)** and start with [`06_tripod.ipynb`](notebooks/06_tripod.ipynb). **Run All executes only the short test.** Neural assays and maze prerequisites can still take substantial time despite reduced training budgets.
+
+The same short test can be run from a terminal:
+
+```bash
+python scripts/06_tripod.py --run-dir runs/tripod-smoke \
   --smoke --device cpu --workers 1
 ```
 
 Smoke results are labelled and cannot establish the paper's conclusions. To execute a complete configured experiment:
 
 ```bash
-flycontrol run --config terrain --run-dir runs/terrain \
+python scripts/02_terrain.py --run-dir runs/terrain \
   --device cuda:0 --workers 4
 ```
 
-The equivalent stages are:
+Numbered scripts call the same public CLI: `flycontrol run --config terrain` is equivalent to `python scripts/02_terrain.py`. Omitting `--smoke` uses the full fixed protocol. The individual stages are:
 
 ```bash
 flycontrol prepare  --config terrain --run-dir runs/terrain
@@ -55,19 +65,24 @@ Each run records effective configurations, source checksums, checkpoint checksum
 
 ## Manuscript workflows
 
-| Preset | Results | Fixed cohort |
-|---|---|---|
-| `terrain` | Fig. 2 behavior, ER control, temporal sensitivity, blockade and gain planes | Adult / MLP / ER × 20 seeds |
-| `turning` | Fig. 3 behavior, input learning, activity, AN–DN interventions and gain planes | Adult / MLP / ER × 24 seeds × angle/push cohorts |
-| `speed` | Fig. 4 and S2: tracking, neural responses, target holds, parameter planes and associations | Adult / MLP × 20 seeds |
-| `historical-terrain` | S1 unit-state and activity-scaled sensitivity | Separate Adult / MLP × 6 seeds |
-| `development-turning` | S3 Adult/larva direction and angle control | Adult / larva × 6 seeds per task |
-| `development-terrain` | Ten terrain contrasts in S3's joint statistical family | Adult / larva × 6 seeds |
-| `development-speed` | S4 dynamic speed and perturbation protocols | Adult / larva × 6 seeds |
-| `banc-sensitivity` | S5 initial/final readout sensitivity and matched controls | Adult / BANC-DN / BANC-motor / ER × 6 seeds |
-| `banc-recovery` | S6 fixed-input message substitution and closed-loop recovery | BANC-DN / BANC-motor × 3 seeds |
-| `maze` | Fig. 5, S7 friction and S8 Large maze | Seven architectures × 20 seeds |
-| `cassie`, `go1`, `tripod`, `hexapod` | Fig. 6, S9 and S10 | Adult / MLP × 20 seeds per body |
+Scripts use `02_`–`06_` for main figures and `S01_`–`S06_` for supplementary-only experiments. Each experiment has a notebook with the same filename stem. Figures derived from the same experiment share one entry.
+
+| Full-run script | Short test | Results | Fixed cohort |
+|---|---|---|---|
+| [02_terrain.py](scripts/02_terrain.py) | [Notebook](notebooks/02_terrain.ipynb) | Fig. 2 behavior, ER control, temporal sensitivity, blockade and gain planes | Adult / MLP / ER × 20 seeds |
+| [03_turning.py](scripts/03_turning.py) | [Notebook](notebooks/03_turning.ipynb) | Fig. 3 behavior, input learning, activity, AN–DN interventions and gain planes | Adult / MLP / ER × 24 seeds × angle/push cohorts |
+| [04_speed.py](scripts/04_speed.py) | [Notebook](notebooks/04_speed.ipynb) | Fig. 4, S2 tracking, neural responses, target holds, parameter planes and associations | Adult / MLP × 20 seeds |
+| [05_maze.py](scripts/05_maze.py) | [Notebook](notebooks/05_maze.ipynb) | Fig. 5, S7 friction, S8 Large maze | Seven architectures × 20 seeds |
+| [06_cassie.py](scripts/06_cassie.py) | [Notebook](notebooks/06_cassie.ipynb) | Fig. 6 Cassie | Adult / MLP × 20 seeds |
+| [06_go1.py](scripts/06_go1.py) | [Notebook](notebooks/06_go1.ipynb) | Fig. 6 Go1 | Adult / MLP × 20 seeds |
+| [06_tripod.py](scripts/06_tripod.py) | [Notebook](notebooks/06_tripod.ipynb) | Fig. 6, S9 Tripod | Adult / MLP × 20 seeds |
+| [06_hexapod.py](scripts/06_hexapod.py) | [Notebook](notebooks/06_hexapod.ipynb) | Fig. 6, S10 Hexapod | Adult / MLP × 20 seeds |
+| [S01_historical_terrain.py](scripts/S01_historical_terrain.py) | [Notebook](notebooks/S01_historical_terrain.ipynb) | S1 unit-state and activity-scaled sensitivity | Separate Adult / MLP × 6 seeds |
+| [S03_development_terrain.py](scripts/S03_development_terrain.py) | [Notebook](notebooks/S03_development_terrain.ipynb) | Ten terrain contrasts in S3's joint statistical family | Adult / larva × 6 seeds |
+| [S03_development_turning.py](scripts/S03_development_turning.py) | [Notebook](notebooks/S03_development_turning.ipynb) | S3 Adult/larva direction and angle control | Adult / larva × 6 seeds per task |
+| [S04_development_speed.py](scripts/S04_development_speed.py) | [Notebook](notebooks/S04_development_speed.ipynb) | S4 dynamic speed and perturbation protocols | Adult / larva × 6 seeds |
+| [S05_banc_sensitivity.py](scripts/S05_banc_sensitivity.py) | [Notebook](notebooks/S05_banc_sensitivity.ipynb) | S5 initial/final readout sensitivity and matched controls | Adult / BANC-DN / BANC-motor / ER × 6 seeds |
+| [S06_banc_recovery.py](scripts/S06_banc_recovery.py) | [Notebook](notebooks/S06_banc_recovery.ipynb) | S6 message substitution and closed-loop recovery | BANC-DN / BANC-motor × 3 seeds |
 
 Two comparisons combine experiments:
 
@@ -80,14 +95,14 @@ flycontrol combine-bodies --run-dirs runs/cassie runs/tripod runs/go1 runs/hexap
 
 These require complete cohorts. The developmental command preserves all 22 comparisons; the body command uses equal weights over seven conditions and corrects across four bodies.
 
-To execute the whole fixed campaign, use `bash scripts/reproduce.sh cuda:0 4 runs/paper`. This launches full training and is computationally substantial. See [protocol details](docs/reproduction.md) for dependency chains, sample units and interpretation.
+To execute the whole fixed campaign, use `bash scripts/00_reproduce_all.sh cuda:0 4 runs/paper`. This launches full training and is computationally substantial. See [protocol details](docs/reproduction.md) for dependency chains, sample units and interpretation.
 
 ## Figures, tables and videos
 
 Results are written to `runs/<experiment>/analysis/` and `figures/`. `figures/paper/` contains quantitative panels, with each panel's source values and aggregation recorded. These are regenerated scientific displays, not copies of the manuscript's finished page layouts.
 
 ```bash
-flycontrol materials --output runs/materials
+python scripts/01_materials.py --output runs/materials
 flycontrol replay --run-dir runs/turning --video 1 --output runs/videos/01
 ```
 
@@ -105,12 +120,13 @@ src/flycontrol/
   *analysis.py          Behavior and neural analyses
   plotting.py           Quantitative figures
   media.py, materials.py Native replays, overview and configuration tables
-scripts/reproduce.sh    Full campaign and combined comparison families
+scripts/                 Figure-numbered full-run entries; 00_reproduce_all.sh runs the campaign
+notebooks/               One short test per experiment; matching figure-numbered names
 tests/                   Integrity and numerical regression checks
 docs/                    Protocol, coverage and executed validation
 ```
 
-The separate engines preserve experiments with different physics, observation scaling or recurrent update rules. Common orchestration does not substitute one protocol for another.
+The four body experiments share policy components, PPO training and orchestration through `engines/common/`. Their adapters retain different physics and control interfaces, including Tripod's matched feedback branch and Hexapod's CPG. Historical fly experiments retain separate source versions because their observation scaling, anatomical partitions or recurrent updates differ. Some implementation duplication remains; see the [architecture notes](docs/architecture.md) for the boundaries and current tradeoffs.
 
 ## License and external inputs
 

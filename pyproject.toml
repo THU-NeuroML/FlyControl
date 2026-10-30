@@ -20,6 +20,7 @@ dependencies = [
 
 [project.optional-dependencies]
 test = ["pytest>=8,<9"]
+notebook = ["jupyterlab>=4.5,<5", "ipykernel>=7,<8"]
 
 [project.scripts]
 flycontrol = "flycontrol.cli:main"
@@ -31,7 +32,7 @@ packages = ["src/flycontrol"]
 "configs" = "flycontrol/configs"
 
 [tool.hatch.build.targets.sdist]
-include = ["src", "configs", "scripts", "tests", "docs", "README.md", "LICENSE", "THIRD_PARTY_NOTICES.md", "pyproject.toml"]
+include = ["src", "configs", "scripts", "notebooks", "tests", "docs", "README.md", "LICENSE", "THIRD_PARTY_NOTICES.md", "pyproject.toml"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

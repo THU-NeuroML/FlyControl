@@ -12,7 +12,6 @@
   <sup>1</sup> Department of Psychological and Cognitive Sciences, Tsinghua University<br>
   <sup>2</sup> School of Biomedical Engineering, Tsinghua University<br>
   <sup>3</sup> IDG/McGovern Institute for Brain Research, Tsinghua University<br>
-  Beijing, China<br>
   <sup>*</sup> Correspondence: <a href="mailto:liyuanwang@tsinghua.edu.cn">Liyuan Wang</a>
 </p>
 

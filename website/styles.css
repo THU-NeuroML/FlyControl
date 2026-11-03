@@ -209,10 +209,6 @@ sup {
 .button:hover:not(:disabled) {
   background:#365556
 }
-.resource-placeholder:disabled {
-  opacity:.7;
-  cursor:default
-}
 .resource-icon {
   width:18px;
   height:18px;
